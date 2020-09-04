@@ -1,0 +1,7 @@
+<% content_for :main do %>
+  <div class="devise">
+    <%= content_for?(:devise) ? yield(:devise) : yield %>
+  </div>
+<% end %>
+
+<%= render template: 'layouts/application' %>
