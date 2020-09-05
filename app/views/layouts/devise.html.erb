@@ -1,6 +1,17 @@
 <% content_for :main do %>
-  <div class="devise">
-    <%= content_for?(:devise) ? yield(:devise) : yield %>
+  <div class="container d-flex justify-content-center">
+    <div class="col-lg-8">
+      <div class="card my-5 border-dark text-secondary">
+        <div class="card-header">
+          <h4> <%= "Formulaire" %> </h4>
+        </div>
+        <div class="card-body py-4">
+          <div class="devise">
+            <%= content_for?(:devise) ? yield(:devise) : yield %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
 
