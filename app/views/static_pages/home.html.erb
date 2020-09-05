@@ -1,1 +1,27 @@
 <h1> Hello, world! </h1>
+
+<ul>
+  <% if owner_signed_in? %>
+    <li>
+      <%= link_to "Sign out", destroy_owner_session_path, method: :delete %>
+    </li>
+
+    <li>
+      Voici ton email : <%= current_owner.email %>
+    </li>
+
+    <li>
+      <%= link_to "Edit email / password", edit_owner_registration_path %>
+    </li>
+
+  <% else %>
+    <li>    
+      <%= link_to "Sign in", new_owner_session_path %>
+    </li>
+
+    <li>
+      <%= link_to "Sign up", new_owner_registration_path %>
+    </li>
+
+  <% end %>
+</ul>

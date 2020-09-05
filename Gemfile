@@ -93,5 +93,5 @@ group :development do
   # Nice for solargraph extension in VS Code (code auto format, auto completion)
   gem 'solargraph'
   # To avoid sending emails in develop environment
-  #gem 'letter_opener'
+  gem 'letter_opener'
 end
