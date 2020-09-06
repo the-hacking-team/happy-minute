@@ -82,7 +82,7 @@ gem 'table_print'
 
 
 # Adding a library for Icons
-#gem 'font-awesome-sass', '~> 5.13.0'
+gem 'font-awesome-sass', '~> 5.13.0'
 
 group :development, :test do
   # ENV variables in prod, .env in dev
