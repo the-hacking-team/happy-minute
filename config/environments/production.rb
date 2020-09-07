@@ -98,9 +98,9 @@ Rails.application.configure do
   # Mailer
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: ENV['HAPPY_MINUTE_HOSTNAME'],
+    address: 'smtp.ionos.fr',
     port: 465,
-    domain: 'smtp.ionos.fr',
+    domain: ENV['HAPPY_MINUTE_HOSTNAME'],
     user_name: ENV['HAPPY_MINUTE_FROM'],
     password: ENV['HAPPY_MINUTE_SMTP'],
     authentication: 'plain',
