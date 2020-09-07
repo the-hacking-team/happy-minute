@@ -63,6 +63,17 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Adding Letter opened to avoid sending real mails in develop environment
-  config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.perform_deliveries = true
+  # config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.perform_deliveries = true
+
+  # Mailer with IONOS SMTP
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'auth.smtp.1and1.co.uk',
+    port: 587,
+    domain: 'happy-minute.com',
+    user_name: ENV['IONOS_SMTP_USERNAME'],
+    password: ENV['IONOS_SMTP_PASSWORD'],
+    authentication: 'login'
+  }
 end
