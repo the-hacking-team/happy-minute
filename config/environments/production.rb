@@ -97,12 +97,4 @@ Rails.application.configure do
 
   # Mailer with IONOS SMTP
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: 'auth.smtp.1and1.co.uk',
-    port: 587,
-    domain: 'happy-minute.com',
-    user_name: ENV['IONOS_SMTP_USERNAME'],
-    password: ENV['IONOS_SMTP_PASSWORD'],
-    authentication: 'login'
-  }
 end
