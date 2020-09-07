@@ -95,15 +95,14 @@ Rails.application.configure do
   # Form the forgotten password :
   config.action_mailer.default_url_options = { host: ENV['HAPPY_MINUTE_HOSTNAME'] }
 
-  # Mailer
+  # Mailer with IONOS SMTP
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.ionos.fr',
-    port: 465,
-    domain: ENV['HAPPY_MINUTE_HOSTNAME'],
-    user_name: ENV['HAPPY_MINUTE_FROM'],
-    password: ENV['HAPPY_MINUTE_SMTP'],
-    authentication: 'plain',
-    enable_starttls_auto: true
+    address: 'auth.smtp.1and1.co.uk',
+    port: 587,
+    domain: 'happy-minute.com',
+    user_name: ENV['IONOS_SMTP_USERNAME'],
+    password: ENV['IONOS_SMTP_PASSWORD'],
+    authentication: 'login'
   }
 end
