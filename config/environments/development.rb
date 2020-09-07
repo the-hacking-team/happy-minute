@@ -65,4 +65,19 @@ Rails.application.configure do
   # Adding Letter opened to avoid sending real mails in develop environment
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+
+  # Form the forgotten password :
+  config.action_mailer.default_url_options = { host: ENV['HAPPY_MINUTE_HOSTNAME'] }
+
+  # Mailer
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.ionos.fr',
+    port: 465,
+    domain: ENV['HAPPY_MINUTE_HOSTNAME'],
+    user_name: ENV['HAPPY_MINUTE_FROM'],
+    password: ENV['HAPPY_MINUTE_SMTP'],
+    authentication: :login,
+    enable_starttls_auto: true
+  }
 end
