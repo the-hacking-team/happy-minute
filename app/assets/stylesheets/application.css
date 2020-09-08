@@ -10,8 +10,16 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bootstrap
+ *= require bootstrap.min
+ *= require font-awesome.min
+ *= require line-icons
+ *= require owl.carousel
+ *= require owl.theme
+ *= require nivo-lightbox
+ *= require magnific-popup
+ *= require animate
+ *= require menu_sideslide
+ *= require main
+ *= require responsive
  *
- *= require_tree .
- *  require_self
  */
