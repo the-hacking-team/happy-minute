@@ -3,7 +3,7 @@ class CreateHappyCodes < ActiveRecord::Migration[5.2]
     create_table :happy_codes do |t|
       t.integer :code
       t.belongs_to :happy_price, index: true
-      t.belongs_to :consumer, index: true
+      t.belongs_to :customer, index: true
 
 
 

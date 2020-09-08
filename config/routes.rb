@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :administrators
-  devise_for :consumers
+  devise_for :customers
   devise_for :owners
   # Root is Hello, world
   root 'static_pages#home'
