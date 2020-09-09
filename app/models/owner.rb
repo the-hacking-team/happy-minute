@@ -21,6 +21,6 @@ class Owner < ApplicationRecord
   private
 
   def welcome_email
-    OwnerMailer.with(owner: self).welcome_email.deliver_now!
+    OwnerMailer.with(owner: self).welcome_email.deliver_now
   end
 end

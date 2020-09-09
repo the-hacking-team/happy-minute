@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-  layout "crystal", only: [:crystal_template, :kit_ui]
 
   def home
   end
