@@ -116,3 +116,33 @@ a:hover{
 	border-color: #94C523!important;
 }
 
+
+/* kit ui addons*/
+
+/* business jumbotron*/
+
+.jumbo-business { 
+	background-image: url('https://lefooding.com/media/W1siZiIsIjIwMTcvMTIvMDIvMTNfMzVfNTlfNDEwX3Jlc3RhdXJhbnRfYm91aWxsb25fcGFyaXMuanBlZyJdLFsicCIsInRodW1iIiwiNjcyeDYwMCJdXQ/restaurant-bouillon-paris.jpeg?sha=876c0cc5');
+	background-size: cover;
+ 	background-repeat: no-repeat;
+ 	display: flex;
+    justify-content: center;
+}
+
+.jumbo-title-container {
+	background-color: rgba(255, 255, 255, 255);
+	opacity: 0.9;
+	align-content: center;
+
+}
+
+.jumbo-title {
+  font-size: 42px;
+  margin-top: 0;
+  text-transform: uppercase;
+  font-weight: 100;
+  color: #0d3559;
+  position: relative;
+}
+
+
