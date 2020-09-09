@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   devise_for :customers
   devise_for :owners
 
-  # For Owners
+  # For Owners, some REST actions exept show are handle by devise :
   resources :owners, only: [:show]
+  resources :businesses
 
   # Root is Hello, world
   root 'static_pages#home'
