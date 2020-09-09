@@ -1,183 +1,40 @@
-<h1> Happy-Minute: Kit UI </h1>
-<ul>
-    <li>Navbar</li>
-    <!-- Side Menu Start -->
-    <div class="menu-wrap">
-        <nav class="menu navbar">
-            <div class="icon-list navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#video-area">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#features">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#portfolios">Our Works</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#pricing">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#blog">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#subscribe">Subscribe</a>
-                    </li>
-                </ul>
+<!-- Basic Card Section Section -->
+<section id="blog" class="section">
+    <!-- Container Starts -->
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Basic Card <span>Items</span></h2>
+            <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+            <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">Here is our favorite dishes selection.</p>
+        </div>
+        <div class="row justify-content-center">
+            
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
+                <!-- Blog Item Starts -->
+                <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.9s">
+                    <div class="blog-item-img">
+                        <a href="<%= root_path %>">
+                            <img src="<%= Business.first.photo %>" alt="" class="business-photo">
+                        </a>
+                    </div>
+                    <div class="blog-item-text">
+                        <h3>
+                            <%= link_to Business.first.name, root_path %>
+                        </h3>
+                        <div class="meta-tags">
+                            <span class="foodcategory"><i class="lnr lnr-poop"></i>Pig</span>
+                            <span class="foodcategory"><i class="lnr lnr-cloud"></i>Meat</span>
+                            <span class="comments"><i class="lnr lnr-rocket"></i>Gluten-free</span>
+                        </div>
+                        <p>
+                            <%= Business.first.address %><br>
+                            <%= Business.first.phone %>
+                        </p>
+                    </div>
+                </div>
+                <!-- Blog Item Wrapper Ends-->
             </div>
-        </nav>
-        <button class="close-button" id="close-button"><i class="lnr lnr-cross"></i></button>
-    </div>
-    <!-- Side Menu End -->
-    <!-- Logo and Burger Start -->
-    <div id="navbar">
-        <%= render partial: "shared/navbar_crystal" %>
-    </div>
-    <div>
-        <div class="container">
-            <div class="logo-menu">
-                <a href="index.html" class="logo"><span class="lnr lnr-diamond"></span> CRYSTAL</a>
-                <button class="menu-button" id="open-button"><i class="lnr lnr-menu"></i></button>
-            </div>
+           
         </div>
     </div>
-    <!-- Logo and Burger End -->
-    <div class="col-lg-10">
-    </div>
-    <li>Hero</li>
-    <div class="col-lg-10" id="video-area" data-stellar-background-ratio="0.5">
-        <!-- Header Section Start -->
-        <div id="block" data-vide-bg="video/video"></div>
-        <div class="overlay overlay-2"></div>
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <div class="col-md-10">
-                    <div class="contents text-center">
-                        <h1 class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">Crystal - Free Video Background HTML5 Bootstrap Template</h1>
-                        <p class="lead  wow fadeIn" data-wow-duration="1000ms" data-wow-delay="400ms">Free High-quality Responsive Video Background Website Template Based on Bootstrap 4 to Create Complete Business Website in Minutes</p>
-                        <a href="#" class="btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms"><i class="lnr lnr-download"></i> Download</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Header Section End -->
-    <li>Jumbotron</li>
-    <div class="col-lg-10">
-    </div>
-    <li>Card</li>
-    <div class="col-lg-10">
-    </div>
-    <li>Media</li>
-    <div class="col-lg-10">
-    </div>
-    <li>Form: Business Registration</li>
-    <div class="col-lg-10">
-        <!-- Contact Section Start -->
-        <section id="contact" class="section">
-            <div class="container">
-                <div class="row justify-content-md-center">
-                    <div class="col-md-9 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">
-                        <div class="contact-block">
-                            <div class="section-header">
-                                <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Business <span>Registration</span></h2>
-                                <hr class="lines wow zoomIn" data-wow-delay="0.3s">
-                            </div>
-                            <form id="contactForm">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required data-error="Please enter your name">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" placeholder="Your Email" id="email" class="form-control" name="name" required data-error="Please enter your email">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" placeholder="Subject" id="msg_subject" class="form-control" required data-error="Please enter your subject">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="submit-button text-center">
-                                        <button class="btn btn-common" id="submit" type="submit">Register</button>
-                                        <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-    </div>
-    </section>
-    <!-- Contact Section End -->
-    </div>
-    <li>Form</li>
-    <div class="col-lg-10">
-        <!-- Contact Section Start -->
-        <section id="contact" class="section">
-            <div class="container">
-                <div class="row justify-content-md-center">
-                    <div class="col-md-9 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">
-                        <div class="contact-block">
-                            <div class="section-header">
-                                <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Contact <span>Us</span></h2>
-                                <hr class="lines wow zoomIn" data-wow-delay="0.3s">
-                            </div>
-                            <form id="contactForm">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required data-error="Please enter your name">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" placeholder="Your Email" id="email" class="form-control" name="name" required data-error="Please enter your email">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" placeholder="Subject" id="msg_subject" class="form-control" required data-error="Please enter your subject">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <textarea class="form-control" placeholder="Your Message" rows="11" data-error="Write your message" required></textarea>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="submit-button text-center">
-                                            <button class="btn btn-common" id="submit" type="submit">Send Message</button>
-                                            <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Contact Section End -->
-    </div>
-    <li>Footer</li>
-    <div class="col-lg-10">
-    </div>
-</ul>
+</section>
