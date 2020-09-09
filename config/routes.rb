@@ -5,12 +5,13 @@ Rails.application.routes.draw do
 
   # For Owners
   resources :owners, only: [:show]
+  resources :items
 
   # Root is Hello, world
   root 'static_pages#home'
-  
-  get "/crystal", to: "static_pages#crystal_template"
-  get "/kit_ui", to: "static_pages#kit_ui"
+
+  get '/crystal', to: 'static_pages#crystal_template'
+  get '/kit_ui', to: 'static_pages#kit_ui'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
