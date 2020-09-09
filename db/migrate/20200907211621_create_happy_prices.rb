@@ -7,7 +7,6 @@ class CreateHappyPrices < ActiveRecord::Migration[5.2]
       t.integer :quantity
       t.belongs_to :item, index: true
 
-
       t.timestamps
     end
   end
