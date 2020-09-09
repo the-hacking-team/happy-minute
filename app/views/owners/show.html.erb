@@ -5,6 +5,11 @@
 <%= link_to "Editer votre profil #{@owner.email}", edit_owner_registration_path, :class => "btn btn-common my-2" %>
 
 <% @owner.businesses.each do |business| %>
-  <p>business</p>
+
+  <p><%= link_to "#{business.name}", business_path(business.id), :class => "btn btn-common my-2" %></p>
+
   
 <% end %>
+
+
+<%= link_to "Créer un nouvel établissement", new_business_path, :class => "btn btn-common my-2" %>

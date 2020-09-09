@@ -8,9 +8,19 @@ class BusinessesController < ApplicationController
   end
 
   def new
+    @business = Business.new
   end
 
-  def create
+  def create  
+    @business = Business.new(business_params)
+    @business.owner = current_owner
+
+    if @business.save
+      flash[:success] = "Votre établissement a été créé avec succès !"
+      redirect_to owner_path(current_owner)
+    else
+      render new_business_path
+    end 
   end
 
   def edit
@@ -29,7 +39,8 @@ class BusinessesController < ApplicationController
 
   def destroy
     @business = Business.find(params[:id])
-    
+    @business.destroy
+    redirect_to root_path
   end
 
   private
