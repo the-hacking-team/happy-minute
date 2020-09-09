@@ -1,0 +1,14 @@
+<div class="container">
+
+  <h2> Un produit disponible chez <%= link_to @business.name, business_path(@business) %> </h2>
+
+  <ul>
+    <li> Titre : <%= @item.title %> </li>
+    <li> Description : <%= @item.description %> </li>
+    <li> Prix : <%= @item.price %> </li>
+    <li> Catégorie : <%= @item.category %> </li>
+  </ul>
+
+  <%= link_to "Modifier", edit_business_item_path(@business, @item), class: "btn btn-common" %>
+
+</div>
