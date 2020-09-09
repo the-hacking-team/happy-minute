@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   # For Owners
   resources :owners, only: [:show]
-  resources :items
+  resources :businesses do
+    resources :items
+  end
 
   # Root is Hello, world
   root 'static_pages#home'

@@ -1,0 +1,11 @@
+<div class="container">
+
+  <h2> Etablissement <%= @business.name %> avec <%= @items.size %> produits </h2>
+
+  <ul>
+    <% @items.each do |item| %>
+      <li> <%= item.title %> </li>
+    <% end %>
+  </ul>
+
+</div>
