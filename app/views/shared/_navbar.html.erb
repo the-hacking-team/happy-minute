@@ -1,29 +1,96 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <%= link_to "Happy Minute!", root_path, class: "navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <%= link_to "Home", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Template dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "Home 1", root_path, class: "nav-link" %>
-            <%= link_to "Home 2", root_path, class: "nav-link" %>
-            <div class="dropdown-divider"></div>
-            <%= link_to "Crystal", crystal_path, class: "nav-link" %>
-            <%= link_to "Kit_UI", kit_ui_path, class: "nav-link" %>
+      <div class="menu-wrap">
+        <nav class="menu navbar">
+          <div class="icon-list navbar-collapse">
+            <ul class="navbar-nav">
+              <% if customer_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "Home", root_path, class: "nav-link" %>
+              </li>                         
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Happy-Minutes</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="#subscribe">Profile</a>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Sign out", destroy_customer_session_path, class: "nav-link" %>
+              </li>
+              <% elsif owner_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "Home", root_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#services">Services</a>
+              </li>                             
+              <li class="nav-item">
+                <a class="nav-link" href="#pricing">Pricing</a>
+              </li>     
+              <li class="nav-item">
+                <a class="nav-link" href="#subscribe">Profile</a>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Sign out", destroy_owner_session_path, class: "nav-link" %>
+              </li>
+              <% else %>
+                <%= link_to "Home", root_path, class: "nav-link" %>
+              </li>  
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Services</a>
+              </li>                        
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Pricing</a>
+              </li> 
+              <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Owner
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%= link_to "Log in", new_owner_session_path, class: "nav-link" %>
+                  <%= link_to "Sign up", new_owner_registration_path, class: "nav-link" %>
+                </div>
+              </li>
+              <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Customer
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%= link_to "Log in", new_customer_session_path, class: "nav-link" %>
+                  <%= link_to "Sign up", new_customer_registration_path, class: "nav-link" %>
+                </div>
+              </li>
+              <% end %>
+            </ul>
           </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+        </nav> 
+        <button class="close-button" id="close-button"><i class="lnr lnr-cross"></i></button>
+      </div>      
+  	<!-- Header Section Start -->
+
+    <header id="video-area" data-stellar-background-ratio="0.5">  
+      <div id="block"></div>
+      <div class="fixed-top">
+          <div class="container">
+            <div class="logo-menu">
+              <%= link_to root_path, class: 'logo' do %>
+                <span class="lnr lnr-dinner"></span><%= image_tag 'happy-minute_logo.svg', style: 'height:25px;width:25px;margin-bottom:20px;' %> Happy Minute</a>
+                <button class="menu-button" id="open-button"><i class="lnr lnr-menu"></i></button>   
+              <% end %> 
+            </div>           
+          </div>
+      </div>
+      <div class="overlay overlay-2"></div>      
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-10">
+            <div class="contents text-center">
+              <h1 class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">Crystal - Free Video Background HTML5 Bootstrap Template</h1>
+              <p class="lead  wow fadeIn" data-wow-duration="1000ms" data-wow-delay="400ms">Free High-quality Responsive Video Background Website Template Based on Bootstrap 4 to Create Complete Business Website in Minutes</p>
+              <a href="#" class="btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms"><i class="lnr lnr-download"></i> Download</a>
+            </div>
+          </div>
+        </div> 
+      </div>      
+    </header>
+    <!-- Header Section End --> 
 
