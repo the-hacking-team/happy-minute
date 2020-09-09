@@ -5,33 +5,31 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @business = Business.find(params[:business_id])
+    @item = @business.items.find(params[:id])
   end
 
   def new
     @business = Business.find(params[:business_id])
-    @item = Item.new(business: @business.id)
+    @item = @business.items.new
   end
 
   def create
-    @item = Item.new(item_params)
-    @item.business = @business
-
-    if @item.save
-      redirect_to @item
-    else
-      render :new
-    end
+    @business = Business.find(params[:business_id])
+    @item = @business.items.create(item_params)
+    render :show
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @business = Business.find(params[:business_id])
+    @item = @business.items.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
-    if @event.update(item_params)
-      redirect_to @item, flash: { success: 'Produit mis à jour !' }
+    @business = Business.find(params[:business_id])
+    @item = @business.items.find(params[:id])
+    if @item.update(item_params)
+      render :show
     else
       render :edit
     end

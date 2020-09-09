@@ -1,11 +1,13 @@
 <div class="container">
 
-  <h2> Etablissement <%= @business.name %> avec <%= @items.size %> produits </h2>
+  <h2> Etablissement <%= link_to @business.name, business_path(@business) %> avec <%= @items.size %> produits </h2>
 
   <ul>
     <% @items.each do |item| %>
-      <li> <%= item.title %> </li>
+      <li> Produit : <%= link_to item.title, business_item_path(@business, item) %> </li>
     <% end %>
   </ul>
+
+  <%= link_to "Ajouter un produit", new_business_item_path(@business), class: "btn btn-common" %>
 
 </div>

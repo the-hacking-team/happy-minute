@@ -2,7 +2,7 @@
 
   <h2> Créez un nouveau produit ! </h2>
 
-  <%= form_with(model: [@business, @item], local: true) do |form| %>
+  <%= form_with(model: [@business, @item], local: true, method: :put) do |form| %>
 
     <!-- ERRORS !-->
     <% if @item.errors.any? %>
@@ -50,7 +50,7 @@
 
     <!-- SUBMIT !-->
     <div class="actions mt-5">
-      <%= form.submit "Créer le produit", class: "btn btn-lg btn-primary btn-block" %>
+      <%= form.submit "Modifier le produit", class: "btn btn-lg btn-primary btn-block" %>
     </div>
 
   <% end %>
