@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
 HappyCode.destroy_all
 HappyPrice.destroy_all
 Item.destroy_all
@@ -18,7 +19,7 @@ Administrator.destroy_all
 
 
 businesses = Array.new
-categories = ["Entrée", "Plat", "Dessert", "Boisson", "Appéritif", "Boisson chaude"]
+categories = ["Entrée", "Plat", "Dessert", "Soda", "Appéritif", "Boisson chaude", "Cocktail"]
 
 
 
@@ -46,32 +47,41 @@ puts "#{Customer.all.size} Customer created"
 
 
 1.times do 
-  administrator = Administrator.create ( 
-    email: "happy-minute-admin@yopmail.com",
-    password: "happyminute",
-  )
+  administrator = Administrator.create(email: "happy-minute-admin@yopmail.com", password: "happyminute")
+  puts administrator.email
 end 
+puts "#{Administrator.all.size} Administrator created"
+
+
 
 
 5.times do 
   business = Business.create(
-    name: 
-    address: 
-    siret: 
+    name: Faker::Restaurant.name,
+    address: Faker::Address.full_address,
+    phone: Faker::PhoneNumber.cell_phone,
+    photo: "http://placekitten.com/#{rand(150..200)}/#{rand(150..200)}",
     owner_id: Owner.first.id,
   )
   businesses << business
+  puts businesses
 end 
+puts "#{Business.all.size} Businesses created"
+
 
 
 10.times do 
-  item = Item.create ( 
-    title: 
-    price:
-    available: 
-    description:
-    category: 
-    business_id: businesses[rand(0..(businesses.length - 1))].id,
+  item = Item.create( 
+    title: Faker::Food.dish,
+    price: rand(1..50),
+    available: true,
+    description: Faker::Food.description,
+    category: categories[rand(0..(categories.length-1))],
+    photo: "http://placekitten.com/#{rand(150..200)}/#{rand(150..200)}",
+    business_id: businesses[rand(0..(businesses.length-1))].id,
   )
+  puts item
 end 
+puts "#{Item.all.size} Items created"
+
 
