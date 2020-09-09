@@ -8,9 +8,11 @@ class BusinessesController < ApplicationController
   end
 
   def new
+
   end
 
   def create
+  
   end
 
   def edit
@@ -29,7 +31,8 @@ class BusinessesController < ApplicationController
 
   def destroy
     @business = Business.find(params[:id])
-    
+    @business.destroy
+    redirect_to root_path
   end
 
   private
