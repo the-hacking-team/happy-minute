@@ -18,7 +18,6 @@ Administrator.destroy_all
 
 
 
-businesses = Array.new
 categories = ["Entrée", "Plat", "Dessert", "Soda", "Appéritif", "Boisson chaude", "Cocktail"]
 
 
@@ -63,8 +62,6 @@ Faker::Config.locale = 'fr'
     photo: "http://placekitten.com/#{rand(150..200)}/#{rand(150..200)}",
     owner_id: Owner.first.id,
   )
-  businesses << business
-  puts businesses
 end 
 puts "#{Business.all.size} Businesses created"
 
@@ -78,9 +75,8 @@ puts "#{Business.all.size} Businesses created"
     description: Faker::Food.description,
     category: categories[rand(0..(categories.length-1))],
     photo: "http://placekitten.com/#{rand(150..200)}/#{rand(150..200)}",
-    business_id: businesses[rand(0..(businesses.length-1))].id,
+    business_id: Business.all.sample.id,
   )
-  puts item
 end 
 puts "#{Item.all.size} Items created"
 
