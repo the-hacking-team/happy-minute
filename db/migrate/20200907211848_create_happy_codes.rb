@@ -5,9 +5,6 @@ class CreateHappyCodes < ActiveRecord::Migration[5.2]
       t.belongs_to :happy_price, index: true
       t.belongs_to :customer, index: true
 
-
-
-
       t.timestamps
     end
   end

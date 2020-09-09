@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,10 +8,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= yield :head %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
 
   </head>
 
@@ -18,13 +20,24 @@
 
     <div id="navbar"> <%= render partial: "shared/navbar" %> </div>
 
-    <div id="jumbotron"> <%= render partial: "shared/jumbotron" %> </div>
-
     <div id="alerts"> <%= render partial: "shared/alerts" %> </div>
 
-    <div id="main" class="container"> <%= content_for?(:main) ? yield(:main) : yield %> </div>
+    <%= content_for?(:application) ? (yield :application) : (yield) %>
 
     <div id="footer"> <%= render partial: "shared/footer" %> </div>
+
+    <a href="#" class="back-to-top">
+      <i class="lnr lnr-arrow-up"></i>
+    </a>
+
+    <div id="loader">
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
+
+    <%= javascript_include_tag 'application' %>
 
   </body>
 

@@ -22,10 +22,28 @@
   <body>
 
 
+    <div id="navbar"> <%= render partial: "shared/navbar_crystal" %> </div>
+
+    <div id="alerts"> <%= render partial: "shared/alerts" %> </div>
 
 
 
-  <%= yield %>
+
+    <%= yield %>
+
+    <div id="footer"> <%= render partial: "shared/footer" %> </div>
+
+
+    <a href="#" class="back-to-top">
+      <i class="lnr lnr-arrow-up"></i>
+    </a>
+
+    <div id="loader">
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>  
 
     <%= javascript_include_tag 'application' %>
 
