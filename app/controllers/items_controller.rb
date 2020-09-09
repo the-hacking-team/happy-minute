@@ -16,8 +16,11 @@ class ItemsController < ApplicationController
 
   def create
     @business = Business.find(params[:business_id])
-    @item = @business.items.create(item_params)
-    render :show
+    if @item = @business.items.create(item_params)
+      redirect_to business_item_path(@business, @item), flash: { success: 'Produit créé' }
+    else
+      render :new
+    end
   end
 
   def edit
@@ -29,15 +32,17 @@ class ItemsController < ApplicationController
     @business = Business.find(params[:business_id])
     @item = @business.items.find(params[:id])
     if @item.update(item_params)
-      render :show
+      redirect_to business_item_path(@business, @item), flash: { success: 'Produit mis à jour' }
     else
       render :edit
     end
   end
 
   def destroy
-    @item = Item.find(params[:id])
+    @business = Business.find(params[:business_id])
+    @item = @business.items.find(params[:id])
     @item.destroy
+    redirect_to business_items_path(@business), flash: { success: 'Produit supprimé' }
   end
 
   private

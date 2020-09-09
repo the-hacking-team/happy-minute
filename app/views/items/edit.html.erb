@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h2> Créez un nouveau produit ! </h2>
+  <h2> Modifier le produit </h2>
 
   <%= form_with(model: [@business, @item], local: true, method: :put) do |form| %>
 
@@ -54,6 +54,8 @@
     </div>
 
   <% end %>
-</div>
 
+  <%= link_to "Supprimer", business_item_path(@business, @item), method: :delete, class: "btn btn-common" %>
+
+</div>
 </div>
