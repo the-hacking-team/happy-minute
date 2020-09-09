@@ -54,7 +54,7 @@ puts "#{Administrator.all.size} Administrator created"
 
 
 
-
+Faker::Config.locale = 'fr'
 5.times do 
   business = Business.create(
     name: Faker::Restaurant.name,
