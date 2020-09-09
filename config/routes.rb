@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   # Root is Hello, world
-  root 'business#index'
+  root 'businesses#index'
 
   get '/crystal', to: 'static_pages#crystal_template'
   get '/kit_ui', to: 'static_pages#kit_ui'
