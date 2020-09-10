@@ -1,4 +1,7 @@
 class HappyPricesController < ApplicationController
+
+  before_action :authenticate_owner!
+
   def new
     @business = Business.find(params[:business_id])
     @item = @business.items.find(params[:item_id])

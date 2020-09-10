@@ -1,4 +1,7 @@
 class ItemPhotosController < ApplicationController
+
+  before_action :authenticate_owner!
+
   def create
     @business = Business.find(params[:business_id])
     @item = @business.items.find(params[:item_id])

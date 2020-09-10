@@ -1,5 +1,6 @@
 class BusinessFollowsController < ApplicationController
-  
+  before_action :authenticate_customer!
+
   def create 
     @business = Business.find(params[:id])
     @customer = current_customer

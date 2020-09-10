@@ -1,4 +1,7 @@
 class BusinessesController < ApplicationController
+
+  before_action :authenticate_owner!, only: [:new, :create, :destroy, :edit, :update]
+  
   def index
     @businesses = Business.all
   end

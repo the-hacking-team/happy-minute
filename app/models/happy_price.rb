@@ -2,6 +2,10 @@ class HappyPrice < ApplicationRecord
   belongs_to :item
   has_many :happy_codes
 
+  validates :price, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+
   def started?
     start_date && start_date <= DateTime.now
   end
