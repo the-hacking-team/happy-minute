@@ -22,7 +22,10 @@ Rails.application.routes.draw do
   resources :business_follows, only: [:create, :destroy]
 
   resources :businesses do
-    resources :items
+    resources :items do
+      resources :item_photos, only: [:create]
+    end
+    resources :business_photos, only: [:create]
   end
 
   # Root is Hello, world
