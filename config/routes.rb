@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :administrators
+      resources :customers
+      resources :owners
+      resources :businesses
+      resources :business_follows
+      resources :happy_codes
+      resources :happy_prices
+      resources :items
+
+      root to: "administrators#index"
+    end
   devise_for :administrators
   devise_for :customers
   devise_for :owners

@@ -1,24 +1,17 @@
 <div class="container mt-4">
   <h4>Bienvenue sur la page de <%= @business.name %></h4>
 
-<%if @business.business_photo.attached?%>
+  <%if @business.business_photo.attached?%>
+    <%= image_tag @business.business_photo, alt: 'photo' %>
+  <%else%>
+    <p>=== Aucune photo n'est rattachée à cet établissement ===</p>
+  <%end%>
 
-  <%= image_tag @business.business_photo, alt: 'photo' %>
-
-<%else%>
-
-  <p>=== Aucune photo n'est rattachée à cet établissement ===</p>
-
-<%end%>
-
-  <% if owner_signed_in? %>
+  <% if owner_signed_in? && current_owner = @business.owner %>
     <h3>Changer de photo d'établissement ?</h3>
-
     <%= form_tag business_business_photos_path(@business), multipart: true do %>
-  
       <%= file_field_tag :business_photo %>
-      <%= submit_tag "mettre à jour" %>
-  
+      <%= submit_tag "mettre à jour" %>  
     <% end %>
   
     <p><%= link_to "Modifier les informations de votre établissement", edit_business_path, :class => "btn btn-common my-2" %></p>

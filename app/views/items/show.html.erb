@@ -1,26 +1,49 @@
-<div class="container">
+<%= render partial: "header" %>
 
-  <h2> Un produit disponible chez <%= link_to @business.name, business_path(@business) %> </h2>
+<section id="blog" class="section">
+  <!-- Container Starts -->
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Plus d'<span>informations</span></h2>
+      <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+      <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Caractéristiques du produit </p>
+    </div>
+    <div class="row justify-content-center">
+      <%= render partial: "item", locals:{item: @item} %>
+    </div>
+  </div>
+</section>
 
-  <ul>
-    <li> Titre : <%= @item.title %> </li>
-    <li> Description : <%= @item.description %> </li>
-    <li> Prix : <%= @item.price %> </li>
-    <li> Catégorie : <%= @item.category %> </li>
-    <li> Id : <%= @item.id %> </li>
-    <%if @item.item_photo.attached?%>
-      <%= image_tag @item.item_photo, alt: 'photo' %>
-    <%else%>
-      <p>=== Il n'y a pas encore de photo pour cette spécialité ===</p>
-    <%end%>
-    <h3>Changer la photo pour cette spécialité ?</h3>
-    
-    <%= form_tag business_item_item_photos_path(@business, @item), multipart: true do %>
-      <%= file_field_tag :item_photo %>
-      <%= submit_tag "mettre à jour" %>
-    <% end %>
-  </ul>
+<ul>
+  <li> Titre : <%= @item.title %> </li>
+  <li> Description : <%= @item.description %> </li>
+  <li> Prix : <%= @item.price %> </li>
+  <li> Catégorie : <%= @item.category %> </li>
+  <%if @item.item_photo.attached?%>
+    <%= image_tag @item.item_photo, alt: 'photo' %>
+  <%else%>
+    <p>=== Il n'y a pas encore de photo pour cette spécialité ===</p>
+  <%end%>
+  <h3>Changer la photo pour cette spécialité ?</h3>    
+  <%= form_tag business_item_item_photos_path(@business, @item), multipart: true do %>
+    <%= file_field_tag :item_photo %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
+</ul>
 
-  <%= link_to "Modifier", edit_business_item_path(@business, @item), class: "btn btn-common" %>
 
-</div>
+
+<% if @business.owner == current_owner %>
+  <section>
+    <!-- Container Starts -->
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Espace <span>Gestion</span></h2>
+        <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+        <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Gérer votre carte </p>
+      </div>
+      <div class="row justify-content-center">
+        <%= link_to "Modifier le produit", edit_business_item_path(@business, @item), class: "btn btn-common" %>
+      </div>
+    </div>
+  </section>
