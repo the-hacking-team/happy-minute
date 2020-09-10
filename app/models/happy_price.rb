@@ -1,4 +1,31 @@
 class HappyPrice < ApplicationRecord
   belongs_to :item
   has_many :happy_codes
+
+  def started?
+    start_date && start_date <= DateTime.now
+  end
+
+  def ended?
+    end_date && end_date < DateTime.now
+  end
+
+  def in_stock?
+    stock > 0
+  end
+
+  def stock
+    quantity ? quantity - happy_codes.size : 0
+  end
+
+  def time
+    TimeDifference.between(DateTime.now, end_date || DateTime.now)
+  end
+
+  def active?
+    puts started?
+    puts ended?
+    puts in_stock?
+    started? && !ended? && in_stock?
+  end
 end

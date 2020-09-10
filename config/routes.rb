@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
   
   namespace :admin do
-      resources :administrators
-      resources :customers
-      resources :owners
-      resources :businesses
-      resources :business_follows
-      resources :happy_codes
-      resources :happy_prices
-      resources :items
+    resources :administrators
+    resources :customers
+    resources :owners
+    resources :businesses
+    resources :business_follows
+    resources :happy_codes
+    resources :happy_prices
+    resources :items
 
-      root to: "administrators#index"
-    end
+    root to: 'administrators#index'
+  end
   devise_for :administrators
   devise_for :customers
   devise_for :owners
@@ -23,12 +23,13 @@ Rails.application.routes.draw do
 
   resources :businesses do
     resources :items do
+      resources :happy_prices, only: %i[new create]
       resources :item_photos, only: [:create]
     end
     resources :business_photos, only: [:create]
   end
 
-  # Root is Hello, world
+  # Root is index of all businesses
   root 'businesses#index'
 
   get '/crystal', to: 'static_pages#crystal_template'

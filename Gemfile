@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem "administrate"
+gem 'administrate'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -65,7 +65,10 @@ gem 'tzinfo-data', '>= 1.2016.7'
 ## ADDITIONAL GEMS
 
 # Difference between datetimes
-# gem 'time_difference'
+gem 'time_difference'
+
+# Internationalization
+gem 'rails-i18n'
 
 # For seeds
 gem 'faker'
