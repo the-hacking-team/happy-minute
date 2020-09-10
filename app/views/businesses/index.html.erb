@@ -40,12 +40,12 @@
                           <%= business.phone %>
                         </p>
                       <% if customer_signed_in? %>
-                      <% if current_customer.businesses.include?(business) %>
-                        <%= link_to "Ne plus suivre", business_follow_path(:id => business.id), method: :delete, :class => "btn btn-danger my-2" %>
-                      <% else %>
-                        <%= link_to "Suivre l'établissement", business_follows_path(:id => business.id), method: :post, :class => "btn btn-common my-2" %>
+                        <% if current_customer.businesses.include?(business) %>
+                          <%= link_to "Ne plus suivre", business_follow_path(:id => business.id), method: :delete, :class => "btn btn-danger my-2" %>
+                        <% else %>
+                          <%= link_to "Suivre l'établissement", business_follows_path(:id => business.id), method: :post, :class => "btn btn-common my-2" %>
+                        <% end %>
                       <% end %>
-                    <% end %>
 
                     </div>
                 </div>

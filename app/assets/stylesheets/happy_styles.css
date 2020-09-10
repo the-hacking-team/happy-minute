@@ -43,3 +43,19 @@ body {
   position: relative;
 }
 
+
+
+
+
+
+/* Customer profile page */
+
+.photo-link {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.follow-photo {
+  max-height: 17em;
+}
