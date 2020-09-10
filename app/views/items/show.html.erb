@@ -14,6 +14,20 @@
   </div>
 </section>
 
+<ul>
+  <%if @item.item_photo.attached?%>
+    <%= image_tag @item.item_photo, alt: 'photo' %>
+  <%else%>
+    <p>=== Il n'y a pas encore de photo pour cette spécialité ===</p>
+  <%end%>
+  <h3>Changer la photo pour cette spécialité ?</h3>    
+  <%= form_tag business_item_item_photos_path(@business, @item), multipart: true do %>
+    <%= file_field_tag :item_photo %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
+</ul>
+
+
 <% if @business.owner == current_owner %>
   <section>
     <!-- Container Starts -->
