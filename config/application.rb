@@ -25,5 +25,8 @@ module HappyMinute
       password: ENV['IONOS_SMTP_PASSWORD'],
       authentication: 'login'
     }
+
+    # Timezone
+    config.time_zone = 'Europe/Paris'
   end
 end

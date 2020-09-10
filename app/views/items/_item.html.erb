@@ -1,28 +1,50 @@
-        <!-- Blog Item Starts -->
+<% happy_price = item.current_happy_price %>
+
+<!-- ( Item Wrapper -->
 <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 blog-item">
-  <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.9s">
-    <div class="blog-item-text">
-      <div class="row">
-        <div class="col-4">
-          <h3>
-            <%= link_to item.title, business_item_path(@business, item) %>
-          </h3>
-          <div class="meta-tags">
-            <span class="foodcategory"><i class="lnr lnr-cloud"></i> <%= item.category %> </span><br>
+
+  <% if happy_price %>
+    <!-- ( Happy Minute Begin !-->
+    <div class="alert alert-success">
+      <p class="display-4"> HAPPY MINUTE : <%= happy_price.price %> € </p>
+
+      <p> Temps restant : <%= happy_price.time.in_minutes %> minutes ! </p>
+      <p> Quantité restante : seulement <%= happy_price.stock %> ! </p>
+      <!-- Happy Minute Begin ) !-->
+    <% end %>
+
+    <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.9s">
+      <div class="blog-item-text">
+        <div class="row">
+          <div class="col-4">
+            <h3>
+              <%= link_to item.title, business_item_path(@business, item) %>
+            </h3>
+            <div class="meta-tags">
+              <span class="foodcategory"><i class="lnr lnr-cloud"></i> <%= item.category %> </span><br>
+            </div>
           </div>
-        </div>
-        <div class="col-6">
-          <p>
-            <%= item.description %>
-          </p>
-        </div>
-        <div class="col-2">
-          <p>
-            <%= item.price %> €
-          </p>
+          <div class="col-6">
+            <p>
+              <%= item.description %>
+            </p>
+          </div>
+          <div class="col-2">
+            <p>
+              <% if happy_price %>
+                <del><%= item.price %> € </del>
+              <% else %>
+                <%= item.price %> €
+              <% end %>
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <% if happy_price %>
+      <!-- ( Happy Minute End !-->
+    </div>
+    <!-- Happy Minute End ) -->
+  <% end %>
 </div>
-<!-- Blog Item Wrapper Ends-->
+<!-- Item Wrapper ) -->
