@@ -9,7 +9,6 @@ class BusinessFollowsController < ApplicationController
     redirect_to root_path
   end 
 
-
   
   def destroy 
     @business = Business.find(params[:id])
@@ -17,5 +16,5 @@ class BusinessFollowsController < ApplicationController
 
     BusinessFollow.find_by(business_id: @business.id, customer_id: @customer.id).destroy
     redirect_to root_path
-  end 
+  end
 end
