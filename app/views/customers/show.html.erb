@@ -1,4 +1,7 @@
 <div class="container mt-4">
+  <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Bienvenue <%= @customer.name %> sur votre page de profil :</h2>
+  <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+  <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">Here is our favorite dishes selection.</p>
   <h4>Bienvenue <%= @customer.name %> sur votre page de profil :</h4>
   <% if @customer.name != @customer.email %>
     <p>Votre email : <%= @customer.email %></p> 
@@ -6,7 +9,11 @@
 
   <%= link_to "Editer votre profil", edit_customer_registration_path, :class => "btn btn-common my-2" %>
 
-  <p>Voici la liste de vos établissements suivis</>
+  <div class="section-header mt-4">
+    <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Vos établissements  <span>préférés</span></h2>
+    <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+    <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">Here is our favorite dishes selection.</p>
+  </div>
 
   <% @customer.businesses.each do |business| %>
   <p><%= link_to "#{business.name}", business_path(business.id), :class => "btn btn-common my-2" %></p>
