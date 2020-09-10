@@ -26,9 +26,7 @@ module HappyMinute
       authentication: 'login'
     }
 
-    # Locale and timezones
-    config.i18n.available_locales = 'fr-FR'
-    config.i18n.default_locale = 'fr-FR'
+    # Timezone
     config.time_zone = 'Europe/Paris'
   end
 end

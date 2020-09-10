@@ -21,10 +21,12 @@ Rails.application.routes.draw do
   resources :businesses do
     resources :items do
       resources :happy_prices, only: %i[new create]
+      resources :item_photos, only: [:create]
     end
+    resources :business_photos, only: [:create]
   end
 
-  # Root is Hello, world
+  # Root is index of all businesses
   root 'businesses#index'
 
   get '/crystal', to: 'static_pages#crystal_template'
