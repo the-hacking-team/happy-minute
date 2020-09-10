@@ -1,6 +1,14 @@
 <div class="container mt-4">
-    <h4>Bienvenue sur votre de profil <%= @customer.name %></h4>
+    <h4>Bienvenue <%= @customer.email %> sur votre page de profil :</h4>
+  </div>
+
+<%= link_to "Editer votre profil", edit_customer_registration_path, :class => "btn btn-common my-2" %>
+
+<p>Voici la liste de vos établissements suivis</p>
+
+<% @customer.businesses.each do |business| %>
+  <p><%= link_to "#{business.name}", business_path(business.id), :class => "btn btn-common my-2" %></p>
+<% end %>
 
 
-  
-</div>
+<p>Voici des Happy Minutes dont vous avez profités</p>

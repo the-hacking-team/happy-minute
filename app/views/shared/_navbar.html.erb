@@ -4,24 +4,26 @@
           <div class="icon-list navbar-collapse">
             <ul class="navbar-nav">
               <% if customer_signed_in? %>
+              
               <li class="nav-item">
                 <%= link_to "Home", root_path, class: "nav-link" %>
               </li>                         
               <li class="nav-item">
-                <a class="nav-link" href="#contact">Happy-Minutes</a>
+                <%= link_to "Happy Minutes", root_path, class: "nav-link" %>
               </li> 
               <li class="nav-item">
-                <a class="nav-link" href="#subscribe">Profile</a>
+                <%= link_to "Profile", customer_path(current_customer), class: "nav-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to "Sign out", destroy_customer_session_path, class: "nav-link" %>
               </li>
+
               <% elsif owner_signed_in? %>
               <li class="nav-item">
                 <%= link_to "Home", root_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
-                <%= link_to "Mon profil", owner_path(current_owner), class: "nav-link" %>
+                <%= link_to "Profile", owner_path(current_owner), class: "nav-link" %>
               </li>                             
               <li class="nav-item">
                 <a class="nav-link" href="#pricing">Pricing</a>
