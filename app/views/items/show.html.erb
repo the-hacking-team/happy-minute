@@ -7,6 +7,18 @@
     <li> Description : <%= @item.description %> </li>
     <li> Prix : <%= @item.price %> </li>
     <li> Catégorie : <%= @item.category %> </li>
+    <li> Id : <%= @item.id %> </li>
+    <%if @item.item_photo.attached?%>
+      <%= image_tag @item.item_photo, alt: 'photo' %>
+    <%else%>
+      <p>=== Il n'y a pas encore de photo pour cette spécialité ===</p>
+    <%end%>
+    <h3>Changer la photo pour cette spécialité ?</h3>
+    
+    <%= form_tag business_item_item_photos_path(@business, @item), multipart: true do %>
+      <%= file_field_tag :item_photo %>
+      <%= submit_tag "mettre à jour" %>
+    <% end %>
   </ul>
 
   <%= link_to "Modifier", edit_business_item_path(@business, @item), class: "btn btn-common" %>

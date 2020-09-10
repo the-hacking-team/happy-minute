@@ -17,9 +17,7 @@ Customer.destroy_all
 Administrator.destroy_all
 
 
-
 categories = ["Entrée", "Plat", "Dessert", "Soda", "Appéritif", "Boisson chaude", "Cocktail"]
-
 
 
 1.times do
@@ -59,7 +57,7 @@ Faker::Config.locale = 'fr'
     name: Faker::Restaurant.name,
     address: Faker::Address.full_address,
     phone: Faker::PhoneNumber.cell_phone,
-    photo: "http://placekitten.com/#{rand(150..200)}/#{rand(150..200)}",
+    # photo: "http://placekitten.com/#{rand(150..200)}/#{rand(150..200)}",
     owner_id: Owner.first.id,
   )
 end 
