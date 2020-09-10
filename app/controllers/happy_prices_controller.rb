@@ -1,0 +1,2 @@
+class HappyPricesController < ApplicationController
+end
