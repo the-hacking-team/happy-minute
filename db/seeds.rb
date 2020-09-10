@@ -32,14 +32,14 @@ puts "#{Owner.all.size} Owner created"
 
 # CUSTOMER
 # For use in tests
-Customer.create(email: 'happy-minute-customer@yopmail.com', password: 'happyminute')
+Customer.create(first_name: 'customer', last_name: 'name', email: 'happy-minute-customer@yopmail.com', password: 'happyminute')
 # With Faker
 2.times do
   first = Faker::Name.first_name
   last  = Faker::Name.last_name
   password = Faker::Internet.password
   email = Faker::Internet.username(specifier: "#{first} #{last}", separators: ['.']) + '@yopmail.com'
-  Customer.create(email: email, password: password)
+  Customer.create(first_name: first, last_name: last, email: email, password: password)
   puts email
 end
 puts "#{Customer.all.size} Customer created"

@@ -7,7 +7,6 @@ class Owner < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
   after_create :welcome_email
 
   def name
