@@ -101,3 +101,5 @@ group :development do
   # To avoid sending emails in develop environment
   gem 'letter_opener'
 end
+
+gem 'rubocop', '~> 0.90.0', require: false
