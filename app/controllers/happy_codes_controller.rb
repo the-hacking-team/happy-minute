@@ -1,0 +1,2 @@
+class HappyCodesController < ApplicationController
+end

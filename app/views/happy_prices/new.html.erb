@@ -1,0 +1,18 @@
+<%= render partial: "items/header" %>
+
+<section id="blog" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Ajouter un <span>Happy Minute</span></h2>
+      <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+      <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Merci de renseigner les informations suivantes </p>
+    </div>
+    <div class="row justify-content-center">
+      <%= render partial: "items/item", locals:{item: @item} %>
+    </div>
+
+    <div class="row justify-content-center">
+      <%= render partial: "form", locals: {method: :post} %>
+    </div>
+  </div>
+</section>

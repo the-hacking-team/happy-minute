@@ -40,6 +40,9 @@
       <div class="row justify-content-center">
         <%= link_to "Modifier le produit", edit_business_item_path(@business, @item), class: "btn btn-common" %>
       </div>
+      <div class="row justify-content-center">
+        <%= link_to "Mettre en Happy Minute !", new_business_item_happy_price_path(@business, @item), class: "btn btn-common btn-lg" %>
+      </div>
     </div>
   </section>
 <% end %>
