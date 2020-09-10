@@ -1,0 +1,27 @@
+<%= render partial: "items/header" %>
+
+<section id="blog" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Modifier un <span>Happy Minute</span></h2>
+      <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+      <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Merci de renseigner les informations suivantes </p>
+    </div>
+    <div class="row justify-content-center">
+      <%= render partial: "items/item", locals:{item: @item} %>
+    </div>
+
+    <% upcoming = @happy_price %>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12  alert alert-<%= (upcoming.active? ? ('success') : ('warning')) %>" >
+        <h2> En cours de modification : </h2>
+        <p> <%= upcoming.start_date.to_formatted_s(:long) %> ==> <%= upcoming.end_date.to_formatted_s(:long) %> </p>
+        <p> <%= upcoming.stock %> unités à <%= upcoming.price %> € (<%= upcoming.active? ? 'EN COURS' : (upcoming.started? ? 'Terminé' : 'à venir') %>)</p>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <%= render partial: "form", locals: {method: :put} %>
+    </div>
+  </div>
+</section>

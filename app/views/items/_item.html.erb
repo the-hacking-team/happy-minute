@@ -40,6 +40,9 @@
           </div>
         </div>
       </div>
+      <% if current_owner == item.business.owner && !item.upcoming_happy_prices.empty? %>
+        <p class="p-2"> <%= item.upcoming_happy_prices.size %> Happy Minutes à venir sur ce produit</p>
+      <% end %>
     </div>
     <% if happy_price %>
       <!-- ( Happy Minute End !-->

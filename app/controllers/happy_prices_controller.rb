@@ -15,6 +15,31 @@ class HappyPricesController < ApplicationController
     end
   end
 
+  def edit
+    @business = Business.find(params[:business_id])
+    @item = @business.items.find(params[:item_id])
+    @happy_price = @item.happy_prices.find(params[:id])
+  end
+
+  def update
+    @business = Business.find(params[:business_id])
+    @item = @business.items.find(params[:item_id])
+    @happy_price = @item.happy_prices.find(params[:id])
+    if @happy_price.update(happy_price_params)
+      redirect_to business_item_path(@business, @item), flash: { success: 'Happy Minute mis à jour' }
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @business = Business.find(params[:business_id])
+    @item = @business.items.find(params[:item_id])
+    @happy_price = @item.happy_prices.find(params[:id])
+    @happy_price.destroy
+    redirect_to business_item_path(@business, @item), flash: { success: 'Happy Minute supprimé' }
+  end
+
   private
 
   def happy_price_params
