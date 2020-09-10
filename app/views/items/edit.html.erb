@@ -1,61 +1,21 @@
+<%= render partial:"header" %>
+
+<section>
+  <!-- Container Starts -->
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Modifier un <span>produit</span></h2>
+      <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+      <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Merci de modifier les informations du produit </p>
+    </div>
+    <div class="row justify-content-center">
+      <%= render partial: "form", locals: {method: :put} %>
+    </div>
+  </div>
+</section>
+
 <div class="container">
-
-  <h2> Modifier le produit </h2>
-
-  <%= form_with(model: [@business, @item], local: true, method: :put) do |form| %>
-
-    <!-- ERRORS !-->
-    <% if @item.errors.any? %>
-      <div class="alert alert-warning" role="alert">
-        <p> Le produit n'a pas pu être créé pour les raisons suivantes :</p>
-        <ul>
-          <% @item.errors.full_messages.each do |message| %>
-            <li> <%= message %> </li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <!-- title !-->
-    <div class="form-group row">
-      <div class="col-lg-3"> <%= form.label :title, 'Titre' %> </div>
-      <div class="col-lg-9">
-        <%= form.text_field :title, class: "form-control text-primary"  %>
-      </div>
-    </div>
-
-    <!-- description !-->
-    <div class="form-group row">
-      <div class="col-lg-3"> <%= form.label :description, 'Description' %> </div>
-      <div class="col-lg-9">
-        <%= form.text_area :description, class: "form-control text-primary"  %>
-      </div>
-    </div>
-
-    <!-- price !-->
-    <div class="form-group row">
-      <div class="col-lg-3"> <%= form.label :price, 'Prix' %> </div>
-      <div class="col-lg-9">
-        <%= form.number_field :price,step: 0.01, class: "form-control text-primary"  %>
-      </div>
-    </div>
-
-    <!-- category !-->
-    <div class="form-group row">
-      <div class="col-lg-3"> <%= form.label :category, 'Catégorie' %> </div>
-      <div class="col-lg-9">
-        <%= form.text_area :category, class: "form-control text-primary"  %>
-      </div>
-    </div>
-
-    <!-- SUBMIT !-->
-    <div class="actions mt-5">
-      <%= form.submit "Modifier le produit", class: "btn btn-lg btn-primary btn-block" %>
-    </div>
-
-  <% end %>
-
-  <%= link_to "Supprimer", business_item_path(@business, @item), method: :delete, class: "btn btn-common" %>
-
-</div>
+  <div class="section-header">
+    <%= link_to "Supprimer", business_item_path(@business, @item), method: :delete, class: "btn btn-lg btn-danger" %>
+  </div>
 </div>
