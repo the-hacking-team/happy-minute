@@ -1,0 +1,15 @@
+<div class="container mt-4">
+    <h4>Bienvenue <%= @owner.name %> sur votre page propriétaire :</h4>
+  </div>
+
+<%= link_to "Editer votre profil #{@owner.email}", edit_owner_registration_path, :class => "btn btn-common my-2" %>
+
+<% @owner.businesses.each do |business| %>
+
+  <p><%= link_to "#{business.name}", business_path(business.id), :class => "btn btn-common my-2" %></p>
+
+  
+<% end %>
+
+
+<%= link_to "Créer un nouvel établissement", new_business_path, :class => "btn btn-common my-2" %>

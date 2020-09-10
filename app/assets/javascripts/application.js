@@ -10,10 +10,28 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require bootstrap.bundle
-//
+
 //= require rails-ujs
 //= require activestorage
-//= require_tree .
+//= require jquery-min
+//= require tether.min
+//= require bootstrap.min
+//= require classie
+//= require mixitup.min
+//= require nivo-lightbox
+//= require owl.carousel.min
+//= require jquery.stellar.min
+//= require jquery.nav
+//= require smooth-scroll
+//= require smooth-on-scroll
+//= require wow
+//= require menu
+//= require jquery.vide
+//= require jquery.counterup.min
+//= require jquery.magnific-popup.min
+//= require waypoints.min
+//= require form-validator.min
+//= require contact-form-script
+//= require main
+//
 //

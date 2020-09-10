@@ -1,0 +1,15 @@
+<%= render partial: "header" %>
+
+<section>
+  <!-- Container Starts -->
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Ajouter un <span>produit</span></h2>
+      <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+      <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Merci de renseigner les informations sur le nouveau produit </p>
+    </div>
+    <div class="row justify-content-center">
+      <%= render partial: "form", locals: {method: :post} %>
+    </div>
+  </div>
+</section>

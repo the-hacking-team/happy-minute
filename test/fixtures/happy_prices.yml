@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price: 9.99
+  start_date: 2020-09-07 23:16:21
+  end_date: 2020-09-07 23:16:21
+  quantity: 1
+
+two:
+  price: 9.99
+  start_date: 2020-09-07 23:16:21
+  end_date: 2020-09-07 23:16:21
+  quantity: 1

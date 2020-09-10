@@ -1,0 +1,21 @@
+<%= render partial:"header" %>
+
+<section>
+  <!-- Container Starts -->
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Modifier un <span>produit</span></h2>
+      <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+      <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Merci de modifier les informations du produit </p>
+    </div>
+    <div class="row justify-content-center">
+      <%= render partial: "form", locals: {method: :put} %>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="section-header">
+    <%= link_to "Supprimer", business_item_path(@business, @item), method: :delete, class: "btn btn-lg btn-danger" %>
+  </div>
+</div>

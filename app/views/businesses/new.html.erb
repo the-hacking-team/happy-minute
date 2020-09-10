@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3"> 
+
+      <% if @business.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <p>La création de l'établissement n'a pu aboutir pour les raisons suivantes :</p>
+        </div>
+        <div class="alert alert-warning" role="alert">
+          <ul>
+            <% @business.errors.full_messages.each do |message| %>
+              <li> <%= message %> </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= form_with model: @business, local: true do |form| %>
+
+        <div class="form-group row">
+          <div class="col-lg-3"> <%= form.label :name, "Nom de l'établissement" %> </div>
+          <div class="col-lg-9">
+            <%= form.text_field :name, class: "form-control"  %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-lg-3"> <%= form.label :address, "Adresse de l'établissement" %> </div>
+          <div class="col-lg-9">
+            <%= form.text_field :address, class: "form-control"  %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-lg-3"> <%= form.label :phone, "Numéro de téléphone" %> </div>
+          <div class="col-lg-9">
+            <%= form.text_field :phone, class: "form-control"  %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-lg-3"> <%= form.label :photo, "Photo de l'établissement" %> </div>
+          <div class="col-lg-9">
+            <%= form.text_field :photo, class: "form-control"  %>
+          </div>
+        </div>
+
+        <div class="actions mt-5 row">
+          <div class="col-lg-3"></div>
+          <%= form.submit "Valider", class: "btn btn-outline-success btn-block col-lg-9", style: "margin: 10px 0;" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+    

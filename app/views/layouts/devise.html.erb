@@ -1,6 +1,10 @@
-<% content_for :main do %>
-  <div class="devise">
-    <%= content_for?(:devise) ? yield(:devise) : yield %>
+<% content_for :application do %>
+  <div class="container d-flex justify-content-center">
+    <div class="col-lg-8">
+      <div class="devise">
+        <%= content_for?(:devise) ? yield(:devise) : yield %>
+      </div>
+    </div>
   </div>
 <% end %>
 

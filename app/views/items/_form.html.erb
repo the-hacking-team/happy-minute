@@ -1,0 +1,44 @@
+  <%= form_with(model: [@business, @item], local: true, method: method, class: "col-lg-6") do |form| %>
+
+  <!-- ERRORS !-->
+  <% if @item.errors.any? %>
+    <div class="alert alert-warning" role="alert">
+      <p> Le produit n'a pas pu être créé pour les raisons suivantes :</p>
+      <ul>
+        <% @item.errors.full_messages.each do |message| %>
+          <li> <%= message %> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- title !-->
+  <div class="form-group">
+    <%= form.label :title, 'Titre' %>
+    <%= form.text_field :title, class: "form-control text-primary"  %>
+  </div>
+
+  <!-- description !-->
+  <div class="form-group">
+    <%= form.label :description, 'Description' %>
+    <%= form.text_area :description, class: "form-control text-primary"  %>
+  </div>
+
+  <!-- price !-->
+  <div class="form-group">
+    <%= form.label :price, 'Prix' %>
+    <%= form.number_field :price,step: 0.01, class: "form-control text-primary"  %>
+  </div>
+
+  <!-- category !-->
+  <div class="form-group">
+    <%= form.label :category, 'Catégorie' %>
+    <%= form.text_field :category, class: "form-control text-primary"  %>
+  </div>
+
+  <!-- SUBMIT !-->
+  <div class="actions mt-5">
+    <%= form.submit "Valider", class: "btn btn-lg btn-primary btn-block" %>
+  </div>
+
+<% end %>

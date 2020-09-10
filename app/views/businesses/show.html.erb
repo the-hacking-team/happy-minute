@@ -1,0 +1,15 @@
+<div class="container mt-4">
+    <h4>Bienvenue sur la page de <%= @business.name %></h4>
+
+  <% if owner_signed_in? && current_owner = @business.owner %>
+    <%= link_to "Modifier les informations de votre établissement", edit_business_path, :class => "btn btn-common my-2" %>
+    <br>
+  <% end %>
+
+  <%= link_to "Voir le menu", business_items_path(@business), :class => "btn btn-common my-2" %>
+  <br>
+
+  <% if customer_signed_in? %>
+    <%= link_to "Suivre l'établissement", root_path, :class => "btn btn-common my-2" %>
+  <% end %>
+</div>

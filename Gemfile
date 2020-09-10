@@ -34,9 +34,11 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem "administrate"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -63,7 +65,7 @@ gem 'tzinfo-data', '>= 1.2016.7'
 ## ADDITIONAL GEMS
 
 # Difference between datetimes
-#gem 'time_difference'
+# gem 'time_difference'
 
 # For seeds
 gem 'faker'
@@ -75,14 +77,13 @@ gem 'devise'
 gem 'table_print'
 
 # Payment API
-#gem 'stripe'
+# gem 'stripe'
 
 # Admin Dashboard
-#gem 'administrate'
-
+# gem 'administrate'
 
 # Adding a library for Icons
-#gem 'font-awesome-sass', '~> 5.13.0'
+gem 'font-awesome-sass', '~> 5.13.0'
 
 group :development, :test do
   # ENV variables in prod, .env in dev
@@ -93,5 +94,5 @@ group :development do
   # Nice for solargraph extension in VS Code (code auto format, auto completion)
   gem 'solargraph'
   # To avoid sending emails in develop environment
-  #gem 'letter_opener'
+  gem 'letter_opener'
 end
