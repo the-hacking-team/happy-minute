@@ -14,13 +14,7 @@ Owner.destroy_all
 Customer.destroy_all
 Administrator.destroy_all
 
-<<<<<<< HEAD
-
-categories = ["Entrée", "Plat", "Dessert", "Soda", "Appéritif", "Boisson chaude", "Cocktail"]
-
-=======
 categories = ['Entrée', 'Plat', 'Dessert', 'Soda', 'Appéritif', 'Boisson chaude', 'Cocktail']
->>>>>>> develop
 
 1.times do
   password = Faker::Internet.password

@@ -15,10 +15,6 @@
 </section>
 
 <ul>
-  <li> Titre : <%= @item.title %> </li>
-  <li> Description : <%= @item.description %> </li>
-  <li> Prix : <%= @item.price %> </li>
-  <li> Catégorie : <%= @item.category %> </li>
   <%if @item.item_photo.attached?%>
     <%= image_tag @item.item_photo, alt: 'photo' %>
   <%else%>
@@ -30,7 +26,6 @@
     <%= submit_tag "mettre à jour" %>
   <% end %>
 </ul>
-
 
 
 <% if @business.owner == current_owner %>
@@ -47,3 +42,4 @@
       </div>
     </div>
   </section>
+<% end %>
