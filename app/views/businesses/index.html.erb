@@ -39,6 +39,9 @@
                           <%= business.address %><br>
                           <%= business.phone %>
                         </p>
+                      <% if customer_signed_in? %>
+                        <%= link_to "Suivre l'établissement", root_path, :class => "btn btn-common my-2" %>
+                      <% end %>
                     </div>
                 </div>
                 <!-- Blog Item Wrapper Ends-->

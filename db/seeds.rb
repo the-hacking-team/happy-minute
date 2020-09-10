@@ -25,7 +25,7 @@ categories = ['Entrée', 'Plat', 'Dessert', 'Soda', 'Appéritif', 'Boisson chaud
   puts email
 end
 # For use in tests
-Owner.create(first_name: 'owner', last_name: 'name', email: 'happy-minute-owner@yopmail.com', password: 'happyminute')
+Owner.create(first_name: 'owner_test', last_name: 'name_test', email: 'happy-minute-owner@yopmail.com', password: 'happyminute')
 
 puts "#{Owner.all.size} Owner created"
 
@@ -34,11 +34,11 @@ puts "#{Owner.all.size} Owner created"
   last  = Faker::Name.last_name
   password = Faker::Internet.password
   email = Faker::Internet.username(specifier: "#{first} #{last}", separators: ['.']) + '@yopmail.com'
-  Customer.create(email: email, password: password)
+  Customer.create(first_name: first, last_name: last, email: email, password: password)
   puts email
 end
 # For use in tests
-Customer.create(email: 'happy-minute-customer@yopmail.com', password: 'happyminute')
+Customer.create(first_name: 'customer_test', last_name: 'name_test', email: 'happy-minute-customer@yopmail.com', password: 'happyminute')
 
 puts "#{Customer.all.size} Customer created"
 
