@@ -1,4 +1,4 @@
 class Item < ApplicationRecord
   belongs_to :business
-  has_one :item
+  has_one :happy_price
 end
