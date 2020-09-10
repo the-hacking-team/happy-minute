@@ -67,6 +67,9 @@ gem 'tzinfo-data', '>= 1.2016.7'
 # Difference between datetimes
 gem 'time_difference'
 
+# Internationalization
+gem 'rails-i18n'
+
 # For seeds
 gem 'faker'
 
