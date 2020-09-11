@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   namespace :admin do
     resources :administrators
     resources :customers
@@ -19,11 +18,11 @@ Rails.application.routes.draw do
   # For Owners, some REST actions exept show are handle by devise :
   resources :owners, only: [:show]
   resources :customers, only: [:show]
-  resources :business_follows, only: [:create, :destroy]
+  resources :business_follows, only: %i[create destroy]
 
   resources :businesses do
     resources :items do
-      resources :happy_prices, only: %i[new create]
+      resources :happy_prices, only: %i[new create edit update destroy]
       resources :item_photos, only: [:create]
     end
     resources :business_photos, only: [:create]

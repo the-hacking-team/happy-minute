@@ -3,50 +3,47 @@
         <nav class="menu navbar">
           <div class="icon-list navbar-collapse">
             <ul class="navbar-nav">
-              <% if customer_signed_in? %>
-              
+
+            <% if customer_signed_in? %>  
               <li class="nav-item">
-                <%= link_to "Home", root_path, class: "nav-link" %>
+                <%= link_to "Accueil", root_path, class: "nav-link" %>
               </li>                         
               <li class="nav-item">
-                <%= link_to "Happy Minutes", root_path, class: "nav-link" %>
+                <%= link_to "Happy Minute", root_path, class: "nav-link" %>
               </li> 
               <li class="nav-item">
-                <%= link_to "Profile", customer_path(current_customer), class: "nav-link" %>
+                <%= link_to "Mon profil", customer_path(current_customer), class: "nav-link" %>
               </li>
               <li class="nav-item">
-                <%= link_to "Sign out", destroy_customer_session_path, method: :delete, class: "nav-link" %>
+                <%= link_to "Déconnexion", destroy_customer_session_path, method: :delete, class: "nav-link" %>
               </li>
 
               <% elsif owner_signed_in? %>
               <li class="nav-item">
-                <%= link_to "Home", root_path, class: "nav-link" %>
+                <%= link_to "Accueil", root_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
-                <%= link_to "Profile", owner_path(current_owner), class: "nav-link" %>
+                <%= link_to "Mon profil", owner_path(current_owner), class: "nav-link" %>
               </li>                             
               <li class="nav-item">
-                <a class="nav-link" href="#pricing">Pricing</a>
+                <%= link_to "Déconnexion", destroy_owner_session_path, method: :delete, class: "nav-link" %>
               </li>
+
+              <% elsif administrator_signed_in? %>
               <li class="nav-item">
-                <%= link_to "Sign out", destroy_owner_session_path, method: :delete, class: "nav-link" %>
+                <%= link_to "Déconnexion administrateur", destroy_administrator_session_path, method: :delete, class: "nav-link" %>
               </li>
+
               <% else %>
-                <%= link_to "Home", root_path, class: "nav-link" %>
+                <%= link_to "Acceuil", root_path, class: "nav-link" %>
               </li>  
-              <li class="nav-item">
-                <a class="nav-link" href="#contact">Services</a>
-              </li>                        
-              <li class="nav-item">
-                <a class="nav-link" href="#contact">Pricing</a>
-              </li> 
               <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Owner
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <%= link_to "Log in", new_owner_session_path, class: "nav-link" %>
-                  <%= link_to "Sign up", new_owner_registration_path, class: "nav-link" %>
+                  <%= link_to "Se connecter", new_owner_session_path, class: "nav-link" %>
+                  <%= link_to "S'inscrire", new_owner_registration_path, class: "nav-link" %>
                 </div>
               </li>
               <li class="nav-item dropdown active">
@@ -54,8 +51,8 @@
                   Customer
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <%= link_to "Log in", new_customer_session_path, class: "nav-link" %>
-                  <%= link_to "Sign up", new_customer_registration_path, class: "nav-link" %>
+                  <%= link_to "Se connecter", new_customer_session_path, class: "nav-link" %>
+                  <%= link_to "S'inscrire", new_customer_registration_path, class: "nav-link" %>
                 </div>
               </li>
               <% end %>
@@ -67,7 +64,8 @@
   	<!-- Header Section Start -->
 
     <header id="video-area" data-stellar-background-ratio="0.5">  
-      <div id="block"></div>
+    <div class="jumbotron jumbotron-fluid text-white my-jumbotron">
+    <div id="block"></div>
       <div class="fixed-top">
           <div class="container">
             <div class="logo-menu">
@@ -75,7 +73,7 @@
                 <span class="lnr lnr-dinner"></span><%= image_tag 'burger.png', style: 'height:45px;width:45px;margin-bottom:20px;' %> Happy Minute</a>
                 <button class="menu-button" id="open-button"><i class="lnr lnr-menu"></i></button>   
               <% end %> 
-            </div>           
+            </div>
           </div>
       </div>
       <div class="overlay overlay-2"></div>      
@@ -83,13 +81,18 @@
         <div class="row justify-content-md-center">
           <div class="col-md-10">
             <div class="contents text-center">
-              <h1 class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">Crystal - Free Video Background HTML5 Bootstrap Template</h1>
-              <p class="lead  wow fadeIn" data-wow-duration="1000ms" data-wow-delay="400ms">Free High-quality Responsive Video Background Website Template Based on Bootstrap 4 to Create Complete Business Website in Minutes</p>
-              <a href="#" class="btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms"><i class="lnr lnr-download"></i> Download</a>
+              <h1 class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">Bienvenue sur Happy-Minutes</h1>
+              <p class="lead  wow fadeIn" data-wow-duration="1000ms" data-wow-delay="400ms">Pour passer de belles minutes joyeuses dans des bars & restaurants !</p>
+              <% if customer_signed_in? %>
+                <%= link_to "Mon profil", customer_path(current_customer), class: "btn btn-common wow fadeInUp", data: { "wow-duration" => "1000ms", "wow-delay" => "400ms" } %>
+              <% else %>
+                <%= link_to "Je m'inscris", new_customer_registration_path, class: "btn btn-common wow fadeInUp", data: { "wow-duration" => "1000ms", "wow-delay" => "400ms" } %>
+              <% end %>
             </div>
           </div>
         </div> 
-      </div>      
+      </div>
+      </div>
     </header>
     <!-- Header Section End --> 
-
+    
