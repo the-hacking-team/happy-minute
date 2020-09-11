@@ -11,4 +11,5 @@ class BusinessPhotosController < ApplicationController
       flash[:danger] = "Vous ne pouvez pas effectuer cette action"
       redirect_to(business_path(@business)) 
     end
+  end
 end

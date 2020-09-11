@@ -7,11 +7,11 @@
     <p>=== Aucune photo n'est rattachée à cet établissement ===</p>
   <%end%>
 
-  <% if owner_signed_in? && current_owner == @business.owner %>
+  <% if @business.owner == current_owner %>
     <h3>Changer de photo d'établissement ?</h3>
     <%= form_tag business_business_photos_path(@business), multipart: true do %>
       <%= file_field_tag :business_photo %>
-      <%= submit_tag "mettre à jour" %>  
+      <%= submit_tag "Mettre à jour" %>  
     <% end %>
   
     <p><%= link_to "Modifier les informations de votre établissement", edit_business_path, :class => "btn btn-common my-2" %></p>
