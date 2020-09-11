@@ -120,3 +120,18 @@ a:hover{
 	color: #94C523;
 }
 
+.form-control {
+	color:#006400;
+}
+
+.btn-outline-success {
+	color: #5cb85c;
+}
+
+.btn-secondary {
+color: #ccc;
+}
+
+.btn-outline-secondary {
+	color: grey;
+}

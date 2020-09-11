@@ -19,7 +19,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  background-attachment: fixed;
 }
 
 .jumbo-business { 
@@ -54,7 +53,6 @@ body {
 
 /* Business index page */
 .root-card-image {
-  
   height: 300px;
 }
 
@@ -74,4 +72,9 @@ body {
 
 .follow-photo {
   max-height: 17em;
+}
+
+
+.business-show-image {
+  max-width: 100%;
 }

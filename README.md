@@ -1,9 +1,12 @@
 # Happy Minute !
 
-## Deux environnements en production
+## [www.happy-minute.com](https://www.happy-minute.com)
 
-[heroku develop](https://develop-happy-minute.herokuapp.com)
-[heroku master](https://master-happy-minute.herokuapp.com)
+<img width="250" alt="LOGO" src="https://user-images.githubusercontent.com/37190085/92944821-c5222180-f454-11ea-86e4-21cc7ec353f5.png">
+
+## Version preview
+
+* [develop.happy-minute.com](https://develop.happy-minute.com) (branche `develop`)
 
 ## Présentation
 
