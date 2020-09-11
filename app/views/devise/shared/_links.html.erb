@@ -1,15 +1,15 @@
 <%- if controller_name != 'sessions' %>
   <p>Déjà inscrit ?</p>
-  <%= link_to "Connection", new_session_path(resource_name), class: "btn btn-lg btn-dark btn-block" %><br />
+  <%= link_to "Connection", new_session_path(resource_name), class: "btn btn-lg btn-outline-success btn-block" %><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <p>Vous n'êtes pas encore membre ? Rejoignez-nous !</p>
-  <%= link_to "Inscription", new_registration_path(resource_name), class: "btn btn-lg btn-dark btn-block" %><br />
+  <%= link_to "Inscription", new_registration_path(resource_name), class: "btn btn-lg btn-outline-success btn-block" %><br />
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "btn btn-lg btn-light btn-block" %><br />
+  <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "btn btn-lg btn-secondary btn-block" %><br />
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
