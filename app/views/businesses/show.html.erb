@@ -7,7 +7,7 @@
     <p>=== Aucune photo n'est rattachée à cet établissement ===</p>
   <%end%>
 
-  <% if owner_signed_in? && current_owner = @business.owner %>
+  <% if owner_signed_in? && current_owner == @business.owner %>
     <h3>Changer de photo d'établissement ?</h3>
     <%= form_tag business_business_photos_path(@business), multipart: true do %>
       <%= file_field_tag :business_photo %>
