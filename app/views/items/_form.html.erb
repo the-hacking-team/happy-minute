@@ -15,30 +15,30 @@
   <!-- title !-->
   <div class="form-group">
     <%= form.label :title, 'Titre' %>
-    <%= form.text_field :title, class: "form-control text-primary"  %>
+    <%= form.text_field :title, class: "form-control"  %>
   </div>
 
   <!-- description !-->
   <div class="form-group">
     <%= form.label :description, 'Description' %>
-    <%= form.text_area :description, class: "form-control text-primary"  %>
+    <%= form.text_area :description, class: "form-control"  %>
   </div>
 
   <!-- price !-->
   <div class="form-group">
     <%= form.label :price, 'Prix' %>
-    <%= form.number_field :price,step: 0.01, class: "form-control text-primary"  %>
+    <%= form.number_field :price,step: 0.01, class: "form-control"  %>
   </div>
 
   <!-- category !-->
   <div class="form-group">
     <%= form.label :category, 'Catégorie' %>
-    <%= form.text_field :category, class: "form-control text-primary"  %>
+    <%= form.text_field :category, class: "form-control"  %>
   </div>
 
   <!-- SUBMIT !-->
-  <div class="actions mt-5">
-    <%= form.submit "Valider", class: "btn btn-lg btn-primary btn-block" %>
+  <div class="actions mt-5 pr-4">
+    <%= form.submit "Valider", class: "btn btn-lg btn-success btn-block" %>
   </div>
 
 <% end %>
