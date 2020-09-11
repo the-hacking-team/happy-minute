@@ -1,16 +1,16 @@
+# frozen_string_literal: true
+
 class BusinessFollowsController < ApplicationController
-  
-  def create 
+  def create
     @business = Business.find(params[:id])
     @customer = current_customer
 
     @business_follow = BusinessFollow.create(business_id: @business.id, customer_id: current_customer.id, notification: true)
-  
-    redirect_to root_path
-  end 
 
-  
-  def destroy 
+    redirect_to root_path
+  end
+
+  def destroy
     @business = Business.find(params[:id])
     @customer = current_customer
 

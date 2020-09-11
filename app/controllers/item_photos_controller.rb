@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ItemPhotosController < ApplicationController
   def create
     @business = Business.find(params[:business_id])

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HappyPrice < ApplicationRecord
   belongs_to :item
   has_many :happy_codes
@@ -11,7 +13,7 @@ class HappyPrice < ApplicationRecord
   end
 
   def in_stock?
-    stock > 0
+    stock.positive?
   end
 
   def stock

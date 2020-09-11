@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Customer < ApplicationRecord
   has_many :business_follows
   has_many :businesses, through: :business_follows

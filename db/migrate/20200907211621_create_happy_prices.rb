@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateHappyPrices < ActiveRecord::Migration[5.2]
   def change
     create_table :happy_prices do |t|

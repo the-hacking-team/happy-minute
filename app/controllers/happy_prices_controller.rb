@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HappyPricesController < ApplicationController
   def new
     @business = Business.find(params[:business_id])

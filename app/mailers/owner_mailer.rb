@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OwnerMailer < ApplicationMailer
   def welcome_email
     @owner = params[:owner]

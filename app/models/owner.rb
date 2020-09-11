@@ -1,5 +1,6 @@
-class Owner < ApplicationRecord
+# frozen_string_literal: true
 
+class Owner < ApplicationRecord
   has_many :businesses
 
   # Include default devise modules. Others available are:
@@ -16,7 +17,7 @@ class Owner < ApplicationRecord
       email
     end
   end
-  
+
   private
 
   def welcome_email

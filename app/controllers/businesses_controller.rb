@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BusinessesController < ApplicationController
   def index
     @businesses = Business.all
@@ -11,16 +13,16 @@ class BusinessesController < ApplicationController
     @business = Business.new
   end
 
-  def create  
+  def create
     @business = Business.new(business_params)
     @business.owner = current_owner
 
     if @business.save
-      flash[:success] = "Votre établissement a été créé avec succès !"
+      flash[:success] = 'Votre établissement a été créé avec succès !'
       redirect_to owner_path(current_owner)
     else
       render new_business_path
-    end 
+    end
   end
 
   def edit
@@ -44,8 +46,8 @@ class BusinessesController < ApplicationController
   end
 
   private
+
   def business_params
     params.require(:business).permit(:name, :address, :phone)
-  end 
-
+  end
 end
