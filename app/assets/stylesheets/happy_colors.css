@@ -131,3 +131,7 @@ a:hover{
 .btn-secondary {
 color: #ccc;
 }
+
+.btn-outline-secondary {
+	color: grey;
+}
