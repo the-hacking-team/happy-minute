@@ -23,9 +23,6 @@ class HappyPrice < ApplicationRecord
   end
 
   def active?
-    puts started?
-    puts ended?
-    puts in_stock?
     started? && !ended? && in_stock?
   end
 end

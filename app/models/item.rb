@@ -6,4 +6,8 @@ class Item < ApplicationRecord
   def current_happy_price
     happy_prices.filter(&:active?).first
   end
+
+  def upcoming_happy_prices
+    happy_prices.filter { |hp| !hp.started? }
+  end
 end
