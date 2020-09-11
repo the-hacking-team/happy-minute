@@ -1,4 +1,7 @@
 class BusinessesController < ApplicationController
+
+  before_action :authenticate_owner!, only: [:new, :create, :destroy, :edit, :update]
+  
   def index
     @businesses = Business.all
   end
@@ -33,7 +36,7 @@ class BusinessesController < ApplicationController
       redirect_to business_path(@business.id)
     else
       flash[:warning] = "Nous n'avons pas pu modifier votre établissement"
-      render edit_business_path(@business.id)
+      redirect_to edit_business_path(@business.id)
     end
   end
 
