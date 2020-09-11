@@ -5,6 +5,8 @@ class HappyPrice < ApplicationRecord
   validates :price, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+  
+  after_create :notify_followers_email
 
   def started?
     start_date && start_date <= DateTime.now
@@ -40,5 +42,11 @@ class HappyPrice < ApplicationRecord
     else
       code
     end
+  end
+
+  private
+
+  def notify_followers_email
+    CustomerMailer.with(happy_price: self).notify_followers_email.deliver_now
   end
 end
