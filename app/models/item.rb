@@ -13,10 +13,7 @@ class Item < ApplicationRecord
     happy_prices.filter(&:active?).first
   end
 
-<<<<<<< HEAD
-=======
   def upcoming_happy_prices
     happy_prices.filter { |hp| !hp.started? }
   end
->>>>>>> develop
 end
