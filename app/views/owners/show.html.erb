@@ -1,15 +1,33 @@
-<div class="container mt-4">
-    <h4>Bienvenue <%= @owner.name %> sur votre page propriétaire :</h4>
-  </div>
+<%if @owner.businesses.all.count == 1 %>
+<h1>Votre Etablissement:</h1>
+<%else%>
+<h1 class="px-5 py-2">Vos <%= @owner.businesses.all.count %> Etablissements:</h1>
+<%end%>
 
-<%= link_to "Editer votre profil #{@owner.email}", edit_owner_registration_path, :class => "btn btn-common my-2" %>
+
+
+<div class="row justify-content-center text-center">
 
 <% @owner.businesses.each do |business| %>
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 px-5 blog-item">
+	<%= link_to business_path(business.id) do %>
+	<div class="blog-item-img">
+                        <%if business.business_photo.attached?%>
+                          <%= image_tag business.business_photo, alt: 'photo', :class => "root-card-image" %>
+                        <% else %>
+                          <%= image_tag 'burger.png', :class => "root-card-image" %>
+                        <% end %>
+                    </div>
+
 
   <p><%= link_to "#{business.name}", business_path(business.id), :class => "btn btn-common my-2" %></p>
+  <%end%>
 
-  
-<% end %>
+  </div>
+<%end%>
 
+</div>
+
+<%= link_to "Editer votre profil #{@owner.email}", edit_owner_registration_path, :class => "btn btn-common my-2" %>
 
 <%= link_to "Créer un nouvel établissement", new_business_path, :class => "btn btn-common my-2" %>
