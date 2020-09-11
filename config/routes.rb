@@ -33,7 +33,6 @@ Rails.application.routes.draw do
   # Root is index of all businesses
   root 'businesses#index'
 
-  get '/crystal', to: 'static_pages#crystal_template'
   get '/kit_ui', to: 'static_pages#kit_ui'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
