@@ -52,10 +52,17 @@ body {
   position: relative;
 }
 
+/* Business index page */
+.root-card-image {
+  
+  height: 300px;
+}
 
-
-
-
+/* Business show page */
+.business-show-card-image {
+  
+  width: 100%;
+}
 
 /* Customer profile page */
 
