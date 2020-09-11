@@ -20,7 +20,9 @@ class ItemsController < ApplicationController
 
   def create
     @business = Business.find(params[:business_id])
-    if @item = @business.items.create(item_params)
+    @item = @business.items.new(item_params)
+    @item.available = true
+    if @item.save
       redirect_to business_item_path(@business, @item), flash: { success: 'Produit créé' }
     else
       render :new

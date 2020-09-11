@@ -36,7 +36,7 @@ class BusinessesController < ApplicationController
       redirect_to business_path(@business.id)
     else
       flash[:warning] = "Nous n'avons pas pu modifier votre établissement"
-      render edit_business_path(@business.id)
+      redirect_to edit_business_path(@business.id)
     end
   end
 

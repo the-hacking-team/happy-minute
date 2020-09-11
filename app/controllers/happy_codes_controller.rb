@@ -1,9 +1,4 @@
 class HappyCodesController < ApplicationController
-<<<<<<< HEAD
-
-  before_action :authenticate_customer!
-
-=======
   before_action :authenticate_customer!
 
   def create
@@ -17,5 +12,4 @@ class HappyCodesController < ApplicationController
       redirect_to business_item_path(@business, @item), flash: { notice: 'Le Happy Minute a expiré' }
     end
   end
->>>>>>> develop
 end
