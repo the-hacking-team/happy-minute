@@ -1,10 +1,5 @@
 # Happy Minute !
 
-## Deux environnements en production
-
-[heroku develop](https://develop-happy-minute.herokuapp.com)
-[heroku master](https://master-happy-minute.herokuapp.com)
-
 ## Présentation
 
 Il s'agit du [projet validant](https://github.com/the-hacking-team/happy-minute) la fin de la formation [The Hacking Project](https://www.thehackingproject.org) par l'équipe [The Hacking TEAM](https://github.com/the-hacking-team) :
