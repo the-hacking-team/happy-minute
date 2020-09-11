@@ -30,3 +30,4 @@
 .env
 
 /config/secrets/*
+.DS_Store
