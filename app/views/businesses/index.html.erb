@@ -15,9 +15,9 @@
                 <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.9s">
                     <div class="blog-item-img">
                         <%if business.business_photo.attached?%>
-                        <%= image_tag business.business_photo, alt: 'photo', :class => "root-card-image" %>
+                          <%= image_tag business.business_photo, alt: 'photo', :class => "root-card-image" %>
                         <% else %>
-                        <%= image_tag 'burger.png', :class => "root-card-image" %>
+                          <%= image_tag 'burger.png', :class => "root-card-image" %>
                         <% end %>
                     </div>
                     <div class="blog-item-text">

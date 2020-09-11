@@ -60,7 +60,6 @@ Owner.all.each do |owner|
       name: Faker::Restaurant.name,
       address: Faker::Address.full_address,
       phone: Faker::PhoneNumber.cell_phone,
-      photo: "http://placekitten.com/#{rand(150..200)}/#{rand(150..200)}",
       owner_id: owner.id
     )
   end
@@ -77,7 +76,6 @@ Business.all.each do |business|
       available: true,
       description: Faker::Food.description,
       category: categories[rand(0..(categories.length - 1))],
-      photo: "http://placekitten.com/#{rand(150..200)}/#{rand(150..200)}",
       business_id: business.id
     )
   end

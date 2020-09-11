@@ -15,7 +15,6 @@ class ItemDashboard < Administrate::BaseDashboard
     available: Field::Boolean,
     description: Field::Text,
     category: Field::String,
-    photo: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -42,7 +41,6 @@ class ItemDashboard < Administrate::BaseDashboard
   available
   description
   category
-  photo
   created_at
   updated_at
   ].freeze
@@ -57,7 +55,6 @@ class ItemDashboard < Administrate::BaseDashboard
   available
   description
   category
-  photo
   ].freeze
 
   # COLLECTION_FILTERS

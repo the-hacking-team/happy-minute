@@ -16,7 +16,6 @@ class BusinessDashboard < Administrate::BaseDashboard
     name: Field::String,
     address: Field::String,
     phone: Field::String,
-    photo: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -44,7 +43,6 @@ class BusinessDashboard < Administrate::BaseDashboard
   name
   address
   phone
-  photo
   created_at
   updated_at
   ].freeze
@@ -60,7 +58,6 @@ class BusinessDashboard < Administrate::BaseDashboard
   name
   address
   phone
-  photo
   ].freeze
 
   # COLLECTION_FILTERS
