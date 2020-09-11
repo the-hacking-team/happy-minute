@@ -1,89 +1,91 @@
+<div class="menu-wrap">
+  <nav class="menu navbar">
+    <div class="icon-list navbar-collapse">
+      <ul class="navbar-nav">
 
-      <div class="menu-wrap">
-        <nav class="menu navbar">
-          <div class="icon-list navbar-collapse">
-            <ul class="navbar-nav">
+      <% if customer_signed_in? %>  
+        <li class="nav-item">
+          <%= link_to "Accueil", root_path, class: "nav-link" %>
+        </li>                         
+        <li class="nav-item">
+          <%= link_to "Happy Minute", root_path, class: "nav-link" %>
+        </li> 
+        <li class="nav-item">
+          <%= link_to "Mon profil", customer_path(current_customer), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Déconnexion", destroy_customer_session_path, method: :delete, class: "nav-link" %>
+        </li>
+      <% end %>
 
-              <% if customer_signed_in? %>  
-                <li class="nav-item">
-                  <%= link_to "Accueil", root_path, class: "nav-link" %>
-                </li>                         
-                <li class="nav-item">
-                  <%= link_to "Happy Minute", root_path, class: "nav-link" %>
-                </li> 
-                <li class="nav-item">
-                  <%= link_to "Mon profil", customer_path(current_customer), class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Déconnexion", destroy_customer_session_path, method: :delete, class: "nav-link" %>
-                </li>
-              <% end %>
+      <% if owner_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Accueil", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Mon profil", owner_path(current_owner), class: "nav-link" %>
+        </li>                             
+        <li class="nav-item">
+          <%= link_to "Déconnexion", destroy_owner_session_path, method: :delete, class: "nav-link" %>
+        </li>
+      <% end %>
 
-              <% if owner_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to "Accueil", root_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Mon profil", owner_path(current_owner), class: "nav-link" %>
-                </li>                             
-                <li class="nav-item">
-                  <%= link_to "Déconnexion", destroy_owner_session_path, method: :delete, class: "nav-link" %>
-                </li>
-              <% end %>
-
-              <% if administrator_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to "Accueil", root_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Déconnexion administrateur", destroy_administrator_session_path, method: :delete, class: "nav-link" %>
-                </li>
-              <%end%>
+      <% if administrator_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Accueil", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Déconnexion administrateur", destroy_administrator_session_path, method: :delete, class: "nav-link" %>
+        </li>
+      <%end%>
                 
-              <% if !administrator_signed_in? && !owner_signed_in? && !customer_signed_in? %>
-                <li>
-                  <%= link_to "Accueil", root_path, class: "nav-link" %>
-                </li>  
-                <li class="nav-item dropdown active">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Professionnel
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <%= link_to "Se connecter", new_owner_session_path, class: "nav-link" %>
-                    <%= link_to "S'inscrire", new_owner_registration_path, class: "nav-link" %>
-                  </div>
-                </li>
-                <li class="nav-item dropdown active">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Consommateur
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <%= link_to "Se connecter", new_customer_session_path, class: "nav-link" %>
-                    <%= link_to "S'inscrire", new_customer_registration_path, class: "nav-link" %>
-                  </div>
-                </li>
-              <% end %>
-            </ul>
+      <% if !administrator_signed_in? && !owner_signed_in? && !customer_signed_in? %>
+        <li>
+          <%= link_to "Accueil", root_path, class: "nav-link" %>
+        </li>  
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Professionnel
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "Se connecter", new_owner_session_path, class: "nav-link" %>
+            <%= link_to "S'inscrire", new_owner_registration_path, class: "nav-link" %>
           </div>
-        </nav> 
-        <button class="close-button" id="close-button"><i class="lnr lnr-cross"></i></button>
-      </div>      
-  	<!-- Header Section Start -->
+        </li>
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Consommateur
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "Se connecter", new_customer_session_path, class: "nav-link" %>
+            <%= link_to "S'inscrire", new_customer_registration_path, class: "nav-link" %>
+          </div>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </nav> 
+  <button class="close-button" id="close-button"><i class="lnr lnr-cross"></i></button>
+</div>
 
-    <header id="video-area" data-stellar-background-ratio="0.5">  
-    <div class="jumbotron jumbotron-fluid text-white my-jumbotron">
+<!-- Header Section Start -->
+
+<header id="video-area" data-stellar-background-ratio="0.5">  
+  <div class="jumbotron jumbotron-fluid text-white my-jumbotron">
     <div id="block"></div>
-      <div class="fixed-top">
-          <div class="container">
-            <div class="logo-menu">
-              <%= link_to root_path, class: 'logo' do %>
-                <span class="lnr lnr-dinner"></span><%= image_tag 'burger.png', style: 'height:45px;width:45px;margin-bottom:20px;' %> Happy Minute</a>
-                <button class="menu-button" id="open-button"><i class="lnr lnr-menu"></i></button>   
-              <% end %> 
-            </div>
-          </div>
+    <div class="fixed-top">
+      <div class="container">
+        <div class="logo-menu">
+          <%= link_to root_path, class: 'logo' do %>
+            <span class="lnr lnr-dinner"></span><%= image_tag 'burger.png', style: 'height:45px;width:45px;margin-bottom:20px;' %> Happy Minute</a>
+            <button class="menu-button" id="open-button"><i class="lnr lnr-menu"></i></button>   
+          <% end %> 
+        </div>
       </div>
-      <div class="overlay overlay-2"></div>      
+    </div>
+
+    <div class="overlay overlay-2"></div>      
+    <% if @is_from_root %>
       <div class="container">
         <div class="row justify-content-md-center">
           <div class="col-md-10">
@@ -101,7 +103,8 @@
           </div>
         </div> 
       </div>
-      </div>
-    </header>
-    <!-- Header Section End --> 
-    
+    <% end %>
+  </div>
+</header>
+
+<!-- Header Section End --> 
