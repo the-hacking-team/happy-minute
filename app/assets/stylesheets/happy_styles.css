@@ -43,10 +43,11 @@ body {
   position: relative;
 }
 
-
-
-
-
+/* Business index page */
+.root-card-image {
+  
+  height: 300px;
+}
 
 /* Customer profile page */
 
