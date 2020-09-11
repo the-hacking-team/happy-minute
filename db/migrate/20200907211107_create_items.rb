@@ -6,7 +6,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.boolean :available
       t.text :description
       t.string :category
-      t.string :photo
       t.belongs_to :business, index: true
 
       t.timestamps

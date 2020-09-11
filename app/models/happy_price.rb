@@ -29,4 +29,16 @@ class HappyPrice < ApplicationRecord
   def active?
     started? && !ended? && in_stock?
   end
+
+  # FIXME: what happens if 2 customers click exact same time for last happy_price in stock?
+  def get_new_code
+    code = rand(1000..9999)
+    if !active?
+      nil
+    elsif happy_codes.any? { |hc| hc.code == code }
+      get_new_code
+    else
+      code
+    end
+  end
 end

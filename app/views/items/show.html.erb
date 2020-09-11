@@ -11,6 +11,9 @@
     <div class="row justify-content-center">
       <%= render partial: "item", locals:{item: @item} %>
     </div>
+    <div class="row justify-content-center">
+      <%= link_to "Retour au menu", business_items_path(@business), :class => "btn btn-common my-2 wow zoomIn", data: {"wow-delay"=>"1s"} %>
+    </div>
   </div>
 </section>
 

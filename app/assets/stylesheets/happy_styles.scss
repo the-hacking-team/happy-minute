@@ -14,7 +14,7 @@ body {
 /* business jumbotron*/
 
 .my-jumbotron {
-  background-image: url("Salle_1.jpg");
+  background-image: asset-url("Salle_1.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -52,10 +52,17 @@ body {
   position: relative;
 }
 
+/* Business index page */
+.root-card-image {
+  
+  height: 300px;
+}
 
-
-
-
+/* Business show page */
+.business-show-card-image {
+  
+  width: 100%;
+}
 
 /* Customer profile page */
 
