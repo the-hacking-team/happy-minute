@@ -8,26 +8,24 @@
             <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">En tout cas, nous n'en doutons pas.</p>
         </div>
         <div class="row justify-content-center">
-
             <% @businesses.all.each do |business| %>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
                 <!-- Blog Item Starts -->
+                <%= link_to business_path(business.id) do %>
                 <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.9s">
                     <div class="blog-item-img">
-                      <%if business.business_photo.attached?%>
+                        <%if business.business_photo.attached?%>
                         <%= image_tag business.business_photo, alt: 'photo', :class => "root-card-image" %>
-                      <% else %>
-                      <%= image_tag 'burger.png', :class => "root-card-image" %> 
-                      <% end %>
+                        <% else %>
+                        <%= image_tag 'burger.png', :class => "root-card-image" %>
+                        <% end %>
                     </div>
                     <div class="blog-item-text">
                         <h3>
                             <%= link_to business.name, business_path(business.id) %>
                         </h3>
                         <div class="meta-tags">
-                            <span class="foodcategory"><i class="lnr lnr-poop"></i>Pig</span>
-                            <span class="foodcategory"><i class="lnr lnr-cloud"></i>Meat</span>
-                            <span class="comments"><i class="lnr lnr-rocket"></i>Gluten-free</span>
+                            <span class="businesscategory"><i class="lnr lnr-poop"></i>Restaurant au top</span>
                         </div>
                         <p>
                             <%= business.address %><br>
@@ -41,7 +39,10 @@
                         <% end %>
                         <% end %>
                     </div>
+
                 </div>
+                <% end %>
+
                 <!-- Blog Item Wrapper Ends-->
             </div>
             <% end %>

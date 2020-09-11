@@ -58,6 +58,12 @@ body {
   height: 300px;
 }
 
+/* Business show page */
+.business-show-card-image {
+  
+  width: 100%;
+}
+
 /* Customer profile page */
 
 .photo-link {
