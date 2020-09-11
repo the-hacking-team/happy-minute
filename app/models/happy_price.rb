@@ -2,6 +2,8 @@ class HappyPrice < ApplicationRecord
   belongs_to :item
   has_many :happy_codes
 
+  after_create :notify_followers_email
+
   def started?
     start_date && start_date <= DateTime.now
   end
@@ -36,5 +38,11 @@ class HappyPrice < ApplicationRecord
     else
       code
     end
+  end
+
+  private
+
+  def notify_followers_email
+    CustomerMailer.with(happy_price: self).notify_followers_email.deliver_now
   end
 end
