@@ -1,0 +1,5 @@
+<h2> Nouveau Happy Minute de <%= @business.name %> </h2>
+
+<p> Le produit <%= @item.title %> sera à <%= @happy_price.price %> € au lieu de <%= @item.price %> </p>
+<p> <%= @happy_price.start_date.to_formatted_s(:long) %> ==> <%= @happy_price.end_date.to_formatted_s(:long) %> </p>
+<p> <%= @happy_price.stock %> unités à <%= @happy_price.price %> € (<%= @happy_price.active? ? 'EN COURS' : (@happy_price.started? ? 'Terminé' : 'A venir') %>)</p>

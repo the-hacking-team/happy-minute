@@ -1,4 +1,8 @@
 class ItemsController < ApplicationController
+
+  before_action :authenticate_owner!, only: [:new, :create, :edit, :update, :destroy] 
+
+
   def index
     @business = Business.find(params[:business_id])
     @items = @business.items
@@ -16,7 +20,9 @@ class ItemsController < ApplicationController
 
   def create
     @business = Business.find(params[:business_id])
-    if @item = @business.items.create(item_params)
+    @item = @business.items.new(item_params)
+    @item.available = true
+    if @item.save
       redirect_to business_item_path(@business, @item), flash: { success: 'Produit créé' }
     else
       render :new
@@ -48,6 +54,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :category, :price, :available, :photo)
+    params.require(:item).permit(:title, :description, :category, :price, :available)
   end
 end

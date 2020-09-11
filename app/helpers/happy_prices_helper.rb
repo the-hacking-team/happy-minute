@@ -1,0 +1,2 @@
+module HappyPricesHelper
+end

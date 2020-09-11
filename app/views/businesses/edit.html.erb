@@ -19,6 +19,7 @@
     
       <h1 class="h3 mb-3 font-weight-normal text-center ">Modifier les informations de l'établissement</h1>
 
+
       <%= form_for @business do |ƒ| %>
 
       <div class="form-group">
@@ -36,17 +37,20 @@
         <%= ƒ.text_field :address, class: 'form-control text-primary' %>
       </div>
 
-      <div  class="form-group">
-        <label>Url de la photo </label>
-        <%= ƒ.text_field :photo, class: 'form-control text-primary' %>
-      </div>
-  
-      <div class="actions mt-5">
+      <%if @business.business_photo.attached?%>
+        <%= image_tag @business.business_photo, alt: 'photo' %>  
+      <%else%>
+        <p>=== Aucune photo n'est rattachée à cet établissement ===</p>
+      <%end%>
+
+    <div class="actions mt-5">
       <%= submit_tag 'Enregistrer les modifications', class: "btn btn-lg btn-primary btn-block"%>
       </div>
 
       <%end%>
     
+
+
       <br>
       <%= link_to "Supprimer l'établissement", business_path(@business.id), data: {confirm: "Etes-vous sûr ?"}, method: :delete, :class => "btn btn-danger btn-lg btn-block my-2" %>
     

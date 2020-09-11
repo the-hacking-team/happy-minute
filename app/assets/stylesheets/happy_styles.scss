@@ -13,6 +13,15 @@ body {
 /* kit ui addons*/
 /* business jumbotron*/
 
+.my-jumbotron {
+  background-image: asset-url("Salle_1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-attachment: fixed;
+}
+
 .jumbo-business { 
 	background-image: url('https://lefooding.com/media/W1siZiIsIjIwMTcvMTIvMDIvMTNfMzVfNTlfNDEwX3Jlc3RhdXJhbnRfYm91aWxsb25fcGFyaXMuanBlZyJdLFsicCIsInRodW1iIiwiNjcyeDYwMCJdXQ/restaurant-bouillon-paris.jpeg?sha=876c0cc5');
 	background-size: cover;
@@ -43,3 +52,26 @@ body {
   position: relative;
 }
 
+/* Business index page */
+.root-card-image {
+  
+  height: 300px;
+}
+
+/* Business show page */
+.business-show-card-image {
+  
+  width: 100%;
+}
+
+/* Customer profile page */
+
+.photo-link {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.follow-photo {
+  max-height: 17em;
+}

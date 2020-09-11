@@ -28,3 +28,6 @@
 
 # Rails dotenv
 .env
+
+/config/secrets/*
+.DS_Store

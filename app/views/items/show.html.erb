@@ -11,11 +11,29 @@
     <div class="row justify-content-center">
       <%= render partial: "item", locals:{item: @item} %>
     </div>
+    <div class="row justify-content-center">
+      <%= link_to "Retour au menu", business_items_path(@business), :class => "btn btn-common my-2 wow zoomIn", data: {"wow-delay"=>"1s"} %>
+    </div>
   </div>
 </section>
 
 <% if @business.owner == current_owner %>
-  <section>
+  <ul>
+    <%if @item.item_photo.attached?%>
+      <%= image_tag @item.item_photo, alt: 'photo' %>
+    <%else%>
+      <p>=== Il n'y a pas encore de photo pour cette spécialité ===</p>
+    <%end%>
+    <h3>Changer la photo pour cette spécialité ?</h3>
+    <%= form_tag business_item_item_photos_path(@business, @item), multipart: true do %>
+      <%= file_field_tag :item_photo %>
+      <%= submit_tag "mettre à jour" %>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @business.owner == current_owner %>
+  <section id="blog" class="section">
     <!-- Container Starts -->
     <div class="container">
       <div class="section-header">
@@ -23,8 +41,22 @@
         <hr class="lines wow zoomIn" data-wow-delay="0.3s">
         <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Gérer votre carte </p>
       </div>
+
+      <% @item.happy_prices.sort_by { |hp| hp.start_date }.each do |upcoming| %>
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12  alert alert-<%= (upcoming.active? ? ('success') : ('warning')) %>" >
+            <%= link_to "Modifier (#{upcoming.price} €)", edit_business_item_happy_price_path(@business, @item, upcoming), class: "btn btn-common display-4"%>
+            <p> <%= upcoming.start_date.to_formatted_s(:long) %> ==> <%= upcoming.end_date.to_formatted_s(:long) %> </p>
+            <p> <%= upcoming.stock %> unités à <%= upcoming.price %> € (<%= upcoming.active? ? 'EN COURS' : (upcoming.started? ? 'Terminé' : 'A venir') %>)</p>
+          </div>
+        </div>
+      <% end %>
+
       <div class="row justify-content-center">
         <%= link_to "Modifier le produit", edit_business_item_path(@business, @item), class: "btn btn-common" %>
+      </div>
+      <div class="row justify-content-center">
+        <%= link_to "Mettre en Happy Minute !", new_business_item_happy_price_path(@business, @item), class: "btn btn-common btn-lg" %>
       </div>
     </div>
   </section>

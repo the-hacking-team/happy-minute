@@ -4,7 +4,6 @@ class CreateBusinesses < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :address
       t.string :phone
-      t.string :photo
       t.belongs_to :owner, index: true
 
       t.timestamps
