@@ -8,35 +8,38 @@
           <% @business.name%>
         </p>
       <%end%>
-        <h1>
-          <% @business.name%>
-        </h1>
+      <h1>
+        <% @business.name%>
+      </h1>
       <% if current_owner == @business.owner %>
         <p class="h4">Changer de photo ?</p>
         <%= form_tag business_business_photos_path(@business), :class => "business-show-card-image pl-5 ml-5", multipart: true do %>
-        <%= file_field_tag :business_photo %>
-        <%= submit_tag "mettre à jour", class: "btn btn-outline-secondary btn-sm" %>
+          <%= file_field_tag :business_photo %>
+          <%= submit_tag "mettre à jour", class: "btn btn-outline-secondary btn-sm" %>
         <% end %>
         <p>
-            <%= link_to "Modifier les informations de votre établissement", edit_business_path, :class => "btn btn-common my-2" %>
+          <%= link_to "Modifier les informations de votre établissement", edit_business_path, :class => "btn btn-common my-2" %>
         </p>
-        <% end %>
         <p>
-            <%= link_to "Voir le menu", business_items_path(@business), :class => "btn btn-common my-2" %>
+          <%= link_to "Voir mon QR Code", business_business_qr_codes_path(@business), :class => "btn btn-common my-2" %>
         </p>
-        <% if customer_signed_in? %>
-          <% if current_customer.businesses.include?(@business) %>
-              <%= link_to "Ne plus suivre", business_follow_path(:id => @business.id), method: :delete, :class => "btn btn-danger my-2" %>
-          <% else %>
-              <%= link_to "Suivre l'établissement", business_follows_path(:id => @business.id), method: :post, :class => "btn btn-common my-2" %>
-          <% end %>
-        <% end %> 
+      <% end %>
+      <p>
+        <%= link_to "Voir le menu", business_items_path(@business), :class => "btn btn-common my-2" %>
+      </p>
+      <% if customer_signed_in? %>
+        <% if current_customer.businesses.include?(@business) %>
+          <%= link_to "Ne plus suivre", business_follow_path(:id => @business.id), method: :delete, :class => "btn btn-danger my-2" %>
+        <% else %>
+          <%= link_to "Suivre l'établissement", business_follows_path(:id => @business.id), method: :post, :class => "btn btn-common my-2" %>
+        <% end %>
+      <% end %>
     </div>
 
     <div class="col-lg-5 col-md-7">
-        <p><%= @business.name %></p>
-        <p><%= @business.address %></p>
-        <p><%= @business.phone %></p>
+      <p><%= @business.name %></p>
+      <p><%= @business.address %></p>
+      <p><%= @business.phone %></p>
     </div>
   </div>
 </div>

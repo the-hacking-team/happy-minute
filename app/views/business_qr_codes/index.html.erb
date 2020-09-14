@@ -1,0 +1,13 @@
+<div class="container">
+  <h1> <%= @business.name %> </h1>
+  <p class="my-3">
+    <%= @business.address %>
+  </p>
+  <p> Happy Minute page : </p>
+  <p class="my-3">
+    <%= @qrcode_svg.html_safe %>
+  </p>
+  <p>
+    <%= @url %>
+  </p>
+</div>
