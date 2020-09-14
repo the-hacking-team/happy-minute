@@ -31,6 +31,17 @@
         <%= f.submit %>
       <% end %>
 
+
+      <%= form_tag business_menu_menu_items_path(:menu_id => @menu.id), method: :post, style: "display: inline" do %>
+        <%= collection_select :item, :item_id, @business.items.all, :id, :title, :prompt => true %>
+        <%= submit_tag "Ajouter" %>
+      <% end %>
+
     </div>
   </div>
 </section>
+
+
+      <div class="row justify-content-center">
+        <%= link_to "Ajouter produit", new_business_menu_menu_item_path(@business, @menu), class: "btn btn-common" %>
+      </div>

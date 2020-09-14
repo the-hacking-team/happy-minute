@@ -1,0 +1,31 @@
+  <%= form_with(model: [@business, @menu, @menu_item], local: true, method: :post, class: "col-lg-6") do |form| %>
+
+  <!-- ERRORS !-->
+  <% if @menu.errors.any? %>
+    <div class="alert alert-warning" role="alert">
+      <p> Le produit n'a pas pu être créé pour les raisons suivantes :</p>
+      <ul>
+        <% @menu.errors.full_messages.each do |message| %>
+          <li> <%= message %> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+  <!-- name !-->
+  <div class="form-group">
+    <%= form.label :item_id, 'Item_id' %>
+    <%= form.collection_select :item_id, @business.items.all, :id, :title %>
+  </div>
+
+
+  
+  <!-- SUBMIT !-->
+  <div class="actions mt-5 pr-4">
+    <%= form.submit "Valider", class: "btn btn-lg btn-success btn-block" %>
+  </div>
+
+  <% end %>

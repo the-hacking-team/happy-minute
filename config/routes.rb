@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :businesses do
     resources :menus, only: %i[show new create edit update destroy] do
-      resources :menu_items, only: %i[create destroy]
+      resources :menu_items, only: %i[new create destroy]
     end
     resources :items do
       resources :happy_prices, only: %i[new create edit update destroy] do
