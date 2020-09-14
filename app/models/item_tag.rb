@@ -1,0 +1,2 @@
+class ItemTag < ApplicationRecord
+end
