@@ -1,0 +1,36 @@
+<%= render partial:"items/header" %>
+
+<section class="section">
+  <!-- Container Starts -->
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Créez votre <span>Menu</span></h2>
+      <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+      <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Merci de remplir les informations suivantes </p>
+    </div>
+    <div class="row justify-content-center">
+
+      <%= render partial: "form", locals: {method: :put} %>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <!-- Container Starts -->
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Ajouter des <span>produits</span></h2>
+      <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+      <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Merci de remplir les informations suivantes </p>
+    </div>
+    <div class="row justify-content-center">
+
+      <%= form_with(model: [@business, @menu], local: true, method: :put, class: "col-lg-6") do |f| %>
+        <%= f.collection_select :item, @business.items.all, :id, :title %>
+        <%= f.submit %>
+      <% end %>
+
+    </div>
+  </div>
+</section>
