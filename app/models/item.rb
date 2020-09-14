@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   has_one_attached :item_photo
   has_many :item_tags
   has_many :tags, through: :item_tags
+  belongs_to :category
 
   validates :title, presence: true
   validates :price, presence: true
