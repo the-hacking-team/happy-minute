@@ -24,17 +24,17 @@
 
       <div class="form-group">
         <label> Nom de l'établissement </label>
-        <%= ƒ.text_field :name, class: 'form-control text-primary' %>
+        <%= ƒ.text_field :name, class: 'form-control' %>
       </div>
 
       <div class="form-group">
         <label> Numéro de téléphone </label>
-        <%= ƒ.text_field :phone, class: 'form-control text-primary' %>
+        <%= ƒ.text_field :phone, class: 'form-control' %>
       </div>
 
       <div class="form-group">
         <label> Adresse </label>
-        <%= ƒ.text_field :address, class: 'form-control text-primary' %>
+        <%= ƒ.text_field :address, class: 'form-control' %>
       </div>
 
       <%if @business.business_photo.attached?%>
@@ -44,7 +44,7 @@
       <%end%>
 
     <div class="actions mt-5">
-      <%= submit_tag 'Enregistrer les modifications', class: "btn btn-lg btn-primary btn-block"%>
+      <%= submit_tag 'Enregistrer les modifications', class: "btn btn-lg btn-success btn-block"%>
       </div>
 
       <%end%>
@@ -52,7 +52,7 @@
 
 
       <br>
-      <%= link_to "Supprimer l'établissement", business_path(@business.id), data: {confirm: "Etes-vous sûr ?"}, method: :delete, :class => "btn btn-danger btn-lg btn-block my-2" %>
+      <%= link_to "Supprimer l'établissement", business_path(@business.id), data: {confirm: "Etes-vous sûr ?"}, method: :delete, :class => "btn btn-danger btn-lg btn-block my-2 mb-4" %>
     
     </div>
   </div>

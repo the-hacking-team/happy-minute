@@ -16,7 +16,7 @@
     </div>
   </div>
 </section>
-
+<div class=" col-lg-12 d-flex align-items-center flex-column "> 
 <% if @business.owner == current_owner %>
   <ul>
     <%if @item.item_photo.attached?%>
@@ -24,13 +24,14 @@
     <%else%>
       <p>=== Il n'y a pas encore de photo pour cette spécialité ===</p>
     <%end%>
-    <h3>Changer la photo pour cette spécialité ?</h3>
+    <p class="h4">Changer la photo pour cette spécialité ?</p>
     <%= form_tag business_item_item_photos_path(@business, @item), multipart: true do %>
       <%= file_field_tag :item_photo %>
-      <%= submit_tag "mettre à jour" %>
+      <%= submit_tag "mettre à jour", class: "btn btn-outline-secondary btn-sm" %>
     <% end %>
   </ul>
 <% end %>
+</div>
 
 <% if @business.owner == current_owner %>
   <section id="blog" class="section">

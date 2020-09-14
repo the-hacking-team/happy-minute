@@ -1,11 +1,13 @@
-<%if @owner.businesses.all.count == 1 %>
-  <h1>Votre Etablissement:</h1>
-<%else%>
-  <h1 class="px-5 py-2">Vos<%= @owner.businesses.all.count %> Etablissements:</h1>
-<%end%>
+
+
+<div class="section-header mt-4">
+  <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Vos <span>établissements</span></h2>
+  <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+</p>
+</div>
 <div class="row justify-content-center text-center">
     <% @owner.businesses.each do |business| %>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 px-5 blog-item">
+    <div class="col-lg-4 col-md-6 col-sm-12 py-4 blog-item">
         <%= link_to business_path(business.id) do %>
         <div class="blog-item-img">
             <%if business.business_photo.attached?%>
@@ -21,5 +23,16 @@
     </div>
     <%end%>
 </div>
-<%= link_to "Editer votre profil #{@owner.email}", edit_owner_registration_path, :class => "btn btn-common my-2" %>
-<%= link_to "Créer un nouvel établissement", new_business_path, :class => "btn btn-common my-2" %>
+
+<div class="row justify-content-center mt-4">
+  <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">
+    <%= link_to "Créer un nouvel établissement", new_business_path, :class => "btn  btn-common my-2" %>
+  </p>
+</div>
+
+
+<div class="row justify-content-center mb-4">
+  <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">
+<%= link_to "Editer votre profil", edit_owner_registration_path, :class => "btn btn-common my-2" %>  </p>
+</div>
+

@@ -3,6 +3,7 @@ class BusinessesController < ApplicationController
 
   def index
     @businesses = Business.all
+    @is_from_root = true
   end
 
   def show
