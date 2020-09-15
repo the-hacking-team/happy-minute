@@ -10,7 +10,7 @@
     </div>
     <div class="row justify-content-center">
       <% @business.menus.all.each do |menu| %>
-        <p><%= link_to menu.name, business_menu_path(@business, menu) %> </p>
+        <p><%= link_to menu.name, business_menu_path(@business, menu) %><br> </p>
       <% end %>
     </div>
     <div class="row justify-content-center">

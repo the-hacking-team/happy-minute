@@ -17,7 +17,7 @@ class MenuItemsController < ApplicationController
     if @menu_item.save
       redirect_to business_menu_path(id: @menu.id)
     else
-      redirect_to business_menu_path(@menu)
+      redirect_to business_menu_path(id: @menu.id)
     end
   end
 
