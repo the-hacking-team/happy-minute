@@ -2,22 +2,14 @@ class MenuItemsController < ApplicationController
   before_action :authenticate_owner!, except: [:show]
   before_action :is_my_business, except: [:show]
 
-  def new
-    @business = Business.find(params[:business_id])
-    @menu = @business.menus.find(params[:menu_id])
-    @menu_item = @menu.menu_items.new
-  end
-
   def create
     @business = Business.find(params[:business_id])
     @menu = @business.menus.find(params[:menu_id])
-    puts '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
-    puts params
     @menu_item = @menu.menu_items.new(item_menu_params)
     if @menu_item.save
-      redirect_to business_menu_path(id: @menu.id)
+      redirect_to edit_business_menu_path(@business, @menu), flash: { success: 'Produit bien ajouté au menu' }
     else
-      redirect_to business_menu_path(id: @menu.id)
+      redirect_to edit_business_menu_path(@business, @menu), flash: { warning: "Le produit n'a pas pu être ajouté" }
     end
   end
 

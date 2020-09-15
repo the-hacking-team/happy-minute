@@ -26,6 +26,7 @@ class MenusController < ApplicationController
   def edit
     @business = Business.find(params[:business_id])
     @menu = @business.menus.find(params[:id])
+    @menu_item = @menu.menu_items.new
   end
 
   def update

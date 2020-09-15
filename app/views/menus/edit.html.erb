@@ -26,22 +26,36 @@
     </div>
     <div class="row justify-content-center">
 
-      <%= form_with(model: [@business, @menu], local: true, method: :put, class: "col-lg-6") do |f| %>
-        <%= f.collection_select :item, @business.items.all, :id, :title %>
-        <%= f.submit %>
-      <% end %>
+      <%= form_with(model: [@business, @menu, @menu_item], local: true, method: :post, class: "col-lg-6") do |form| %>
 
+        <!-- ERRORS !-->
+        <% if @menu.errors.any? %>
+          <div class="alert alert-warning" role="alert">
+            <p> Le produit n'a pas pu être créé pour les raisons suivantes :</p>
+            <ul>
+              <% @menu.errors.full_messages.each do |message| %>
+                <li> <%= message %> </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-      <%= form_tag business_menu_menu_items_path(:menu_id => @menu.id), method: :post, style: "display: inline" do %>
-        <%= collection_select :item, :item_id, @business.items.all, :id, :title, :prompt => true %>
-        <%= submit_tag "Ajouter" %>
+        <!-- name !-->
+        <div class="form-group">
+          <%= form.label :item_id, 'Produit : ' %>
+          <%= form.collection_select :item_id, @business.items.all, :id, :title %>
+        </div>
+
+        <!-- SUBMIT !-->
+        <div class="actions mt-5 pr-4">
+          <%= form.submit "Valider", class: "btn btn-lg btn-success btn-block" %>
+        </div>
+
       <% end %>
 
     </div>
+    <div class="actions mt-5 pr-4">
+      <%= link_to "Retour au menu", business_menu_path(@business, @menu), class: "btn btn-lg btn-primary btn-block" %>
+    </div>
   </div>
 </section>
-
-
-      <div class="row justify-content-center">
-        <%= link_to "Ajouter produit", new_business_menu_menu_item_path(@business, @menu), class: "btn btn-common" %>
-      </div>
