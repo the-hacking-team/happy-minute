@@ -44,7 +44,7 @@ class MenusController < ApplicationController
     @menu = @business.menus.find(params[:id])
 
     @menu.destroy
-    redirect_to business_menu_path(@business), flash: { success: 'Le menu a bien été supprimé !' }
+    redirect_to business_items_path(@business), flash: { success: 'Le menu a bien été supprimé !' }
   end
 
   private

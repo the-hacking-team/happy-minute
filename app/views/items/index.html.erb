@@ -1,5 +1,4 @@
 <%= render partial:"header" %>
-
 <section class="section">
   <!-- Container Starts -->
   <div class="container">
@@ -9,46 +8,58 @@
       <hr class="lines wow zoomIn" data-wow-delay="0.3s">
       <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Notre sélection </p>
     </div>
-    <div class="row justify-content-center">
+    <div class="col-lg-12 d-flex align-items-center flex-column ">
       <% @business.menus.all.each do |menu| %>
-        <p><%= link_to menu.name, business_menu_path(@business, menu) %><br> </p>
+        <div class="card border-success mb-3 text-center" style="width: 30rem;">
+          <div class="card-header"><%= link_to menu.name, business_menu_path(@business, menu) %></div>
+          <div class="card-body">
+            <p><b><%= menu.description %> <%= menu.price %> €</b></p>
+            <ul>
+              <% menu.items.each do |item| %>
+                <li class="card-title"><%= item.title %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
       <% end %>
     </div>
     <% end %>
     <div class="row justify-content-center">
       <%= link_to "Ajouter un menu", new_business_menu_path(@business), class: "btn btn-common" %>
     </div>
-  </div>
 </section>
-
 <!-- Basic Card Section Section -->
 <section id="blog" class="section">
-  <!-- Container Starts -->
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Notre <span>Carte</span></h2>
-      <hr class="lines wow zoomIn" data-wow-delay="0.3s">
-      <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Notre sélection </p>
-    </div>
-    <div class="row justify-content-center">
-      <%= render partial: "item", collection: @items, as: :item %>
-    </div>
-  </div>
-</section>
-<!-- Basic Card Section End -->
-
-<% if @business.owner == current_owner %>
-  <section>
     <!-- Container Starts -->
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Espace <span>Gestion</span></h2>
-        <hr class="lines wow zoomIn" data-wow-delay="0.3s">
-        <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Gérer votre carte </p>
-      </div>
-      <div class="row justify-content-center">
-        <%= link_to "Ajouter un produit", new_business_item_path(@business), class: "btn btn-common" %>
-      </div>
+        <div class="section-header">
+            <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Notre <span>Carte</span></h2>
+            <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+            <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Notre sélection </p>
+        </div>
+        <!-- Test -->
+        
+            
+            
+                <%= render partial: "category", collection: @categories, as: :category %>
+            
+        
+        <!-- End Test -->
     </div>
-  </section>
+</section>
+<!-- Basic Card Section End -->
+<% if @business.owner == current_owner %>
+<section>
+    <!-- Container Starts -->
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Espace <span>Gestion</span></h2>
+            <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+            <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Gérer votre carte </p>
+        </div>
+        <div class="row justify-content-center">
+            <%= link_to "Ajouter un produit", new_business_item_path(@business), class: "btn btn-common" %>
+        </div>
+    </div>
+</section>
 <% end %>
