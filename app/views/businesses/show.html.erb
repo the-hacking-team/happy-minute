@@ -16,7 +16,7 @@
     <div class="col-lg-5 col-md-7">
       <p class="font-weight-bold h4"><%= @business.name %></p>
       <p><%= @business.address %></p>
-      <a data-dtype="d3ifr" data-local-attribute="d3ph" href="#" jscontroller="cSkPLb" jsaction="rcuQ6b:npT2md;F75qrd" jsdata="QKGTRc;;Ar4loY" data-ved="2ahUKEwigmbbd1OvrAhXtzoUKHaaTD6gQkAgoADAIegQIDRAW"><span aria-label="Appeler le <%= @business.phone %>" role="link"><%= @business.phone %></span></a>
+      <a data-dtype="d3ifr" data-local-attribute="d3ph" href="tel:<%= @business.phone %>" jscontroller="cSkPLb" jsaction="rcuQ6b:npT2md;F75qrd" jsdata="QKGTRc;;Ar4loY" data-ved="2ahUKEwigmbbd1OvrAhXtzoUKHaaTD6gQkAgoADAIegQIDRAW"><span aria-label="Appeler le <%= @business.phone %>" role="link"><%= @business.phone %></span></a>
       <% if current_owner == @business.owner %>
         <p>
           <%= link_to "Modifier les informations de votre établissement", edit_business_path, :class => "btn btn-common mb-2 mt-5" %>
