@@ -1,0 +1,22 @@
+<% if @items.find_by_category_id(category.id) %>
+<h1>
+    <%= category.name %>
+</h1>
+<% @items.each do |items_selected| %>
+<% if items_selected.category_id == category.id %>
+
+
+
+
+<p>
+    <%= items_selected.title %>
+</p>
+
+
+
+
+
+
+<% end %>
+<% end %>
+<% end %>

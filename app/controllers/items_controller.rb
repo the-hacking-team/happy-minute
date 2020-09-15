@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @business = Business.find(params[:business_id])
+    @categories = Category.all
     @items = @business.items
   end
 
