@@ -9,66 +9,7 @@
       <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Merci de modifier les informations du produit </p>
     </div>
     <div class="row justify-content-center">
-   <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.9s">
-      <div class="blog-item-text">
-        <div class="row">
-          <div class="col-4">
-            <h3>
-              <%= link_to item.title, business_item_path(@business, item) %>
-            </h3>
-            <div class="meta-tags">
-              <span class="foodcategory"><i class="lnr lnr-cloud"></i> <%= item.category %> </span><br>
-            </div>
-          </div>
-          <div class="col-6">
-            <p>
-              <%= item.description %>
-            </p>
-          </div>
-          <div class="col-2">
-            <p>
-              <% if happy_price %>
-                <del><%= item.price %> € </del>
-              <% else %>
-                <%= item.price %> €
-              <% end %>
-            </p>
-          </div>
-        </div>
-      </div>
-      <% if current_owner == item.business.owner && !item.happy_prices.empty? %>
-        <ul class="p-2">
-          <% item.happy_prices.each do |happy_price| %>
-            <li> <%= happy_price.price %> € :  
-              <% happy_price.happy_codes.each do |happy_code| %>
-                <span class="px-2"> <%= "#{happy_code.code}" %> </span>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-      <% if customer_signed_in? && current_customer.happy_codes.any? { |hc| hc.happy_price.item == item } %>
-
-        <p class="p-2"> Mes Happy Codes : 
-          <% current_customer.happy_codes.filter { |hc| hc.happy_price.item == item }.each do |happy_code|  %>
-            <span class="px-2">  <%= "#{happy_code.code} (#{happy_code.happy_price.price} €)" %> </span>
-          <% end %>
-        <% end %>
-
-      </div>
-      <% if happy_price %>
-        <!-- ( Happy Minute End !-->
-        <% if customer_signed_in? %>
-          <%= link_to "Bénéficier de la promo incroyable !", business_item_happy_price_happy_codes_path(@business, item, happy_price), method: :post, class: "btn btn-primary" %>
-        <% else %>
-          <%= link_to "Se connecter pour en profiter", new_customer_session_path, class: "btn btn-success" %>
-        <% end %>
-
-      </div>
-      <!-- Happy Minute End ) -->
-    <% end %>
-  </div>
-  <!-- Item Wrapper ) -->
+      <%= render partial: "form", locals: {method: :put} %>
     </div>
   </div>
 </section>
