@@ -14,9 +14,9 @@
     </div>
 
     <div class="col-lg-5 col-md-7">
-      <p class="font-weight-bold h4"><%= @business.name %></p>
-      <p><%= @business.address %></p>
-      <p><%= link_to @business.phone, "tel:#{@business.phone}" %> </p>
+      <h2 class="font-weight-bold"><%= @business.name %></h2>
+      <p><span class="lnr lnr-map-marker"></span> <%= @business.address %></p>
+      <p><span class="lnr lnr-phone"></span> <%= link_to @business.phone, @business.phone %> </p>
       <p>
         <%= link_to "Voir la carte", business_items_path(@business), :class => "btn btn-common mt-2" %>
       </p>
