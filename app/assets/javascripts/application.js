@@ -11,6 +11,8 @@
 // about supported directives.
 //
 
+//= require OneSignalSDKUpdaterWorker
+//= require OneSignalSDKWorker
 //= require rails-ujs
 //= require activestorage
 //= require jquery-min
