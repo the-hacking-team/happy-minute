@@ -22,8 +22,13 @@
               <%= link_to item.title, business_item_path(@business, item) %>
             </h3>
             <div class="meta-tags">
-              <span class="foodcategory"><i class="lnr lnr-cloud"></i> <%= item.category %> </span><br>
+              <% item.tags.each do |tag| %>
+                <span class="foodcategory"><i class="lnr lnr-cloud"></i>
+                  <%= tag.name %>
+                </span>
+              <% end %>
             </div>
+
           </div>
           <div class="col-6">
             <p>
