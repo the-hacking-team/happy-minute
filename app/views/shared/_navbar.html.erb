@@ -97,7 +97,7 @@
             <% elsif owner_signed_in? %>
               <%= link_to "Mon profil", owner_path(current_owner), class: "btn btn-common wow fadeInUp", data: { "wow-duration" => "1000ms", "wow-delay" => "400ms" } %>
             <% else %>
-              <%= link_to "Je m'inscris", new_customer_registration_path, class: "btn btn-common wow fadeInUp", data: { "wow-duration" => "1000ms", "wow-delay" => "400ms" } %>
+              <%= link_to "Nos Happy prices", happy_prices_path, class: "btn btn-common wow fadeInUp", data: { "wow-duration" => "1000ms", "wow-delay" => "400ms" } %>
             <% end %>
           </div>
         </div>
