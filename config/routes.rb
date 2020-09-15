@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'business_qr_codes/show'
   namespace :admin do
     resources :administrators
     resources :customers
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
       resources :item_photos, only: [:create]
     end
     resources :business_photos, only: [:create]
+    resources :business_qr_codes, only: [:index]
   end
 
   # Root is index of all businesses

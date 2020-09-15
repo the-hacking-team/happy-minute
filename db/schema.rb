@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_09_14_115322) do
+=======
+ActiveRecord::Schema.define(version: 2020_09_14_150705) do
+>>>>>>> develop
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +72,13 @@ ActiveRecord::Schema.define(version: 2020_09_14_115322) do
     t.index ["owner_id"], name: "index_businesses_on_owner_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -103,16 +114,27 @@ ActiveRecord::Schema.define(version: 2020_09_14_115322) do
     t.index ["item_id"], name: "index_happy_prices_on_item_id"
   end
 
+  create_table "item_tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "tag_id"
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_item_tags_on_item_id"
+    t.index ["tag_id"], name: "index_item_tags_on_tag_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "title"
     t.decimal "price"
     t.boolean "available"
     t.text "description"
-    t.string "category"
     t.bigint "business_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
+    t.bigint "category_id"
     t.index ["business_id"], name: "index_items_on_business_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
   end
 
   create_table "menu_items", force: :cascade do |t|
@@ -149,5 +171,14 @@ ActiveRecord::Schema.define(version: 2020_09_14_115322) do
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "item_tags", "items"
+  add_foreign_key "item_tags", "tags"
+  add_foreign_key "items", "categories"
 end

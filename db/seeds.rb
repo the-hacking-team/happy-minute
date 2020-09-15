@@ -13,8 +13,7 @@ Business.destroy_all
 Owner.destroy_all
 Customer.destroy_all
 Administrator.destroy_all
-
-categories = ['Entrée', 'Plat', 'Dessert', 'Soda', 'Appéritif', 'Boisson chaude', 'Cocktail']
+Category.destroy_all
 
 # OWNER
 # For use in tests
@@ -66,8 +65,22 @@ Owner.all.each do |owner|
 end
 puts "#{Business.all.size} Businesses created"
 
+# CATEGORY
+# Hand-written by Administrator
+categories = ['Entrée', 'AntiPasti', 'Plat', 'Dessert', 'Soda', 'Apéritif', 'Boisson chaude', 'Cocktail']
+j = 0
+
+categories.each do |category|
+  Category.create(
+    name: category,
+    position: j += 1
+  )
+end
+puts "#{Category.all.size} Categories created"
+
 # ITEMS
 # With Faker (each business has at least 3 items)
+i = 0
 Business.all.each do |business|
   rand(3..6).times do
     Item.create(
@@ -75,8 +88,9 @@ Business.all.each do |business|
       price: rand(1..50),
       available: true,
       description: Faker::Food.description,
-      category: categories[rand(0..(categories.length - 1))],
-      business_id: business.id
+      business_id: business.id,
+      position: i += 1,
+      category_id: Category.all.sample.id
     )
   end
 end
