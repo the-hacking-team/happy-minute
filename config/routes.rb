@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :happy_codes
     resources :happy_prices
     resources :items
+    resources :tags
+    resources :item_tags
+    resources :categories
 
     root to: 'administrators#index'
   end
