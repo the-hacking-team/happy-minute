@@ -14,15 +14,38 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
-      window.OneSignal = window.OneSignal || [];
-      OneSignal.push(function() {
-        OneSignal.init({
-          appId: "7556fc48-8018-4e4d-91fd-0d6c09df3401",
-          notifyButton: {
-            enable: true,
-          },
+      function subscribeNotification () {
+        var appId        = ONESIGNAL_APP_ID;
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+          OneSignal.init({
+            appId: appId,
+            autoRegister: false,
+            allowLocalhostAsSecureOrigin: true,
+            notifyButton: {
+              enable: true
+            },
+            webhooks: {
+              cors: true
+            }
+          });
+          OneSignal.on('subscriptionChange', function (isSubscribed) {
+            if (isSubscribed) {
+              OneSignal.getUserId(function(userId) {
+                var user_params = { onesignal_id: userId };
+                return userService.updateUser(user_params)
+                  .then(onSuccess);
+                function onSuccess (response) {
+                  var user = response.data.user;
+                  OneSignal.push(["sendTag", "user_id", user.id]);
+                  OneSignal.push(["sendTag", "user_name", user.name]);
+                  OneSignal.push(["sendTag", "user_email", user.email]);
+                }
+              });
+            }
+          });
         });
-      });
+      }
     </script>
 
   </head>
