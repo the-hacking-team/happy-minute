@@ -3,15 +3,19 @@ class BusinessPhotosController < ApplicationController
 
   def create
     @business = Business.find(params[:business_id])
-
-    if @business.business_photo.attach(params[:business_photo])
-      redirect_to(business_path(@business))
+    if params[:business_photo]
+      if @business.business_photo.attach(params[:business_photo])
+        flash[:success] = 'Votre photo a bien été ajoutée'
+      else
+        flash[:notice] = 'Vous ne pouvez pas effectuer cette action'
+      end
     else
-      flash[:danger] = 'Vous ne pouvez pas effectuer cette action'
-      redirect_to(business_path(@business))
+      flash[:warning] = 'Vous n\'avez pas sélectionné de photo'
     end
+    redirect_to(business_path(@business))
+
   rescue Exception => e
-    # FIXME: can't see notice
-    flash[:notice] = 'Vous ne pouvez pas effectuer cette action'
+  flash[:warning] = 'Vous ne pouvez pas effectuer cette action'
+  redirect_to(business_path(@business))
   end
 end
