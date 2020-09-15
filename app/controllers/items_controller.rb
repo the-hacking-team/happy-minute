@@ -12,21 +12,12 @@ class ItemsController < ApplicationController
   end
 
   def new
-    puts # *80
-    puts params.inspect
-    puts # *80
     @business = Business.find(params[:business_id])
     @item = @business.items.new
     @categories = Category.all.map { |category| [category.name, category.id] }
-    puts # *80
-    puts params.inspect
-    puts # *80
   end
 
   def create
-    puts # *80
-    puts params.inspect
-    puts # *80
     @business = Business.find(params[:business_id])
     @item = @business.items.new(item_params)
     @item.available = true
