@@ -133,6 +133,26 @@ ActiveRecord::Schema.define(version: 2020_09_14_150705) do
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
+  create_table "menu_items", force: :cascade do |t|
+    t.bigint "menu_id"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_menu_items_on_item_id"
+    t.index ["menu_id"], name: "index_menu_items_on_menu_id"
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.integer "position"
+    t.bigint "business_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_menus_on_business_id"
+  end
+
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

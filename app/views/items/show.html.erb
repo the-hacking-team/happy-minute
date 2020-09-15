@@ -59,6 +59,9 @@
       <div class="row justify-content-center">
         <%= link_to "Mettre en Happy Minute !", new_business_item_happy_price_path(@business, @item), class: "btn btn-common btn-lg" %>
       </div>
+      <div class="row justify-content-center">
+        <%= link_to "Supprimer le produit", business_item_path(@business, @item), method: :delete, class: "btn btn-danger" %>
+      </div>
     </div>
   </section>
 <% end %>
