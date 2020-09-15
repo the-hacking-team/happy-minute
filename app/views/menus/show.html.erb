@@ -32,6 +32,9 @@
       <div class="row justify-content-center">
         <%= link_to "Supprimer le menu", business_menu_path(@business, @menu), method: :delete, class: "btn btn-danger" %>
       </div>
+      <div class="row justify-content-center">
+        <%= link_to "Retour à la carte", business_items_path(@business), class: "btn btn-info" %>
+      </div>
     </div>
   </section>
 <% end %>

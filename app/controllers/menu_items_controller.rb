@@ -16,9 +16,9 @@ class MenuItemsController < ApplicationController
   def destroy
     @business = Business.find(params[:business_id])
     @menu = @business.menus.find(params[:menu_id])
-    @menu_item = @menu.menu_items.find(params[:id])
+    @menu_item = @menu.menu_items.find_by(item_id: params[:item_id])
     @menu_item.destroy
-    redirect_to edit_business_items_path(@business), flash: { success: 'Menu supprimé' }
+    redirect_to edit_business_menu_path(@business, @menu), flash: { warning: 'Le produit a été retiré du menu' }
   end
 
   private
