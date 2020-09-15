@@ -33,7 +33,7 @@
   <!-- category !-->
   <div class="form-group">
     <%= form.label :category, 'Catégorie' %>
-    <%= form.text_field :category, class: "form-control"  %>
+    <%= select(:item, :category_id, @categories) %>
   </div>
 
   <!-- SUBMIT !-->
