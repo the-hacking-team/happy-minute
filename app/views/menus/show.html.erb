@@ -1,0 +1,37 @@
+
+<%= render partial:"items/header" %>
+
+<!-- Basic Card Section Section -->
+<section id="blog" class="section">
+  <!-- Container Starts -->
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Menu <span><%= @menu.name %> </span> <%= @menu.price %> € </h2>
+      <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+      <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> <%= @menu.description %> </p>
+    </div>
+    <div class="row justify-content-center">
+      <%= render partial: "items/item", collection: @menu.items, as: :item %>
+    </div>
+  </div>
+</section>
+<!-- Basic Card Section End -->
+
+<% if @business.owner == current_owner %>
+  <section id="blog" class="section">
+    <!-- Container Starts -->
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Espace <span>Gestion</span></h2>
+        <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+        <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Gérer votre menu </p>
+      </div>
+      <div class="row justify-content-center">
+        <%= link_to "Modifier le menu", edit_business_menu_path(@business, @menu), class: "btn btn-common" %>
+      </div>
+      <div class="row justify-content-center">
+        <%= link_to "Supprimer le menu", business_menu_path(@business, @menu), method: :delete, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </section>
+<% end %>

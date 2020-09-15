@@ -1,0 +1,38 @@
+  <%= form_with(model: [@business, @menu], local: true, method: method, class: "col-lg-6") do |form| %>
+
+  <!-- ERRORS !-->
+  <% if @menu.errors.any? %>
+    <div class="alert alert-warning" role="alert">
+      <p> Le produit n'a pas pu être créé pour les raisons suivantes :</p>
+      <ul>
+        <% @menu.errors.full_messages.each do |message| %>
+          <li> <%= message %> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- name !-->
+  <div class="form-group">
+    <%= form.label :name, 'Nom' %>
+    <%= form.text_field :name, class: "form-control"  %>
+  </div>
+
+  <!-- description !-->
+  <div class="form-group">
+    <%= form.label :description, 'Description' %>
+    <%= form.text_area :description, class: "form-control"  %>
+  </div>
+
+  <!-- price !-->
+  <div class="form-group">
+    <%= form.label :price, 'Prix' %>
+    <%= form.number_field :price, min: 0.01, step: 0.01, class: "form-control"  %>
+  </div>
+
+  <!-- SUBMIT !-->
+  <div class="actions mt-5 pr-4">
+    <%= form.submit "Valider", class: "btn btn-lg btn-success btn-block" %>
+  </div>
+
+  <% end %>
