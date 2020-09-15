@@ -2,6 +2,7 @@
 <section class="section">
   <!-- Container Starts -->
   <div class="container">
+    <% if !@business.menus.empty? %>
     <div class="section-header">
       <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Nos <span>Menus</span></h2>
       <hr class="lines wow zoomIn" data-wow-delay="0.3s">
@@ -22,9 +23,9 @@
         </div>
       <% end %>
     </div>
+    <% end %>
     <div class="row justify-content-center">
-        <%= link_to "Ajouter un menu", new_business_menu_path(@business), class: "btn btn-common" %>
-
+      <%= link_to "Ajouter un menu", new_business_menu_path(@business), class: "btn btn-common" %>
     </div>
 </section>
 <!-- Basic Card Section Section -->
