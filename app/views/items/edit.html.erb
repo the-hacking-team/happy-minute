@@ -19,3 +19,58 @@
     <%= link_to "Supprimer", business_item_path(@business, @item), method: :delete, data: {confirm: "Etes-vous sûr ?"}, class: "btn btn-danger" %>
   </div>
 </div>
+
+
+
+<section id= "blog" class="section">
+  <!-- Container Starts -->
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Ajouter des <span>Tags</span></h2>
+      <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <% @item.tags.each do |tag| %>
+            <li class="list-group-item d-flex justify-content-around"><%= tag.name %>
+            <%= link_to business_item_item_tag_path(:item_id => @item.id, :tag_id => tag.id), method: :delete do  %>
+            <span class="lnr lnr-trash text-danger"></span>
+            <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <%= form_with(model: [@business, @item, @item_tag], local: true, method: :post, class: "col-lg-6") do |form| %>
+
+        <!-- ERRORS !-->
+        <% if @item_tag.errors.any? %>
+          <div class="alert alert-warning" role="alert">
+            <p> Le tag n'a pas pu être ajouté pour les raisons suivantes :</p>
+            <ul>
+              <% @item_tag.errors.full_messages.each do |message| %>
+                <li> <%= message %> </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <!-- tags !-->
+        <div class="form-group">
+          <%= form.label :tag_id, ' Nouveau tag ? ' %>
+          <%= form.collection_select(:tag_id, Tag.all, :id, :name, :prompt => 'Sélectionne') %>
+        </div>
+
+        <!-- SUBMIT !-->
+        <div class="actions mt-5 pr-4">
+          <%= form.submit "Valider", class: "btn btn-lg btn-success btn-block mb-5" %>
+        </div>
+
+      <% end %>
+
+    </div>
+
+  </div>
+  </section>

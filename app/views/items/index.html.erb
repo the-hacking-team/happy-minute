@@ -24,9 +24,11 @@
       <% end %>
     </div>
     <% end %>
+    <% if @business.owner == current_owner %>
     <div class="row justify-content-center">
       <%= link_to "Ajouter un menu", new_business_menu_path(@business), class: "btn btn-common" %>
     </div>
+    <% end %>
 </section>
 <!-- Basic Card Section Section -->
 <section id="blog" class="section">
