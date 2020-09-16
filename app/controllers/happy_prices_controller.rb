@@ -1,6 +1,11 @@
 class HappyPricesController < ApplicationController
 
-  before_action :authenticate_owner!
+  before_action :authenticate_owner!, except: [:index]
+
+  def index
+    @business
+    @happy_prices = HappyPrice.all
+  end
 
   def new
     @business = Business.find(params[:business_id])

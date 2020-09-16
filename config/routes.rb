@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   resources :owners, only: [:show]
   resources :customers, only: [:show]
   resources :business_follows, only: %i[create destroy]
-
+  resources :happy_prices, only: [:index]
+  
   resources :businesses do
     resources :menus, only: %i[show new create edit update destroy] do
       resources :menu_items, only: %i[create destroy]
