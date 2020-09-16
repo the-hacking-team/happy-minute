@@ -60,7 +60,6 @@
       <!-- ( Item Wrapper -->
       <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 blog-item">
 
-      <% if happy_price %>
       <!-- ( Happy Minute Begin !-->
       <div class="alert alert-success wow fadeInUp" data-wow-delay="0.9s">
         <p class="display-4"> HAPPY MINUTE : <%= happy_price.price %> € </p>
@@ -69,7 +68,6 @@
         <span class="badge badge-pill badge-primary p-3 mb-3">Temps restant : <%= happy_price.time.in_minutes %> minutes</span>
 
         <!-- Happy Minute Begin ) !-->
-        <% end %>
 
         <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.9s">
           <div class="blog-item-text">
@@ -91,8 +89,6 @@
               <p>
                 <% if happy_price %>
                   <del><%= item.price %> € </del>
-                <% else %>
-                  <%= item.price %> €
                 <% end %>
               </p>
             </div>
@@ -100,7 +96,6 @@
         </div>
 
       </div>
-      <% if happy_price %>
         <!-- ( Happy Minute End !-->
         <% if customer_signed_in? %>
           <%= link_to "Bénéficier de la promo incroyable !", business_item_happy_price_happy_codes_path(@business, item, happy_price), method: :post, class: "btn btn-primary" %>
@@ -111,7 +106,6 @@
         </div>
         <!-- Happy Minute End ) -->
       </div>
-      <% end %>
       </div>
       <!-- Item Wrapper ) -->
     <% end %>
