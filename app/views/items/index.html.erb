@@ -29,6 +29,19 @@
         <%= link_to "Ajouter un menu", new_business_menu_path(@business), class: "btn btn-common" %>
       <%end%>
     </div>
+    <div class="row justify-content-center">
+      <button type="button" class="allergen-btn btn btn-primary">Filtrer les allergènes</button>
+    </div>
+    <div class="allergen-container row justify-content-center" style="display: none">
+      <button type="button" class="arachid-btn btn btn-primary">Arachides</button>
+      <button type="button" class="gluten-btn btn btn-primary">Gluten</button>
+      <button type="button" class="lactose-btn btn btn-primary">Lactose</button>
+      <button type="button" class="cereal-btn btn btn-primary">Céréales</button>
+      <button type="button" class="oilseed-btn btn btn-primary">Fruits à coques</button>
+      <button type="button" class="seafood-btn btn btn-primary">Fruits de mer</button>
+      <button type="button" class="soy-btn btn btn-primary">Soja</button>
+    </div>
+
   </section>
   <!-- Basic Card Section Section -->
   <section id="blog" class="section">
