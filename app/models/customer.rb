@@ -23,6 +23,17 @@ class Customer < ApplicationRecord
   private
 
   def welcome_email
-    CustomerMailer.with(customer: self).welcome_email.deliver_now
+    # Deliver the order to the user
+    # ------------------------------
+    # See https://stackoverflow.com/questions/8709984/how-to-catch-error-exception-in-actionmailer
+    begin
+      CustomerMailer.with(customer: self).welcome_email.deliver_now
+      puts "Envoie du mail semble ok"
+    rescue Exception => e
+      puts "="*80
+      puts "ERREUR : Il y a eu un problème dans l'envoi du mail, merci de nous contacter"
+      puts "="*80
+      flash[:warning] = "Il y a eu un problème dans l'envoi du mail, merci de nous contacter"
+    end
   end
 end
