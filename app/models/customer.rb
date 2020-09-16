@@ -33,7 +33,6 @@ class Customer < ApplicationRecord
       puts "="*80
       puts "ERREUR : Il y a eu un problème dans l'envoi du mail, merci de nous contacter"
       puts "="*80
-      flash[:warning] = "Il y a eu un problème dans l'envoi du mail, merci de nous contacter"
     end
   end
 end
