@@ -19,7 +19,7 @@
         <div class="row">
           <div class="col-4">
             <h3>
-              <%= link_to item.title, business_item_path(@business, item) %>
+              <%= item.title %>
             </h3>
             <div class="meta-tags">
               <% item.tags.each do |tag| %>
