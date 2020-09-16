@@ -29,6 +29,19 @@
       <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Ajouter des <span>Tags</span></h2>
       <hr class="lines wow zoomIn" data-wow-delay="0.3s">
     </div>
+    <div class="row justify-content-center mb-5">
+      <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <% @item.tags.each do |tag| %>
+            <li class="list-group-item d-flex justify-content-around"><%= tag.name %>
+            <%= link_to business_item_item_tag_path(:item_id => @item.id, :tag_id => tag.id), method: :delete do  %>
+            <span class="lnr lnr-trash text-danger"></span>
+            <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
     <div class="row justify-content-center">
       <%= form_with(model: [@business, @item, @item_tag], local: true, method: :post, class: "col-lg-6") do |form| %>
 
@@ -47,17 +60,8 @@
         <!-- tags !-->
         <div class="form-group">
           <%= form.label :tag_id, ' Nouveau tag ? ' %>
-          <%= form.collection_select :tag_id, Tag.all, :id, :name %>
+          <%= form.collection_select(:tag_id, Tag.all, :id, :name, :prompt => 'Sélectionne') %>
         </div>
-
-
-        
-      <!-- tags !-->
-  <div class="form-group">
-    <%= form.label :tag, 'Tags' %>
-    <%= form.select(:category_id, @categories, {}, { :class => 'form-control' }) %>
-  </div>
-  <%= form.collection_select(:manufacturer_id, Manufacturer.all, :id, :name, :prompt => 'Select') %>
 
         <!-- SUBMIT !-->
         <div class="actions mt-5 pr-4">
