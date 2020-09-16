@@ -53,9 +53,7 @@ class HappyPrice < ApplicationRecord
     begin
       CustomerMailer.with(happy_price: self).notify_followers_email.deliver_now
     rescue Exception => e
-      puts "="*80
       puts "ERREUR : Il y a eu un problème dans l'envoi du mail de notification au followers"
-      puts "="*80
     end
   end
 end

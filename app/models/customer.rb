@@ -29,9 +29,7 @@ class Customer < ApplicationRecord
     begin
       CustomerMailer.with(customer: self).welcome_email.deliver_now
     rescue Exception => e
-      puts "="*80
       puts "ERREUR : Il y a eu un problème dans l'envoi du mail, merci de nous contacter"
-      puts "="*80
     end
   end
 end
