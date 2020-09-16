@@ -8,6 +8,7 @@ class BusinessesController < ApplicationController
 
   def show
     @business = Business.find(params[:id])
+    @happy_prices = HappyPrice.all.where(item_id: Item.all.where(business_id: @business.id))
   end
 
   def new
