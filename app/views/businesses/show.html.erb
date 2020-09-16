@@ -38,3 +38,79 @@
     </div>
   </div>
 </div>
+
+
+
+
+<% if !@happy_prices.empty? %>
+
+<!-- Basic Card Section Section -->
+<section id="blog" class="section d-flex align-items-center flex-column">
+  <!-- Container Starts -->
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Nos Happy Prices<span>du moment</span></h2>
+      <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+      <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">Profitez-en !</p>
+    </div>
+
+    <% @happy_prices.each do |happy_price| %>
+      <div class="row justify-content-center">
+      <% item = happy_price.item %>
+      <!-- ( Item Wrapper -->
+      <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 blog-item">
+
+      <!-- ( Happy Minute Begin !-->
+      <div class="alert alert-success wow fadeInUp" data-wow-delay="0.9s">
+        <p class="display-4"> HAPPY MINUTE : <%= happy_price.price %> € </p>
+
+        <span class="badge badge-pill badge-primary p-3">Disponibles : <%= happy_price.stock %></span>
+        <span class="badge badge-pill badge-primary p-3 mb-3">Temps restant : <%= happy_price.time.in_minutes %> minutes</span>
+
+        <!-- Happy Minute Begin ) !-->
+
+        <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.9s">
+          <div class="blog-item-text">
+            <div class="row">
+              <div class="col-4">
+                <h3>
+                  <%= link_to item.title, business_item_path(@business, item) %>
+                </h3>
+                <div class="meta-tags">
+                  <span class="foodcategory"><i class="lnr lnr-cloud"></i> <%= item.category.name %> </span><br>
+                </div>
+              </div>
+              <div class="col-6">
+              <p>
+                <%= item.description %>
+              </p>
+            </div>
+            <div class="col-2">
+              <p>
+                <% if happy_price %>
+                  <del><%= item.price %> € </del>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+        <!-- ( Happy Minute End !-->
+        <% if customer_signed_in? %>
+          <%= link_to "Bénéficier de la promo incroyable !", business_item_happy_price_happy_codes_path(@business, item, happy_price), method: :post, class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "Se connecter pour en profiter", new_customer_session_path, class: "btn btn-success" %>
+        <% end %>
+
+        </div>
+        <!-- Happy Minute End ) -->
+      </div>
+      </div>
+      <!-- Item Wrapper ) -->
+    <% end %>
+  
+  </div>
+</section> 
+
+<% end %>
