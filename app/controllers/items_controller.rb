@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
   def edit
     @business = Business.find(params[:business_id])
     @item = @business.items.find(params[:id])
+    @categories = Category.all.map { |category| [category.name, category.id] }
   end
 
   def update
