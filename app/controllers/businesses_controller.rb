@@ -4,12 +4,6 @@ class BusinessesController < ApplicationController
   def index
     @businesses = Business.all
     @is_from_root = true
-    # current_owner connected ?
-    if owner_signed_in?
-      puts "current_owner #{current_owner}"
-      redirect_to owner_path(current_owner)
-    end
-    
   end
 
   def show
