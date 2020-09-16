@@ -2,7 +2,7 @@
   <% flash.each do |key, value|
   type = 'secondary'
   type = 'success' if %i[success].include?(key.to_sym)
-  type = 'primary' if %i[notice info].include?(key.to_sym)
+  type = 'warning' if %i[notice info].include?(key.to_sym)
   type = 'danger' if %i[error].include?(key.to_sym)
   type = 'warning' if %i[alert warning].include?(key.to_sym)
   %>
