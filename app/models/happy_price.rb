@@ -47,6 +47,15 @@ class HappyPrice < ApplicationRecord
   private
 
   def notify_followers_email
-    CustomerMailer.with(happy_price: self).notify_followers_email.deliver_now
+    # Deliver the mail to notify the followers
+    # ----------------------------------------
+    # See https://stackoverflow.com/questions/8709984/how-to-catch-error-exception-in-actionmailer
+    begin
+      CustomerMailer.with(happy_price: self).notify_followers_email.deliver_now
+    rescue Exception => e
+      puts "="*80
+      puts "ERREUR : Il y a eu un problème dans l'envoi du mail de notification au followers"
+      puts "="*80
+    end
   end
 end

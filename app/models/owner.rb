@@ -21,6 +21,15 @@ class Owner < ApplicationRecord
   private
 
   def welcome_email
-    OwnerMailer.with(owner: self).welcome_email.deliver_now
+    # Deliver the mail to the owner
+    # ------------------------------
+    # See https://stackoverflow.com/questions/8709984/how-to-catch-error-exception-in-actionmailer
+    begin
+      OwnerMailer.with(owner: self).welcome_email.deliver_now
+    rescue Exception => e
+      puts "="*80
+      puts "ERREUR : Il y a eu un problème dans l'envoi du mail, merci de nous contacter"
+      puts "="*80
+    end
   end
 end
