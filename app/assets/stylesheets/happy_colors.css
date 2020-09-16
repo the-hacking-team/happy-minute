@@ -141,3 +141,8 @@ color: #ccc;
 .list-group-item {
 	background-color: 	#94C523;
 }
+
+.alert-primary {
+	background-color: #d4edda;
+  border-color: #c3e6cb;
+}

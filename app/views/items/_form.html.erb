@@ -30,10 +30,10 @@
     <%= form.number_field :price,step: 0.01, class: "form-control"  %>
   </div>
 
-  <!-- category !-->
+  <!-- categorie !-->
   <div class="form-group">
-    <%= form.label :category, 'Catégorie' %>
-    <%= form.select(:category_id, @categories, {}, { :class => 'form-control' }) %>
+    <%= form.label :category_id, ' Catégorie    ' %>
+    <%= form.collection_select :category_id, Category.all, :id, :name,  :prompt => 'Sélectionne' %>
   </div>
 
   <!-- SUBMIT !-->
