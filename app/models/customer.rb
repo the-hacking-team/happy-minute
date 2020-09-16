@@ -8,6 +8,8 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates_confirmation_of :password
+
   after_create :welcome_email
 
   def name
