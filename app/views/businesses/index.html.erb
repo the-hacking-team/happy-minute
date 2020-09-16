@@ -25,11 +25,11 @@
                     <%= link_to business.name, business_path(business.id) %>
                 </h3>
                 <div class="meta-tags">
-                    <span class="businesscategory"><i class="lnr lnr-poop"></i>Restaurant au top</span>
+                    <span class="businesscategory"><i class="lnr lnr-store"></i>Restaurant au top</span>
                 </div>
                 <p>
-                    <%= business.address %><br>
-                    <%= business.phone %>
+                    <i class="lnr lnr-map-marker"> </i><%= business.address %><br>
+                    <i class="lnr lnr-phone-handset"> </i><%= business.phone %>
                 </p>
                 <% if customer_signed_in? %>
                   <% if current_customer.businesses.include?(business) %>
