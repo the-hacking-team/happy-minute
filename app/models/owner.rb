@@ -27,7 +27,7 @@ class Owner < ApplicationRecord
     begin
       OwnerMailer.with(owner: self).welcome_email.deliver_now
     rescue Exception => e
-      puts "ERREUR : Il y a eu un problème dans l'envoi du mail, merci de nous contacter"
+      #
     end
   end
 end
