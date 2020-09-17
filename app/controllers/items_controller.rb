@@ -38,6 +38,7 @@ class ItemsController < ApplicationController
   def update
     @business = Business.find(params[:business_id])
     @item = @business.items.find(params[:id])
+    @item_tag = @item.item_tags.new
     if @item.update(item_params)
       redirect_to business_item_path(@business, @item), flash: { success: 'Produit mis à jour' }
     else
