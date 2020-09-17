@@ -1,11 +1,12 @@
 class Owner < ApplicationRecord
-
   has_many :businesses
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates_confirmation_of :password
 
   after_create :welcome_email
 
@@ -16,7 +17,7 @@ class Owner < ApplicationRecord
       email
     end
   end
-  
+
   private
 
   def welcome_email

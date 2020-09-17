@@ -1,8 +1,11 @@
 class CustomerMailer < ApplicationMailer
   def welcome_email
     @customer = params[:customer]
-    if Truemail.validate(@customer.email).result.success
-    mail(to: @customer.email, subject: 'Bienvenue parmi nous')
+
+    @email = ENV['HAPPY_MINUTE_FROM']
+    @url   = ENV['HAPPY_MINUTE_HOSTNAME']
+    mail(to: @customer.email, subject: 'Bienvenue sur le site Happy Minute !')
+
   end
   end
 

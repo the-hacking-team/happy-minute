@@ -42,8 +42,7 @@ Le consommateur peut également s’inscrire sur l’application, rechercher les
 
 ### Une base de données bien définie
 
-![ERD 2020-09-11 004019](https://user-images.githubusercontent.com/37190085/92823326-71b8c080-f3cd-11ea-8f5c-18c7da339fc4.jpg)
-
+![ERD 2020-09-16](https://github.com/the-hacking-team/happy-minute/blob/develop/app/assets/images/Happy%20Minutes%20ERD.jpeg)
 
 ### Schémas du modèle MVC
 

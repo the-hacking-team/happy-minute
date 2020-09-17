@@ -9,7 +9,8 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :email, presence: true, if: :truemail_test
-  
+  validates_confirmation_of :password
+
   after_create :welcome_email
 
   def name
