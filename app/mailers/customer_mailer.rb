@@ -1,7 +1,9 @@
 class CustomerMailer < ApplicationMailer
   def welcome_email
     @customer = params[:customer]
-    mail(to: @customer.email, subject: 'Bienvenue parmi nous')
+    @email = ENV['HAPPY_MINUTE_FROM']
+    @url   = ENV['HAPPY_MINUTE_HOSTNAME']
+    mail(to: @customer.email, subject: 'Bienvenue sur le site Happy Minute !')
   end
 
   def notify_followers_email

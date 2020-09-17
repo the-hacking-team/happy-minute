@@ -45,7 +45,7 @@
         <!-- name !-->
         <div class="form-group">
           <%= form.label :item_id, ' Nouveau produit ?    ' %>
-          <%= form.collection_select :item_id, @business.items.all, :id, :title,  :prompt => 'Sélectionne' %>
+          <%= form.collection_select :item_id, @business.items.all, :id, :title, :prompt => 'Sélectionne' %>
         </div>
 
         <!-- SUBMIT !-->

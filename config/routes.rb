@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :customers, only: [:show]
   resources :business_follows, only: %i[create destroy]
   resources :happy_prices, only: [:index]
-  
+
   resources :businesses do
     resources :menus, only: %i[show new create edit update destroy] do
       resources :menu_items, only: %i[create destroy]
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
         resources :happy_codes, only: %i[create]
       end
       resources :item_photos, only: [:create]
+      resources :item_tags, only: %i[create destroy]
     end
     resources :business_photos, only: [:create]
     resources :business_qr_codes, only: [:index]

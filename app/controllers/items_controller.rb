@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
   def edit
     @business = Business.find(params[:business_id])
     @item = @business.items.find(params[:id])
+    @item_tag = @item.item_tags.new
   end
 
   def update
