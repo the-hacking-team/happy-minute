@@ -21,6 +21,13 @@ class Owner < ApplicationRecord
   private
 
   def welcome_email
-    OwnerMailer.with(owner: self).welcome_email.deliver_now
+    # Deliver the mail to the owner
+    # ------------------------------
+    # See https://stackoverflow.com/questions/8709984/how-to-catch-error-exception-in-actionmailer
+    begin
+      OwnerMailer.with(owner: self).welcome_email.deliver_now
+    rescue Exception => e
+      #
+    end
   end
 end

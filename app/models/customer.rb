@@ -23,6 +23,13 @@ class Customer < ApplicationRecord
   private
 
   def welcome_email
-    CustomerMailer.with(customer: self).welcome_email.deliver_now
+    # Deliver the mail to the customer
+    # --------------------------------
+    # See https://stackoverflow.com/questions/8709984/how-to-catch-error-exception-in-actionmailer
+    begin
+      CustomerMailer.with(customer: self).welcome_email.deliver_now
+    rescue Exception => e
+      #
+    end
   end
 end
