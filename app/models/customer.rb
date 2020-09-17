@@ -8,6 +8,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :email, presence: true, if: :truemail_test
   validates_confirmation_of :password
 
   after_create :welcome_email
@@ -15,12 +16,15 @@ class Customer < ApplicationRecord
   def name
     if first_name || last_name
       "#{first_name} #{last_name}"
-    else
-      email
     end
   end
 
   private
+  def truemail_test
+    unless Truemail.validate(self.email).result.success == true
+      errors.add(:email, "Le domaine n'est pas valide")
+    end
+  end
 
   def welcome_email
     # Deliver the mail to the customer
