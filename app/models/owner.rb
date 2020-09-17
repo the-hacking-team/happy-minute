@@ -7,6 +7,7 @@ class Owner < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates_confirmation_of :password
+  validates :email, presence: true, if: :truemail_test
 
   after_create :welcome_email
 
@@ -19,6 +20,12 @@ class Owner < ApplicationRecord
   end
 
   private
+
+  def truemail_test
+    unless Truemail.validate(self.email).result.success == true
+      errors.add(:email, "Le domaine n'est pas valide")
+    end
+  end
 
   def welcome_email
     OwnerMailer.with(owner: self).welcome_email.deliver_now
