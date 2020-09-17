@@ -44,7 +44,7 @@ class BusinessesController < ApplicationController
   def destroy
     @business = Business.find(params[:id])
     @business.destroy
-    redirect_to root_path
+    redirect_to owner_path(current_owner)
   end
 
   private
