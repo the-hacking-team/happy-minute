@@ -12,7 +12,7 @@
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
         <!-- Blog Item Starts -->
         <%= link_to business_path(business.id) do %>
-          <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.9s">
+          <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.3s">
             <div class="blog-item-img">
                 <%if business.business_photo.attached?%>
                   <%= image_tag business.business_photo, alt: 'photo', :class => "root-card-image" %>
