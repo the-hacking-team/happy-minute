@@ -5,7 +5,10 @@ class HappyPrice < ApplicationRecord
   validates :price, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  
+
+  validate :dates_dont_overlap
+  validate :lower_price
+
   after_create :notify_followers_email
 
   def started?
@@ -56,4 +59,16 @@ class HappyPrice < ApplicationRecord
       #
     end
   end
+
+  def dates_dont_overlap
+    overlapping = item.happy_prices.filter do |happy_price|
+      start_date < happy_price.end_date && happy_price.start_date < end_date
+    end.first
+    errors.add(:start_date, "Le Happy Minute chevauche un autre à #{overlapping.price} €") if overlapping
+  end
+
+  def lower_price
+    errors.add(:price, "Le prix doit être inférieur au prix usuel de #{item.price} €") unless price < item.price
+  end
+
 end

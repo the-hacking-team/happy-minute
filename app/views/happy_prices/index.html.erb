@@ -10,64 +10,52 @@
 
     <% @happy_prices.each do |happy_price| %>
       <div class="row justify-content-center">
-      <% item = happy_price.item %>
-      <% business = item.business %>
+        <% item = happy_price.item %>
+        <% business = item.business %>
 
-      <!-- ( Item Wrapper -->
-      <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 blog-item">
+        <!-- ( Item Wrapper -->
+        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 blog-item">
 
-      <% if happy_price %>
-      <!-- ( Happy Minute Begin !-->
-      <div class="alert alert-success wow fadeInUp" data-wow-delay="0.9s">
-        <p class="display-4"> HAPPY MINUTE : <%= happy_price.price %> € </p>
+          <!-- ( Happy Minute Begin !-->
+          <div class="alert alert-success wow fadeInUp" data-wow-delay="0.9s">
+            <p class="display-4"> HAPPY MINUTE : <%= happy_price.price %> € </p>
 
-        <span class="badge badge-pill badge-primary p-3">Disponibles : <%= happy_price.stock %></span>
-        <span class="badge badge-pill badge-primary p-3 mb-3">Temps restant : <%= happy_price.time.in_minutes %> minutes</span>
+            <span class="badge badge-pill badge-primary p-3">Disponibles : <%= happy_price.stock %></span>
+            <span class="badge badge-pill badge-primary p-3 mb-3">Temps restant : <%= happy_price.time.in_minutes %> minutes</span>
 
-        <!-- Happy Minute Begin ) !-->
-        <% end %>
+            <!-- Happy Minute Begin ) !-->
 
-        <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.9s">
-          <div class="blog-item-text">
-            <div class="row">
-              <div class="col-4">
-                <h3>
-                  <%= link_to item.title, business_item_path(business, item) %>
-                </h3>
-                <div class="meta-tags">
-                  <span class="foodcategory"><i class="lnr lnr-cloud"></i> <%= item.category.name %> </span><br>
+            <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.9s">
+              <div class="blog-item-text">
+                <div class="row">
+
+                  <div class="col-4">
+                    <h3><%= link_to item.title, business_item_path(business, item) %></h3>
+                    <div class="meta-tags">
+                      <span class="foodcategory"><i class="lnr lnr-cloud"></i> <%= item.category.name %> </span><br>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <p><%= item.description %></p>
+                  </div>
+
+                  <div class="col-2">
+                    <p><del><%= item.price %> € </del></p>
+                  </div>
+
                 </div>
               </div>
-              <div class="col-6">
-              <p>
-                <%= item.description %>
-              </p>
             </div>
-            <div class="col-2">
-              <p>
-                <% if happy_price %>
-                  <del><%= item.price %> € </del>
-                <% else %>
-                  <%= item.price %> €
-                <% end %>
-              </p>
-            </div>
-          </div>
-        </div>
 
-      </div>
-      <% if happy_price %>
-        <!-- ( Happy Minute End !-->
-        <% if customer_signed_in? %>
-          <%= link_to "Bénéficier de la promo incroyable !", business_item_happy_price_happy_codes_path(business, item, happy_price), method: :post, class: "btn btn-primary" %>
-        <% else %>
-          <%= link_to "Se connecter pour en profiter", new_customer_session_path, class: "btn btn-success" %>
-        <% end %>
+          <% if customer_signed_in? %>
+            <%= link_to "Bénéficier de la promo incroyable !", business_item_happy_price_happy_codes_path(business, item, happy_price), method: :post, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "Se connecter pour en profiter", new_customer_session_path, class: "btn btn-success" %>
+          <% end %>
 
         </div>
         <!-- Happy Minute End ) -->
-      </div>
-      <% end %>
       </div>
       <!-- Item Wrapper ) -->
     <% end %>
