@@ -19,10 +19,10 @@
           <!-- ( Happy Minute Begin !-->
           <div class="alert alert-success wow fadeInUp" data-wow-delay="0.9s">
             <p class="display-4"> HAPPY MINUTE : <%= happy_price.price %> € </p>
-
+            
             <span class="badge badge-pill badge-primary p-3">Disponibles : <%= happy_price.stock %></span>
             <span class="badge badge-pill badge-primary p-3 mb-3">Temps restant : <%= happy_price.time.in_minutes %> minutes</span>
-
+            <span class="btn btn-outline-primary p-3 mb-3 ml-5"><%= link_to "Restaurant : #{business.name}", business_path(business.id) %></span>
             <!-- Happy Minute Begin ) !-->
 
             <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.9s">
@@ -30,7 +30,15 @@
                 <div class="row">
 
                   <div class="col-4">
-                    <h3><%= link_to item.title, business_item_path(business, item) %></h3>
+                    <% if current_owner == item.business.owner %>
+                      <h3>
+                        <%= link_to item.title, business_item_path(@business, item) %>
+                      </h3>
+                    <% else %>
+                      <h3>
+                        <%= item.title %>
+                      </h3>
+                    <% end %>
                     <div class="meta-tags">
                       <span class="foodcategory"><i class="lnr lnr-cloud"></i> <%= item.category.name %> </span><br>
                     </div>
