@@ -18,7 +18,6 @@ class ItemPhotosController < ApplicationController
     redirect_to(business_item_path(@business, @item))
 
   rescue Exception => e
-    flash[:warning] = 'Vous ne pouvez pas effectuer cette action'
     redirect_to(business_item_path(@business, @item))
   end
 end
