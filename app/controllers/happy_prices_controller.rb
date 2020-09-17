@@ -1,5 +1,4 @@
 class HappyPricesController < ApplicationController
-
   before_action :authenticate_owner!, except: [:index]
 
   def index
@@ -16,7 +15,8 @@ class HappyPricesController < ApplicationController
   def create
     @business = Business.find(params[:business_id])
     @item = @business.items.find(params[:item_id])
-    if @happy_price = @item.happy_prices.create(happy_price_params)
+    @happy_price = @item.happy_prices.new(happy_price_params)
+    if @happy_price.save
       redirect_to business_item_path(@business, @item), flash: { success: 'Happy Minute créé' }
     else
       render :new
