@@ -5,8 +5,6 @@ class CustomerMailer < ApplicationMailer
     @email = ENV['HAPPY_MINUTE_FROM']
     @url   = ENV['HAPPY_MINUTE_HOSTNAME']
     mail(to: @customer.email, subject: 'Bienvenue sur le site Happy Minute !')
-
-  end
   end
 
   def notify_followers_email
@@ -19,7 +17,5 @@ class CustomerMailer < ApplicationMailer
       if Truemail.validate(@customer.email).result.success
       mail(to: @customer.email, subject: 'Nouveau Happy Minute !')
       end
-      
-    end
   end
 end
