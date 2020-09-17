@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
     @business = Business.find(params[:business_id])
     @item = @business.items.find(params[:id])
     @categories = Category.all.map { |category| [category.name, category.id] }
+    @item_tag = @item.item_tags.new
   end
 
   def update
