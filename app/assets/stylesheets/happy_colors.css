@@ -146,3 +146,8 @@ color: #ccc;
 	background-color: #d4edda;
   border-color: #c3e6cb;
 }
+
+.profile-owner{
+	font-size: 1.5rem;
+	font: x-large;
+}
