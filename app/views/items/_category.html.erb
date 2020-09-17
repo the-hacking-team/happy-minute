@@ -6,9 +6,10 @@
       </h1>
     </div>
   </div>
-  <div class="row justify-content-center">
     <% @items.each do |item| %>
       <% if item.category_id == category.id %>
+        <div class="row justify-content-center">
+
         <% happy_price = item.current_happy_price %>
         <!-- ( Item Wrapper -->
         <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 blog-item">
@@ -22,7 +23,7 @@
               <span class="badge badge-pill badge-primary p-3 mb-3">Temps restant :
                 <%= happy_price.time.in_minutes %> minutes</span>
               <!-- Happy Minute Begin ) !-->
-            <% end %>
+          <% end %>
             <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.9s">
               <div class="blog-item-text">
                 <div class="row">
@@ -89,6 +90,6 @@
           </div>
           <!-- Item Wrapper ) -->
         <% end %>
+        </div>
       <% end %>
     <% end %>
-  </div>
