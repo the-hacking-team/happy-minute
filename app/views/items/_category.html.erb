@@ -24,6 +24,7 @@
               <span class="badge badge-pill badge-primary p-3 mb-3">Temps restant :
                 <%= happy_price.time.in_minutes %> minutes</span>
               <!-- Happy Minute Begin ) !-->
+
           <% end %>
           <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.3s">
             <div class="blog-item-text">
@@ -82,7 +83,9 @@
 
           <% if happy_price %>
             <!-- ( Happy Minute End !-->
-            <% if customer_signed_in? %>
+            <% if current_owner == @business.owner %>
+              <%= link_to "Modifier (#{happy_price.price} €)", edit_business_item_happy_price_path(@business, item, happy_price), class: "btn btn-common display-4"%>
+            <% elsif customer_signed_in? %>
               <%= link_to "Bénéficier de la promo incroyable !", business_item_happy_price_happy_codes_path(@business, item, happy_price), method: :post, class: "btn btn-primary" %>
             <% else %>
               <%= link_to "Se connecter pour en profiter", new_customer_session_path, class: "btn btn-success" %>
