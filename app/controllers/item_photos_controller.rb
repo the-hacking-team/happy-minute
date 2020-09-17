@@ -6,11 +6,8 @@ class ItemPhotosController < ApplicationController
     @item = @business.items.find(params[:item_id])
 
     if params[:item_photo]
-      if @item.item_photo.attach(params[:item_photo])
-        flash[:success] = 'Votre photo a bien été ajoutée'
-      else
-        flash[:warning] = 'Vous ne pouvez pas effectuer cette action'
-      end
+      @item.item_photo.attach(params[:item_photo])
+      flash[:success] = 'Votre photo a bien été ajoutée'
     else
       # No selected picture
       flash[:warning] = 'Vous n\'avez pas sélectionné de photo'
