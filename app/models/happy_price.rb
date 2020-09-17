@@ -59,7 +59,6 @@ class HappyPrice < ApplicationRecord
       #
     end
   end
-<<<<<<< HEAD
 
   def dates_dont_overlap
     overlapping = item.happy_prices.filter do |happy_price|
@@ -71,6 +70,5 @@ class HappyPrice < ApplicationRecord
   def lower_price
     errors.add(:price, "Le prix doit être inférieur au prix usuel de #{item.price} €") unless price < item.price
   end
-=======
->>>>>>> develop
+
 end
