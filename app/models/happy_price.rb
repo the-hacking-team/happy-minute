@@ -6,7 +6,7 @@ class HappyPrice < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
 
-  validate :dates_dont_overlap
+  validate :dates_dont_overlap2
   validate :lower_price
 
   after_create :notify_followers_email
@@ -53,11 +53,9 @@ class HappyPrice < ApplicationRecord
     # Deliver the mail to notify the followers
     # ----------------------------------------
     # See https://stackoverflow.com/questions/8709984/how-to-catch-error-exception-in-actionmailer
-    begin
-      CustomerMailer.with(happy_price: self).notify_followers_email.deliver_now
-    rescue Exception => e
-      #
-    end
+
+    CustomerMailer.with(happy_price: self).notify_followers_email.deliver_now
+  rescue Exception => e
   end
 
   def dates_dont_overlap
@@ -67,8 +65,15 @@ class HappyPrice < ApplicationRecord
     errors.add(:start_date, "Le Happy Minute chevauche un autre à #{overlapping.price} €") if overlapping
   end
 
+  def dates_dont_overlap2
+    not_overlapping = true
+    item.happy_prices.each do |happy_price|
+      not_overlapping = false if start_date < happy_price.end_date && happy_price.start_date < end_date
+    end
+    errors.add(:start_date, 'Le Happy Minute chevauche un autre') unless not_overlapping == true
+  end
+
   def lower_price
     errors.add(:price, "Le prix doit être inférieur au prix usuel de #{item.price} €") unless price < item.price
   end
-
 end
