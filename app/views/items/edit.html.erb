@@ -32,7 +32,7 @@
         <ul class="list-group list-group-flush">
           <% @item.item_tags.filter { |ht| !ht.id.nil? }.each do |item_tag| %>
             <li class="list-group-item d-flex justify-content-around"><%= item_tag.tag.name %>
-              <%= link_to business_item_item_tag_path(@business, @item, item_tag), method: :delete do  %>
+              <%= link_to business_item_item_tag_path(@business, @item, item_tag), data: {confirm: "Etes-vous sûr ?"}, method: :delete do  %>
                 <span class="lnr lnr-trash text-danger"></span>
               <% end %>
             </li>
