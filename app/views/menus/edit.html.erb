@@ -84,7 +84,7 @@
               </div>
               <div class="col-1 ml-5 ">
                 <p>
-                  <%= link_to business_menu_menu_item_path(:menu_id => @menu.id, :item_id => item.id), method: :delete do  %>
+                  <%= link_to business_menu_menu_item_path(:menu_id => @menu.id, :item_id => item.id), data: {confirm: "Etes-vous sûr ?"}, method: :delete do  %>
                     <p><span class="lnr lnr-trash text-danger"></span></p>
                   <% end %>
                 </p>
