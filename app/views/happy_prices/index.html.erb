@@ -23,7 +23,7 @@
               <p class="display-4"> HAPPY MINUTE : <%= happy_price.price %> € </p>
 
               <span class="badge badge-pill badge-primary p-4 my-1 mx-1">Disponibles : <%= happy_price.stock %></span>
-              <span class="badge badge-pill badge-primary p-4 my-1">Temps restant : <%= happy_price.time.humanize %></span>
+              <span class="badge badge-pill badge-primary p-4 my-1">Temps restant : <%= happy_price.time_str_french %></span>
               <span class="btn btn-outline-warning p-4 mb-4 ml-4"><%= link_to "Restaurant : #{business.name}", business_path(business.id) %></span>
               <!-- Happy Minute Begin ) !-->
 
