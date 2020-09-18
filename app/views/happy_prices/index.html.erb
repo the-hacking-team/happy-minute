@@ -34,7 +34,7 @@
                     <div class="col-4">
                       <% if current_owner == item.business.owner %>
                         <h3>
-                          <%= link_to item.title, business_item_path(@business, item) %>
+                          <%= link_to item.title, business_item_path(business, item) %>
                         </h3>
                       <% else %>
                         <h3>
