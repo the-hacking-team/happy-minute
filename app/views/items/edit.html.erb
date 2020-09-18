@@ -30,9 +30,10 @@
     <div class="row justify-content-center mb-5">
       <div class="card" style="width: 18rem;">
         <ul class="list-group list-group-flush">
-          <% @item.tags.each do |tag| %>
-            <li class="list-group-item d-flex justify-content-around"><%= tag.name %>
-              <%= link_to business_item_item_tag_path(:item_id => @item.id, :tag_id => tag.id), method: :delete do  %>
+          <% @item.item_tags.filter { |ht| !ht.id.nil? }.each do |item_tag| %>
+            <%puts '*'*55; puts item_tag.inspect%>
+            <li class="list-group-item d-flex justify-content-around"><%= item_tag.tag.name %>
+              <%= link_to business_item_item_tag_path(@business, @item, item_tag), method: :delete do  %>
                 <span class="lnr lnr-trash text-danger"></span>
               <% end %>
             </li>

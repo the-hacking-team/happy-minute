@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   belongs_to :business
   has_many :happy_prices
   has_one_attached :item_photo
-  has_many :item_tags
+  has_many :item_tags, dependent: :delete_all
   has_many :tags, through: :item_tags
   belongs_to :category
 
