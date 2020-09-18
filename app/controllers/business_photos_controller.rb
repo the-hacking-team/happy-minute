@@ -10,8 +10,7 @@ class BusinessPhotosController < ApplicationController
       flash[:warning] = 'Vous n\'avez pas sélectionné de photo'
     end
     redirect_to(business_path(@business))
-
   rescue Exception => e
-  redirect_to(business_path(@business))
+    redirect_to(business_path(@business))
   end
 end
