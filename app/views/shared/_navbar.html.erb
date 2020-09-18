@@ -93,11 +93,11 @@
             <h1 class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">Des promotions éphèmères dans les meilleurs bars et restaurants</h1>
             <p class="lead wow fadeIn" data-wow-duration="1000ms" data-wow-delay="400ms">Nos Happy Minutes exclusives accessibles en Un Clic !</p>
             <% if customer_signed_in? %>
-              <%= link_to "Nos Happy prices", happy_prices_path, class: "btn btn-common wow fadeInUp", data: { "wow-duration" => "1000ms", "wow-delay" => "400ms" } %>
+              <%= link_to "Nos Happy Minutes", happy_prices_path, class: "btn btn-common wow fadeInUp", data: { "wow-duration" => "1000ms", "wow-delay" => "400ms" } %>
             <% elsif owner_signed_in? %>
               <%= link_to "Mon profil", owner_path(current_owner), class: "btn btn-common wow fadeInUp", data: { "wow-duration" => "1000ms", "wow-delay" => "400ms" } %>
             <% else %>
-              <%= link_to "Nos Happy prices", happy_prices_path, class: "btn btn-common wow fadeInUp", data: { "wow-duration" => "1000ms", "wow-delay" => "400ms" } %>
+              <%= link_to "Nos Happy Minutes", happy_prices_path, class: "btn btn-common wow fadeInUp", data: { "wow-duration" => "1000ms", "wow-delay" => "400ms" } %>
             <% end %>
           </div>
         </div>
