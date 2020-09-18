@@ -8,6 +8,8 @@ class HappyPrice < ApplicationRecord
 
   validate :dates_dont_overlap
   validate :lower_price
+  validate :start_date_after_now
+  validate :start_date_before_end_date
 
   after_create :notify_followers_email
 
@@ -43,7 +45,7 @@ class HappyPrice < ApplicationRecord
   end
 
   def active?
-    started? && !ended? && in_stock?
+    started? && !ended? && in_stock? && !id.nil?
   end
 
   # FIXME: what happens if 2 customers click exact same time for last happy_price in stock?
@@ -67,6 +69,18 @@ class HappyPrice < ApplicationRecord
 
     CustomerMailer.with(happy_price: self).notify_followers_email.deliver_now
   rescue Exception => e
+  end
+
+  def start_date_before_end_date
+    return unless start_date && end_date
+
+    errors.add(:end_date, 'La date de fin doit être après la date de début') unless start_date < end_date
+  end
+
+  def start_date_after_now
+    return unless start_date
+
+    errors.add(:start_date, 'La date de début doit être dans le futur') unless DateTime.now - 2.minutes < start_date
   end
 
   def dates_dont_overlap
