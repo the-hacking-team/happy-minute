@@ -2,10 +2,13 @@ class Item < ApplicationRecord
   belongs_to :business
   has_many :happy_prices
   has_one_attached :item_photo
+  has_many :item_tags
+  has_many :tags, through: :item_tags
+  belongs_to :category
 
   validates :title, presence: true
   validates :price, presence: true
-  validates :category, presence: true
+  validates :category_id, presence: true
   validates :description, presence: true
 
   def current_happy_price

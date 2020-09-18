@@ -1,7 +1,6 @@
 class BusinessesController < ApplicationController
+  before_action :authenticate_owner!, only: %i[new create destroy edit update]
 
-  before_action :authenticate_owner!, only: [:new, :create, :destroy, :edit, :update]
-  
   def index
     @businesses = Business.all
     @is_from_root = true
@@ -9,22 +8,23 @@ class BusinessesController < ApplicationController
 
   def show
     @business = Business.find(params[:id])
+    @happy_prices = HappyPrice.all.where(item_id: Item.all.where(business_id: @business.id))
   end
 
   def new
     @business = Business.new
   end
 
-  def create  
+  def create
     @business = Business.new(business_params)
     @business.owner = current_owner
 
     if @business.save
-      flash[:success] = "Votre établissement a été créé avec succès !"
+      flash[:success] = 'Votre établissement a été créé avec succès !'
       redirect_to owner_path(current_owner)
     else
       render new_business_path
-    end 
+    end
   end
 
   def edit
@@ -44,12 +44,12 @@ class BusinessesController < ApplicationController
   def destroy
     @business = Business.find(params[:id])
     @business.destroy
-    redirect_to root_path
+    redirect_to owner_path(current_owner)
   end
 
   private
+
   def business_params
     params.require(:business).permit(:name, :address, :phone)
-  end 
-
+  end
 end

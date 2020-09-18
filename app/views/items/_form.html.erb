@@ -30,15 +30,19 @@
     <%= form.number_field :price,step: 0.01, class: "form-control"  %>
   </div>
 
-  <!-- category !-->
+  <!-- categorie !-->
   <div class="form-group">
-    <%= form.label :category, 'Catégorie' %>
-    <%= form.text_field :category, class: "form-control"  %>
+    <%= form.label :category_id, ' Catégorie    ' %>
+    <%= form.collection_select :category_id, Category.all, :id, :name,  :prompt => 'Sélectionne' %>
   </div>
 
   <!-- SUBMIT !-->
   <div class="actions mt-5 pr-4">
     <%= form.submit "Valider", class: "btn btn-lg btn-success btn-block" %>
+  </div>
+
+  <div class="row justify-content-center">
+    <%= link_to "Retour à la carte", business_items_path(@business), class: "btn btn-info" %>
   </div>
 
 <% end %>

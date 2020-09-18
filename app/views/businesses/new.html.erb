@@ -1,6 +1,12 @@
 <div class="container">
+  <div class="section-header">
+    <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"> Créez votre <span>établissement</span></h2>
+    <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+    <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Renseignez les informations</p>
+  </div>
+
   <div class="row">
-    <div class="col-md-6 offset-md-3"> 
+    <div class="col-md-6 offset-md-3">
 
       <% if @business.errors.any? %>
         <div class="alert alert-danger" role="alert">
@@ -38,13 +44,15 @@
           </div>
         </div>
 
-        <div class="actions my-4 row">
-          <div class="col-lg-3"></div>
+        <div class="actions my-4 row justify-content-center">
           <%= form.submit "Valider", class: "btn btn-outline-success btn-block col-lg-9 mb-4", style: "margin: 10px 0;" %>
         </div>
 
+        <div class="actions my-4 row justify-content-center">
+          <%= link_to "Retour au Profil", owner_path(current_owner), class: "btn btn-common col-lg-9 mb-4", style: "margin: 10px 0;" %>
+        </div>
       <% end %>
+
     </div>
   </div>
 </div>
-    

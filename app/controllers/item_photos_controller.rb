@@ -5,14 +5,16 @@ class ItemPhotosController < ApplicationController
     @business = Business.find(params[:business_id])
     @item = @business.items.find(params[:item_id])
 
-    if @item.item_photo.attach(params[:item_photo])
-      redirect_to(business_item_path(@business, @item))
+    if params[:item_photo]
+      @item.item_photo.attach(params[:item_photo])
+      flash[:success] = 'Votre photo a bien été ajoutée'
     else
-      flash[:danger] = 'Vous ne pouvez pas effectuer cette action'
-      redirect_to(business_item_path(@business, @item))
+      # No selected picture
+      flash[:warning] = 'Vous n\'avez pas sélectionné de photo'
     end
+    redirect_to(business_item_path(@business, @item))
+
   rescue Exception => e
-    # FIXME: can't see notice
-    flash[:notice] = 'Vous ne pouvez pas effectuer cette action'
+    redirect_to(business_item_path(@business, @item))
   end
 end

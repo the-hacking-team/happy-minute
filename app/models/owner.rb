@@ -1,11 +1,13 @@
 class Owner < ApplicationRecord
-
   has_many :businesses
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates_confirmation_of :password
+  validates :email, presence: true, if: :truemail_test
 
   after_create :welcome_email
 
@@ -16,10 +18,23 @@ class Owner < ApplicationRecord
       email
     end
   end
-  
+
   private
 
+  def truemail_test
+    unless Truemail.validate(self.email).result.success == true
+      errors.add(:email, "Le domaine n'est pas valide")
+    end
+  end
+
   def welcome_email
-    OwnerMailer.with(owner: self).welcome_email.deliver_now
+    # Deliver the mail to the owner
+    # ------------------------------
+    # See https://stackoverflow.com/questions/8709984/how-to-catch-error-exception-in-actionmailer
+    begin
+      OwnerMailer.with(owner: self).welcome_email.deliver_now
+    rescue Exception => e
+      #
+    end
   end
 end

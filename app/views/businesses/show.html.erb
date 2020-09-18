@@ -3,40 +3,128 @@
     <div class="col-lg-7 col-md-7 d-flex align-items-center flex-column">
       <%if @business.business_photo.attached?%>
         <%= image_tag @business.business_photo, class: "business-show-image", alt: 'photo' %>
-      <%else%>
-        <p>
-          <% @business.name%>
-        </p>
       <%end%>
-        <h1>
-          <% @business.name%>
-        </h1>
       <% if current_owner == @business.owner %>
         <p class="h4">Changer de photo ?</p>
         <%= form_tag business_business_photos_path(@business), :class => "business-show-card-image pl-5 ml-5", multipart: true do %>
-        <%= file_field_tag :business_photo %>
-        <%= submit_tag "mettre à jour", class: "btn btn-outline-secondary btn-sm" %>
+          <%= file_field_tag :business_photo %>
+          <%= submit_tag "mettre à jour", class: "btn btn-outline-secondary btn-sm" %>
         <% end %>
-        <p>
-            <%= link_to "Modifier les informations de votre établissement", edit_business_path, :class => "btn btn-common my-2" %>
-        </p>
-        <% end %>
-        <p>
-            <%= link_to "Voir le menu", business_items_path(@business), :class => "btn btn-common my-2" %>
-        </p>
-        <% if customer_signed_in? %>
-          <% if current_customer.businesses.include?(@business) %>
-              <%= link_to "Ne plus suivre", business_follow_path(:id => @business.id), method: :delete, :class => "btn btn-danger my-2" %>
-          <% else %>
-              <%= link_to "Suivre l'établissement", business_follows_path(:id => @business.id), method: :post, :class => "btn btn-common my-2" %>
-          <% end %>
-        <% end %> 
+      <% end %>
     </div>
 
     <div class="col-lg-5 col-md-7">
-        <p><%= @business.name %></p>
-        <p><%= @business.address %></p>
-        <p><%= @business.phone %></p>
+      <h2 class="font-weight-bold"><%= @business.name %></h2>
+      <p><span class="lnr lnr-map-marker"></span> <%= @business.address %></p>
+      <p><span class="lnr lnr-phone"></span> <%= link_to @business.phone, "tel:#{@business.phone}" %> </p>
+      <p>
+        <%= link_to "Voir la carte", business_items_path(@business), :class => "btn btn-common mt-2" %>
+      </p>
+      <% if current_owner == @business.owner %>
+        <p>
+          <%= link_to "Modifier les informations de votre établissement", edit_business_path, :class => "btn btn-common mb-2 mt-5" %>
+        </p>
+        <p>
+          <%= link_to "Voir mon QR Code", business_business_qr_codes_path(@business), :class => "btn btn-common my-2" %>
+        </p>
+      <% end %>
+      <% if customer_signed_in? %>
+        <% if current_customer.businesses.include?(@business) %>
+          <%= link_to "Ne plus suivre", business_follow_path(:id => @business.id), method: :delete, :class => "btn btn-danger my-2" %>
+        <% else %>
+          <%= link_to "Suivre l'établissement", business_follows_path(:id => @business.id), method: :post, :class => "btn btn-common my-2" %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
+
+
+
+
+<% if @business.number_happy_prices != 0 %>
+
+<!-- Basic Card Section Section -->
+<section id="blog" class="section d-flex align-items-center flex-column">
+  <!-- Container Starts -->
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Nos Happy Prices <span>du moment</span></h2>
+      <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+      <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">Profitez-en !</p>
+    </div>
+
+    <% @happy_prices.each do |happy_price| %>
+      <% if happy_price.active? %>
+        <div class="row justify-content-center">
+        <% item = happy_price.item %>
+        <!-- ( Item Wrapper -->
+        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 blog-item">
+
+        <!-- ( Happy Minute Begin !-->
+        <div class="alert alert-success wow fadeInUp" data-wow-delay="0.3s">
+          <p class="display-4"> HAPPY MINUTE : <%= happy_price.price %> € </p>
+
+          <span class="badge badge-pill badge-primary p-3">Disponibles : <%= happy_price.stock %></span>
+          <span class="badge badge-pill badge-primary p-3 mb-3">Temps restant : <%= happy_price.time.in_minutes %> minutes</span>
+
+          <!-- Happy Minute Begin ) !-->
+
+          <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.3s">
+            <div class="blog-item-text">
+              <div class="row">
+                <div class="col-4">
+                  <h3>
+                    <%= link_to item.title, business_item_path(@business, item) %>
+                  </h3>
+                  <div class="meta-tags">
+                    <span class="foodcategory"><i class="lnr lnr-cloud"></i> <%= item.category.name %> </span><br>
+                  </div>
+                </div>
+                <div class="col-6">
+                <p>
+                  <%= item.description %>
+                </p>
+              </div>
+              <div class="col-2">
+                <p>
+                  <% if happy_price %>
+                    <del><%= item.price %> € </del>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+          <!-- ( Happy Minute End !-->
+          <% if customer_signed_in? %>
+            <%= link_to "Bénéficier de la promo incroyable !", business_item_happy_price_happy_codes_path(@business, item, happy_price), method: :post, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "Se connecter pour en profiter", new_customer_session_path, class: "btn btn-success" %>
+          <% end %>
+
+          </div>
+          <!-- Happy Minute End ) -->
+        </div>
+        </div>
+        <!-- Item Wrapper ) -->
+      <% end %>
+    <% end %>
+  
+  </div>
+</section> 
+
+
+<% else %>
+  <section id="blog" class="section d-flex align-items-center flex-column">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Nouveaux Happy Minutes</h2>
+        <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+      </div>
+    <div class="row justify-content-center">
+      <%= image_tag("https://images.assetsdelivery.com/compings_v2/dirkercken/dirkercken1410/dirkercken141000579.jpg") %>
+    </div>
+  </section>
+<% end %>

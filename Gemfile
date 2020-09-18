@@ -36,7 +36,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'administrate'
 
-gem "google-cloud-storage", "~> 1.11", require: false
+gem 'google-cloud-storage', '~> 1.11', require: false
+
+gem 'truemail'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -103,3 +105,6 @@ group :development do
 end
 
 gem 'rubocop', '~> 0.90.0', require: false
+
+# To generate QR codes
+gem 'rqrcode'
