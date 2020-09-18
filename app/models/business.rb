@@ -12,7 +12,7 @@ class Business < ApplicationRecord
   def number_happy_prices
     i = 0
     items.each do |item|
-      i += item.happy_prices.size
+      i += 1 if item.current_happy_price
     end
     i
   end
