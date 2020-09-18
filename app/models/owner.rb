@@ -22,19 +22,15 @@ class Owner < ApplicationRecord
   private
 
   def truemail_test
-    unless Truemail.validate(self.email).result.success == true
-      errors.add(:email, "Le domaine n'est pas valide")
-    end
+    errors.add(:email, "Le domaine n'est pas valide") unless Truemail.validate(email).result.success == true
   end
 
   def welcome_email
     # Deliver the mail to the owner
     # ------------------------------
     # See https://stackoverflow.com/questions/8709984/how-to-catch-error-exception-in-actionmailer
-    begin
-      OwnerMailer.with(owner: self).welcome_email.deliver_now
-    rescue Exception => e
-      #
-    end
+
+    OwnerMailer.with(owner: self).welcome_email.deliver_now
+  rescue Exception => e
   end
 end

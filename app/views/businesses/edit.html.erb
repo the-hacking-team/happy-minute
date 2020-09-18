@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
@@ -11,49 +10,46 @@
         <div class="alert alert-warning" role="alert">
           <ul>
             <% @business.errors.full_messages.each do |message| %>
-            <li> <%= message %> </li>
+              <li> <%= message %> </li>
             <% end %>
           </ul>
         </div>
       <% end %>
-    
-      <h1 class="h3 mb-3 font-weight-normal text-center ">Modifier les informations de l'établissement</h1>
 
+      <h1 class="h3 mb-3 font-weight-normal text-center ">Modifier les informations de l'établissement</h1>
 
       <%= form_for @business do |ƒ| %>
 
-      <div class="form-group">
-        <label> Nom de l'établissement </label>
-        <%= ƒ.text_field :name, class: 'form-control' %>
-      </div>
+        <div class="form-group">
+          <label> Nom de l'établissement </label>
+          <%= ƒ.text_field :name, class: 'form-control' %>
+        </div>
 
-      <div class="form-group">
-        <label> Numéro de téléphone </label>
-        <%= ƒ.text_field :phone, class: 'form-control' %>
-      </div>
+        <div class="form-group">
+          <label> Numéro de téléphone </label>
+          <%= ƒ.text_field :phone, class: 'form-control' %>
+        </div>
 
-      <div class="form-group">
-        <label> Adresse </label>
-        <%= ƒ.text_field :address, class: 'form-control' %>
-      </div>
+        <div class="form-group">
+          <label> Adresse </label>
+          <%= ƒ.text_field :address, class: 'form-control' %>
+        </div>
 
-      <%if @business.business_photo.attached?%>
-        <%= image_tag @business.business_photo, alt: 'photo' %>  
-      <%else%>
-        <p>=== Aucune photo n'est rattachée à cet établissement ===</p>
+        <%if @business.business_photo.attached?%>
+          <%= image_tag @business.business_photo, alt: 'photo' %>
+        <%else%>
+          <p>=== Aucune photo n'est rattachée à cet établissement ===</p>
+        <%end%>
+
+        <div class="actions mt-5">
+          <%= submit_tag 'Enregistrer les modifications', class: "btn btn-lg btn-success btn-block"%>
+        </div>
+
       <%end%>
-
-    <div class="actions mt-5">
-      <%= submit_tag 'Enregistrer les modifications', class: "btn btn-lg btn-success btn-block"%>
-      </div>
-
-      <%end%>
-    
-
 
       <br>
       <%= link_to "Supprimer l'établissement", business_path(@business.id), data: {confirm: "Etes-vous sûr ?"}, method: :delete, :class => "btn btn-danger btn-lg btn-block my-2 mb-4" %>
-    
+
     </div>
   </div>
 </div>
