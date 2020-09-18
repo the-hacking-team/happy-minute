@@ -32,10 +32,10 @@ class MenusController < ApplicationController
   def update
     @business = Business.find(params[:business_id])
     @menu = @business.menus.find(params[:id])
-    @menu_item = @menu.menu_items.new
     if @menu.update(menu_params)
       redirect_to business_menu_path(@business), flash: { success: 'Menu mis à jour !' }
     else
+      @menu_item = @menu.menu_items.new
       render :edit
     end
   end
