@@ -10,6 +10,7 @@ class CustomerDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     business_follows: Field::HasMany,
     businesses: Field::HasMany,
+    happy_codes: Field::HasMany,
     id: Field::Number,
     email: Field::String,
     encrypted_password: Field::String,
@@ -18,6 +19,8 @@ class CustomerDashboard < Administrate::BaseDashboard
     remember_created_at: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    first_name: Field::String,
+    last_name: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,8 +31,8 @@ class CustomerDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   business_follows
   businesses
+  happy_codes
   id
-  email
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -37,6 +40,7 @@ class CustomerDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   business_follows
   businesses
+  happy_codes
   id
   email
   encrypted_password
@@ -45,6 +49,8 @@ class CustomerDashboard < Administrate::BaseDashboard
   remember_created_at
   created_at
   updated_at
+  first_name
+  last_name
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -53,11 +59,14 @@ class CustomerDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   business_follows
   businesses
+  happy_codes
   email
   encrypted_password
   reset_password_token
   reset_password_sent_at
   remember_created_at
+  first_name
+  last_name
   ].freeze
 
   # COLLECTION_FILTERS

@@ -147,7 +147,12 @@ color: #ccc;
   border-color: #c3e6cb;
 }
 
-.profile-owner{
+.profile-owner {
 	font-size: 1.5rem;
 	font: x-large;
+}
+
+.badge {
+	font-size: 1rem;
+	background-color: goldenrod;
 }

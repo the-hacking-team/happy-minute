@@ -13,7 +13,7 @@
       <%= render partial: "form", locals: {method: :put} %>
 
     </div>
-       
+
     <div class="actions mt-5 text-center">
       <%= link_to "Retour au menu", business_menu_path(@business, @menu), class: "btn btn-lg btn-info btn-lg" %>
     </div>
@@ -64,7 +64,7 @@
   </div>
   <div class="row justify-content-center">
     <% @menu.items.each do |item| %>
-    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 blog-item">
+      <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 blog-item">
 
         <div class="blog-item-wrapper wow fadeInUp" data-wow-delay="0.3s">
           <div class="blog-item-text">
@@ -84,20 +84,19 @@
               </div>
               <div class="col-1 ml-5 ">
                 <p>
-                  <%= link_to business_menu_menu_item_path(:menu_id => @menu.id, :item_id => item.id), method: :delete do  %>
+                  <%= link_to business_menu_menu_item_path(:menu_id => @menu.id, :item_id => item.id), data: {confirm: "Etes-vous sûr ?"}, method: :delete do  %>
                     <p><span class="lnr lnr-trash text-danger"></span></p>
                   <% end %>
                 </p>
               </div>
-      
+
             </div>
           </div>
         </div>
-        </div>
-        <% end %>
       </div>
-      <!-- Item Wrapper ) -->
-    </div>
+    <% end %>
   </div>
+  <!-- Item Wrapper ) -->
+</div>
+</div>
 </section>
-

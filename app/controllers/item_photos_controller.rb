@@ -13,7 +13,6 @@ class ItemPhotosController < ApplicationController
       flash[:warning] = 'Vous n\'avez pas sélectionné de photo'
     end
     redirect_to(business_item_path(@business, @item))
-
   rescue Exception => e
     redirect_to(business_item_path(@business, @item))
   end

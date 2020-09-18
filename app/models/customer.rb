@@ -14,26 +14,21 @@ class Customer < ApplicationRecord
   after_create :welcome_email
 
   def name
-    if first_name || last_name
-      "#{first_name} #{last_name}"
-    end
+    "#{first_name} #{last_name}" if first_name || last_name
   end
 
   private
+
   def truemail_test
-    unless Truemail.validate(self.email).result.success == true
-      errors.add(:email, "Le domaine n'est pas valide")
-    end
+    errors.add(:email, "Le domaine n'est pas valide") unless Truemail.validate(email).result.success == true
   end
 
   def welcome_email
     # Deliver the mail to the customer
     # --------------------------------
     # See https://stackoverflow.com/questions/8709984/how-to-catch-error-exception-in-actionmailer
-    begin
-      CustomerMailer.with(customer: self).welcome_email.deliver_now
-    rescue Exception => e
-      #
-    end
+
+    CustomerMailer.with(customer: self).welcome_email.deliver_now
+  rescue Exception => e
   end
 end

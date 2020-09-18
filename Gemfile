@@ -108,3 +108,6 @@ gem 'rubocop', '~> 0.90.0', require: false
 
 # To generate QR codes
 gem 'rqrcode'
+
+gem 'administrate-field-active_storage'
+gem 'image_processing'
