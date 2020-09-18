@@ -2,7 +2,6 @@
 
 ## [www.happy-minute.com](https://www.happy-minute.com)
 
-![JUMBOTRON](https://user-images.githubusercontent.com/7883526/93606343-366b5280-f9c8-11ea-8f48-d905e308a860.png)
 ![JUMBOTRON](https://user-images.githubusercontent.com/7883526/93606588-9104ae80-f9c8-11ea-9711-1e8a79fdfa8d.png)
 
 ## Version preview
