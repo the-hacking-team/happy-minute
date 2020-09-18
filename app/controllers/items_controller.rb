@@ -41,6 +41,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to business_item_path(@business, @item), flash: { success: 'Produit mis à jour' }
     else
+      @item_tag = @item.item_tags.new
       render :edit
     end
   end
