@@ -1,6 +1,6 @@
-require 'administrate/base_dashboard'
+require "administrate/base_dashboard"
 
-class BusinessDashboard < Administrate::BaseDashboard
+class MenuDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,18 +8,16 @@ class BusinessDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    owner: Field::BelongsTo,
+    business: Field::BelongsTo,
+    menu_items: Field::HasMany,
     items: Field::HasMany,
-    business_follows: Field::HasMany,
-    customers: Field::HasMany,
-    business_photo_attachment: Field::ActiveStorage,
-    menus: Field::HasMany,
     id: Field::Number,
     name: Field::String,
-    address: Field::String,
-    phone: Field::String,
+    description: Field::Text,
+    price: Field::String.with_options(searchable: false),
+    position: Field::Number,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    updated_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,40 +26,38 @@ class BusinessDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-    owner
-    items
-    business_follows
-    customers
+  business
+  menu_items
+  items
+  id
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    owner
-    items
-    business_follows
-    customers
-    menus
-    id
-    name
-    address
-    phone
-    created_at
-    updated_at
+  business
+  menu_items
+  items
+  id
+  name
+  description
+  price
+  position
+  created_at
+  updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    owner
-    items
-    business_follows
-    customers
-    menus
-    name
-    address
-    phone
+  business
+  menu_items
+  items
+  name
+  description
+  price
+  position
   ].freeze
 
   # COLLECTION_FILTERS
@@ -76,10 +72,10 @@ class BusinessDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how businesses are displayed
+  # Overwrite this method to customize how menus are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(business)
-  #   "Business ##{business.id}"
+  # def display_resource(menu)
+  #   "Menu ##{menu.id}"
   # end
 end
