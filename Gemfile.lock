@@ -55,6 +55,9 @@ GEM
       momentjs-rails (~> 2.8)
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
+    administrate-field-active_storage (0.1.8)
+      administrate (>= 0.2.0.rc1)
+      rails (>= 5.2)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -150,6 +153,9 @@ GEM
     httpclient (2.8.3)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    image_processing (1.11.0)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     io-like (0.3.1)
     jaro_winkler (1.5.4)
     jbuilder (2.10.0)
@@ -190,6 +196,7 @@ GEM
     memoist (0.16.2)
     method_source (1.0.0)
     mimemagic (0.3.5)
+    mini_magick (4.10.1)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.2)
@@ -272,6 +279,8 @@ GEM
     rubocop-ast (0.3.0)
       parser (>= 2.7.1.4)
     ruby-progressbar (1.10.1)
+    ruby-vips (2.0.17)
+      ffi (~> 1.9)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
     sass (3.7.4)
@@ -367,6 +376,7 @@ PLATFORMS
 
 DEPENDENCIES
   administrate
+  administrate-field-active_storage
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
@@ -377,6 +387,7 @@ DEPENDENCIES
   faker
   font-awesome-sass (~> 5.13.0)
   google-cloud-storage (~> 1.11)
+  image_processing
   jbuilder (~> 2.5)
   letter_opener
   listen (>= 3.0.5, < 3.2)

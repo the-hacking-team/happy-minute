@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class ItemDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -9,14 +9,20 @@ class ItemDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     business: Field::BelongsTo,
+    happy_prices: Field::HasMany,
+    item_photo_attachment: Field::ActiveStorage,
+    # item_photo_blob: Field::HasOne,
+    item_tags: Field::HasMany,
+    tags: Field::HasMany,
+    category: Field::BelongsTo,
     id: Field::Number,
     title: Field::String,
     price: Field::String.with_options(searchable: false),
     available: Field::Boolean,
     description: Field::Text,
-    category: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    position: Field::Number
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -25,36 +31,42 @@ class ItemDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  business
-  id
-  title
-  price
+    business
+    happy_prices
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  business
-  id
-  title
-  price
-  available
-  description
-  category
-  created_at
-  updated_at
+    business
+    happy_prices
+    item_tags
+    tags
+    category
+    id
+    title
+    price
+    available
+    description
+    created_at
+    updated_at
+    position
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  business
-  title
-  price
-  available
-  description
-  category
+    business
+    happy_prices
+    item_tags
+    tags
+    category
+    title
+    price
+    available
+    description
+    position
   ].freeze
 
   # COLLECTION_FILTERS
