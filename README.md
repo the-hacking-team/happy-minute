@@ -38,7 +38,7 @@ Le consommateur peut également s’inscrire sur l’application, rechercher les
 
 ### Utilisation de Trello dans la gestion des tâches
 
-![Trello 2020-09-11 003913](https://user-images.githubusercontent.com/37190085/92823258-5e0d5a00-f3cd-11ea-8934-7d17f7c6e0cc.jpg)
+![TRELLO](https://user-images.githubusercontent.com/7883526/93607142-39b30e00-f9c9-11ea-99d4-d7879879066c.png)
 
 ### Une base de données bien définie
 
