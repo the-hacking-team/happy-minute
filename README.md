@@ -2,7 +2,7 @@
 
 ## [www.happy-minute.com](https://www.happy-minute.com)
 
-<img width="250" alt="LOGO" src="https://user-images.githubusercontent.com/37190085/92944821-c5222180-f454-11ea-86e4-21cc7ec353f5.png">
+![JUMBOTRON](https://user-images.githubusercontent.com/7883526/93606343-366b5280-f9c8-11ea-8f48-d905e308a860.png)
 
 ## Version preview
 
