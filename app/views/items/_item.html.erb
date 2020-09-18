@@ -47,9 +47,9 @@
         </div>
       </div>
 
-      <% if current_owner == item.business.owner && !item.happy_prices.empty? %>
+      <% if current_owner == item.business.owner && !item.happy_prices.filter { |hp| !hp.id.nil? }.empty? %>
         <ul class="p-2">
-          <% item.happy_prices.each do |happy_price| %>
+          <% item.happy_prices.filter { |hp| !hp.id.nil? }.each do |happy_price| %>
             <li> <%= happy_price.price %> € :  
               <% happy_price.happy_codes.each do |happy_code| %>
                 <span class="px-2"> <%= "#{happy_code.code}" %> </span>
