@@ -17,6 +17,28 @@
 
   <body>
 
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : "<%= ENV['FACEBOOK_APP_ID'] %>",
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v8.0'
+        });
+      
+        FB.AppEvents.logPageView();
+      
+      };
+      
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <div id="navbar"> <%= render partial: "shared/navbar" %> </div>
 
     <div id="alerts"> <%= render partial: "shared/alerts" %> </div>
@@ -24,6 +46,12 @@
     <%= content_for?(:application) ? (yield :application) : (yield) %>
 
     <div id="footer"> <%= render partial: "shared/footer" %> </div>
+    <% unless current_customer %>
+      <%= link_to "Sign in with Facebook", customer_facebook_omniauth_authorize_path %>
+    <% else %>
+      <%= current_user[:name] %>
+      <%= link_to "Logout", destroy_customer_session_path, method: :delete %>
+    <% end %>
 
     <a href="#" class="back-to-top">
       <i class="lnr lnr-arrow-up"></i>

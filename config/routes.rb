@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     root to: 'administrators#index'
   end
   devise_for :administrators
-  devise_for :customers
+  devise_for :customers, controllers: { omniauth_callbacks: 'customers/omniauth_callbacks' }
   devise_for :owners
 
   # For Owners, some REST actions exept show are handle by devise :
