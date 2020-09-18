@@ -31,6 +31,17 @@ class HappyPrice < ApplicationRecord
     TimeDifference.between(DateTime.now, end_date || DateTime.now)
   end
 
+  def time_str_french
+    time.humanize
+        .gsub('and', 'et')
+        .gsub('Seconds', 'secondes')
+        .gsub('Second', 'seconde')
+        .gsub('Hours', 'heures')
+        .gsub('Hour', 'heure')
+        .gsub('Days', 'jours')
+        .gsub('Day', 'jour')
+  end
+
   def active?
     started? && !ended? && in_stock?
   end
