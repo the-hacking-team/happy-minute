@@ -310,5 +310,5 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   # OmniAuth Facebook
-  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], callback_url: "#{ENV['HAPPY_MINUTE_HOSTNAME']}/customers/auth/facebook/callback"
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], scope: 'email', callback_url: "#{ENV['HAPPY_MINUTE_HOSTNAME']}/customers/auth/facebook/callback"
 end

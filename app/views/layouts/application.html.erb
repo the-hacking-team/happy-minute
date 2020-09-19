@@ -47,7 +47,7 @@
 
     <div id="footer"> <%= render partial: "shared/footer" %> </div>
     <% unless current_customer %>
-      <%= link_to "Sign in with Facebook", customer_facebook_omniauth_authorize_path %>
+      <%= link_to "Sign in with Facebook", customer_facebook_omniauth_authorize_url %>
     <% else %>
       <%= current_user[:name] %>
       <%= link_to "Logout", destroy_customer_session_path, method: :delete %>
