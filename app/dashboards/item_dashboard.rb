@@ -32,6 +32,8 @@ class ItemDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     business
+    title
+    price
     happy_prices
   ].freeze
 
@@ -59,7 +61,6 @@ class ItemDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     business
     happy_prices
-    item_tags
     tags
     category
     title
@@ -84,7 +85,7 @@ class ItemDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how items are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(item)
-  #   "Item ##{item.id}"
-  # end
+  def display_resource(item)
+    "##{item.id} #{item.title}"
+  end
 end

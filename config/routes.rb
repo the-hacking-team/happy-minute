@@ -6,12 +6,13 @@ Rails.application.routes.draw do
     resources :owners
     resources :businesses
     resources :business_follows
-    resources :happy_codes
-    resources :happy_prices
+    resources :menus
+    resources :categories
     resources :items
     resources :tags
     resources :item_tags
-    resources :categories
+    resources :happy_prices
+    resources :happy_codes
 
     root to: 'administrators#index'
   end

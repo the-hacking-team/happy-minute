@@ -11,6 +11,7 @@ class BusinessDashboard < Administrate::BaseDashboard
     owner: Field::BelongsTo,
     items: Field::HasMany,
     business_follows: Field::HasMany,
+    menus: Field::HasMany,
     customers: Field::HasMany,
     business_photo_attachment: Field::ActiveStorage,
     menus: Field::HasMany,
@@ -29,6 +30,7 @@ class BusinessDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     owner
+    name
     items
     business_follows
     customers
@@ -79,7 +81,7 @@ class BusinessDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how businesses are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(business)
-  #   "Business ##{business.id}"
-  # end
+  def display_resource(business)
+    "##{business.id}: #{business.name}"
+  end
 end
