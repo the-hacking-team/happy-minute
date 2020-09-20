@@ -23,5 +23,13 @@
     <div class="row justify-content-center">
       <%= render partial: "form", locals: {method: :put} %>
     </div>
+
   </div>
+
+  <div class="container">
+    <div class="section-header">
+      <%= link_to "Supprimer", business_item_happy_price_path(@business, @item, @happy_price), method: :delete, data: {confirm: "Etes-vous sûr ?"}, class: "btn btn-danger" %>
+    </div>
+  </div>
+
 </section>
