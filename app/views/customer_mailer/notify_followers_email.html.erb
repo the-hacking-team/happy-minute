@@ -5,5 +5,4 @@
 <p> <%= @happy_price.start_date.to_formatted_s(:long) %> ==> <%= @happy_price.end_date.to_formatted_s(:long) %> </p>
 <p> <%= @happy_price.stock %> unités à <%= @happy_price.price %> € (<%= @happy_price.active? ? 'EN COURS' : (@happy_price.started? ? 'Terminé' : 'A venir') %>)</p>
 
-<p>Venez nous rejoindre quotidiennement sur : https://<%= @url %></p>
- 
+<p>Venez nous rejoindre quotidiennement sur : <%= @url %></p>

@@ -34,10 +34,15 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# Admin Dashboard
 gem 'administrate'
+gem 'administrate-field-active_storage'
+gem 'image_processing'
 
+# ActiveStorage Backend
 gem 'google-cloud-storage', '~> 1.11', require: false
 
+# Real email tester
 gem 'truemail'
 
 group :development, :test do
@@ -61,6 +66,9 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
+
+# Security
+gem 'actionview', '>= 5.2.4.4'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -86,9 +94,6 @@ gem 'table_print'
 # Payment API
 # gem 'stripe'
 
-# Admin Dashboard
-# gem 'administrate'
-
 # Adding a library for Icons
 gem 'font-awesome-sass', '~> 5.13.0'
 
@@ -109,5 +114,5 @@ gem 'rubocop', '~> 0.90.0', require: false
 # To generate QR codes
 gem 'rqrcode'
 
-gem 'administrate-field-active_storage'
-gem 'image_processing'
+# Auth with Facebook
+gem 'omniauth-facebook'
