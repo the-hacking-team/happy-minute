@@ -21,6 +21,8 @@
 
     <div id="alerts"> <%= render partial: "shared/alerts" %> </div>
 
+    <%= link_to "Se connecter avec Facebook", customer_facebook_omniauth_authorize_path %>
+
     <%= content_for?(:application) ? (yield :application) : (yield) %>
 
     <div id="footer"> <%= render partial: "shared/footer" %> </div>
