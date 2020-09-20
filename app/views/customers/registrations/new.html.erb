@@ -2,9 +2,11 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="text-center">
-        <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v8.0&appId=644263129849551&autoLogAppEvents=1" nonce="NsYZLEgu"></script>
-        <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="true" data-width=""></div>
+        <%= link_to customer_facebook_omniauth_authorize_path do %>
+          <div id="fb-root"></div>
+          <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v8.0&appId=644263129849551&autoLogAppEvents=1" nonce="NsYZLEgu"></script>
+          <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="true" data-width=""></div>
+        <% end %>
       </div>
 
       <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
