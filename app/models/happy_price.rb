@@ -80,7 +80,7 @@ class HappyPrice < ApplicationRecord
   def start_date_after_now
     return unless start_date
 
-    errors.add(:start_date, 'La date de début doit être dans le futur') unless DateTime.now - 2.minutes < start_date
+    errors.add(:end_date, 'La date de fin doit être dans le futur') unless DateTime.now < end_date
   end
 
   def dates_dont_overlap

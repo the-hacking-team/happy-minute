@@ -8,7 +8,7 @@
       <p class="section-subtitle wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s"> Merci de renseigner les informations suivantes </p>
     </div>
     <div class="row justify-content-center">
-      <%= render partial: "items/item", locals:{item: @item} %>
+      <%= render partial: "items/item", locals:{item: @item, hide_happy_price: true} %>
     </div>
 
     <% upcoming = @happy_price %>
