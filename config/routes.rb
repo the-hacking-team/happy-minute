@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
     root to: 'administrators#index'
   end
+
+  # No sign up for admin
+  get '/administrators/sign_up', to: 'static_pages#you_tried'
   devise_for :administrators
   devise_for :customers, controllers: { omniauth_callbacks: 'customers/omniauth_callbacks' }
   devise_for :owners
