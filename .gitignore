@@ -31,3 +31,5 @@
 
 /config/secrets/*
 .DS_Store
+
+.vscode/

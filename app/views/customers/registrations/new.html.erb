@@ -1,12 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <br>
-      <br>
-      <br>
+
+      <div class="text-center">
+        <%= image_tag "f_logo_RGB-Blue_72.png", width:48 %>
+        <%= link_to "Se connecter avec Facebook", customer_facebook_omniauth_authorize_path, class: "btn btn-lg btn-primary btn-block" %>
+      </div>
 
       <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
-        <h1 class="h3 mb-3 font-weight-normal text-center">Inscription</h1>
+        <h1 class="h3 my-4 font-weight-normal text-center">Ou inscrivez-vous</h1>
         <%= devise_error_messages! %>
 
         <div class="form-group">

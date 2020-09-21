@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class MenuDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -17,7 +17,7 @@ class MenuDashboard < Administrate::BaseDashboard
     price: Field::String.with_options(searchable: false),
     position: Field::Number,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -26,38 +26,38 @@ class MenuDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  business
-  menu_items
-  items
-  id
+    business
+    menu_items
+    items
+    id
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  business
-  menu_items
-  items
-  id
-  name
-  description
-  price
-  position
-  created_at
-  updated_at
+    business
+    menu_items
+    items
+    id
+    name
+    description
+    price
+    position
+    created_at
+    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  business
-  menu_items
-  items
-  name
-  description
-  price
-  position
+    business
+    menu_items
+    items
+    name
+    description
+    price
+    position
   ].freeze
 
   # COLLECTION_FILTERS
@@ -75,7 +75,7 @@ class MenuDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how menus are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(menu)
-  #   "Menu ##{menu.id}"
-  # end
+  def display_resource(menu)
+    "Menu ##{menu.id}: #{menu.name}"
+  end
 end
