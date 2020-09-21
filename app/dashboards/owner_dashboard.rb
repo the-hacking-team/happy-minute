@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class OwnerDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -18,7 +18,7 @@ class OwnerDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     first_name: Field::String,
-    last_name: Field::String,
+    last_name: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -27,40 +27,40 @@ class OwnerDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  businesses
-  id
-  email
-  encrypted_password
+    businesses
+    id
+    email
+    encrypted_password
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  businesses
-  id
-  email
-  encrypted_password
-  reset_password_token
-  reset_password_sent_at
-  remember_created_at
-  created_at
-  updated_at
-  first_name
-  last_name
+    businesses
+    id
+    email
+    encrypted_password
+    reset_password_token
+    reset_password_sent_at
+    remember_created_at
+    created_at
+    updated_at
+    first_name
+    last_name
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  businesses
-  email
-  encrypted_password
-  reset_password_token
-  reset_password_sent_at
-  remember_created_at
-  first_name
-  last_name
+    businesses
+    email
+    encrypted_password
+    reset_password_token
+    reset_password_sent_at
+    remember_created_at
+    first_name
+    last_name
   ].freeze
 
   # COLLECTION_FILTERS
@@ -78,7 +78,7 @@ class OwnerDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how owners are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(owner)
-  #   "Owner ##{owner.id}"
-  # end
+  def display_resource(owner)
+    "##{owner.id}: #{owner.name}"
+  end
 end
