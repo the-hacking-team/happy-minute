@@ -1,12 +1,12 @@
 # Happy Minute !
 
-## [www.happy-minute.com](https://www.happy-minute.com)
+## [master-happy-minute.herokuapp.com](https://master-happy-minute.herokuapp.com/)
 
 ![JUMBOTRON](https://user-images.githubusercontent.com/7883526/93606588-9104ae80-f9c8-11ea-9711-1e8a79fdfa8d.png)
 
 ## Version preview
 
-* [develop.happy-minute.com](https://develop.happy-minute.com) (branche `develop`)
+* [develop-happy-minute.herokuapp.com](https://develop-happy-minute.herokuapp.com) (branche `develop`)
 
 ## Présentation
 
